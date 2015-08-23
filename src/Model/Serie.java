@@ -42,7 +42,7 @@ public class Serie implements Serializable {
     @Column(name = "CODSERIE")
     private Integer codserie;
     @Basic(optional = false)
-    @Column(name = "NOME")
+    @Column(name = "NOME",unique = true)
     private String nome;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)

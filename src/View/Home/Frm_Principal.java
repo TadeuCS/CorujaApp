@@ -1,5 +1,6 @@
 package View.Home;
 
+import View.Cadastros.Frm_CadAluno;
 import java.awt.Event;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -11,6 +12,7 @@ public class Frm_Principal extends javax.swing.JFrame {
 
     public Frm_Principal() {
         initComponents();
+        setVisible(true);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
@@ -259,6 +261,7 @@ public class Frm_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_item_AlterarSenhaActionPerformed
 
     private void atalhoCadastroClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atalhoCadastroClienteMousePressed
+        Frm_CadAluno f= new Frm_CadAluno();
     }//GEN-LAST:event_atalhoCadastroClienteMousePressed
 
     private void atalhoAbrirAtendimentoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atalhoAbrirAtendimentoMousePressed
@@ -274,6 +277,7 @@ public class Frm_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void item_cadUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_cadUsuarioActionPerformed
+        Frm_CadAluno f= new Frm_CadAluno();
     }//GEN-LAST:event_item_cadUsuarioActionPerformed
 
     private void item_cadConvenioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_cadConvenioActionPerformed
