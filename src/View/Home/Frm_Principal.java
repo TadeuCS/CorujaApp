@@ -28,6 +28,9 @@ public class Frm_Principal extends javax.swing.JFrame {
         pnl_aberturaAtendimento = new javax.swing.JPanel();
         atalhoAbrirAtendimento = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        pnl_aberturaAtendimento1 = new javax.swing.JPanel();
+        atalhoAbrirAtendimento1 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         Menu_barra = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         item_cadUsuario = new javax.swing.JMenuItem();
@@ -69,7 +72,7 @@ public class Frm_Principal extends javax.swing.JFrame {
             .addGroup(pnl_cadClienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnl_cadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(atalhoCadastroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                    .addComponent(atalhoCadastroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                     .addGroup(pnl_cadClienteLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel8)))
@@ -79,7 +82,7 @@ public class Frm_Principal extends javax.swing.JFrame {
             pnl_cadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_cadClienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(atalhoCadastroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                .addComponent(atalhoCadastroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addContainerGap())
@@ -104,7 +107,7 @@ public class Frm_Principal extends javax.swing.JFrame {
             .addGroup(pnl_aberturaAtendimentoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnl_aberturaAtendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(atalhoAbrirAtendimento, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                    .addComponent(atalhoAbrirAtendimento, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -112,9 +115,41 @@ public class Frm_Principal extends javax.swing.JFrame {
             pnl_aberturaAtendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_aberturaAtendimentoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(atalhoAbrirAtendimento, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                .addComponent(atalhoAbrirAtendimento, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
+                .addContainerGap())
+        );
+
+        atalhoAbrirAtendimento1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        atalhoAbrirAtendimento1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        atalhoAbrirAtendimento1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                atalhoAbrirAtendimento1MousePressed(evt);
+            }
+        });
+
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Cadastrar Responsável");
+
+        javax.swing.GroupLayout pnl_aberturaAtendimento1Layout = new javax.swing.GroupLayout(pnl_aberturaAtendimento1);
+        pnl_aberturaAtendimento1.setLayout(pnl_aberturaAtendimento1Layout);
+        pnl_aberturaAtendimento1Layout.setHorizontalGroup(
+            pnl_aberturaAtendimento1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_aberturaAtendimento1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnl_aberturaAtendimento1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(atalhoAbrirAtendimento1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pnl_aberturaAtendimento1Layout.setVerticalGroup(
+            pnl_aberturaAtendimento1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_aberturaAtendimento1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(atalhoAbrirAtendimento1, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
                 .addContainerGap())
         );
 
@@ -127,16 +162,19 @@ public class Frm_Principal extends javax.swing.JFrame {
                 .addComponent(pnl_cadCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pnl_aberturaAtendimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1001, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(pnl_aberturaAtendimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(783, Short.MAX_VALUE))
         );
         pnl_atalhosLayout.setVerticalGroup(
             pnl_atalhosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_atalhosLayout.createSequentialGroup()
-                .addGap(0, 4, Short.MAX_VALUE)
-                .addGroup(pnl_atalhosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnl_cadCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnl_aberturaAtendimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6))
+                .addGap(5, 5, 5)
+                .addGroup(pnl_atalhosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnl_cadCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_aberturaAtendimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_aberturaAtendimento1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnl_fundoLayout = new javax.swing.GroupLayout(pnl_fundo);
@@ -149,7 +187,7 @@ public class Frm_Principal extends javax.swing.JFrame {
             pnl_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_fundoLayout.createSequentialGroup()
                 .addComponent(pnl_atalhos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(487, Short.MAX_VALUE))
+                .addContainerGap(475, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Cadastros");
@@ -289,6 +327,10 @@ public class Frm_Principal extends javax.swing.JFrame {
     private void item_AlterarSenha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_AlterarSenha1ActionPerformed
     }//GEN-LAST:event_item_AlterarSenha1ActionPerformed
 
+    private void atalhoAbrirAtendimento1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atalhoAbrirAtendimento1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_atalhoAbrirAtendimento1MousePressed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -334,6 +376,7 @@ public class Frm_Principal extends javax.swing.JFrame {
     private javax.swing.JMenu Menu_Utilitários;
     private javax.swing.JMenuBar Menu_barra;
     private javax.swing.JLabel atalhoAbrirAtendimento;
+    private javax.swing.JLabel atalhoAbrirAtendimento1;
     private javax.swing.JLabel atalhoCadastroCliente;
     private javax.swing.JMenuItem item_AlterarSenha;
     private javax.swing.JMenuItem item_AlterarSenha1;
@@ -341,12 +384,14 @@ public class Frm_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem item_cadConvenio1;
     private javax.swing.JMenuItem item_cadUsuario;
     private javax.swing.JMenuItem item_trocaUsuario;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel pnl_aberturaAtendimento;
+    private javax.swing.JPanel pnl_aberturaAtendimento1;
     private javax.swing.JPanel pnl_atalhos;
     private javax.swing.JPanel pnl_cadCliente;
     private javax.swing.JPanel pnl_fundo;

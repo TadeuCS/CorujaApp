@@ -16,7 +16,6 @@ import Model.Serie;
 import Util.Classes.Data;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.NoResultException;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,7 +36,6 @@ public class Frm_CadAluno extends javax.swing.JFrame {
     public Frm_CadAluno() {
         initComponents();
         setVisible(true);
-        abas.setEnabled(false);
         setEnabledFields(false);
         setEnabledButtons(true);
         carregaSeries();
@@ -51,7 +49,6 @@ public class Frm_CadAluno extends javax.swing.JFrame {
 
         grupoSexo = new javax.swing.ButtonGroup();
         pnl_fundo = new javax.swing.JPanel();
-        abas = new javax.swing.JTabbedPane();
         pnl_cadastroAluno = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -81,9 +78,6 @@ public class Frm_CadAluno extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txt_estado = new javax.swing.JTextField();
         btn_novo = new javax.swing.JButton();
-        btn_editar = new javax.swing.JButton();
-        btn_apagar = new javax.swing.JButton();
-        btn_consultar = new javax.swing.JButton();
         btn_salvar = new javax.swing.JButton();
         btn_cancelar = new javax.swing.JButton();
         pnl_pesquisaAluno = new javax.swing.JPanel();
@@ -92,7 +86,8 @@ public class Frm_CadAluno extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_alunos = new javax.swing.JTable();
         btn_selecionar = new javax.swing.JButton();
-        btn_voltar = new javax.swing.JButton();
+        btn_editar = new javax.swing.JButton();
+        btn_apagar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Aluno");
@@ -154,7 +149,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 12, Short.MAX_VALUE)
                         .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)
@@ -255,17 +250,6 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             }
         });
 
-        btn_editar.setText("Editar");
-
-        btn_apagar.setText("Apagar");
-
-        btn_consultar.setText("Consultar");
-        btn_consultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_consultarActionPerformed(evt);
-            }
-        });
-
         btn_salvar.setText("Salvar");
         btn_salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -290,12 +274,6 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnl_cadastroAlunoLayout.createSequentialGroup()
                         .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_apagar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -310,15 +288,10 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnl_cadastroAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_novo)
-                    .addComponent(btn_editar)
-                    .addComponent(btn_apagar)
-                    .addComponent(btn_consultar)
                     .addComponent(btn_salvar)
                     .addComponent(btn_cancelar))
                 .addContainerGap())
         );
-
-        abas.addTab("Cadastro de Aluno", pnl_cadastroAluno);
 
         pnl_pesquisaAluno.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -353,12 +326,9 @@ public class Frm_CadAluno extends javax.swing.JFrame {
 
         btn_selecionar.setText("Selecionar");
 
-        btn_voltar.setText("Voltar");
-        btn_voltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_voltarActionPerformed(evt);
-            }
-        });
+        btn_editar.setText("Editar");
+
+        btn_apagar.setText("Apagar");
 
         javax.swing.GroupLayout pnl_pesquisaAlunoLayout = new javax.swing.GroupLayout(pnl_pesquisaAluno);
         pnl_pesquisaAluno.setLayout(pnl_pesquisaAlunoLayout);
@@ -374,9 +344,10 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                         .addComponent(txt_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 362, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_pesquisaAlunoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addComponent(btn_apagar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_selecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -392,11 +363,11 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnl_pesquisaAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_selecionar)
-                    .addComponent(btn_voltar))
+                    .addGroup(pnl_pesquisaAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_editar)
+                        .addComponent(btn_apagar)))
                 .addContainerGap())
         );
-
-        abas.addTab("Pesquisa de Aluno", pnl_pesquisaAluno);
 
         javax.swing.GroupLayout pnl_fundoLayout = new javax.swing.GroupLayout(pnl_fundo);
         pnl_fundo.setLayout(pnl_fundoLayout);
@@ -404,15 +375,19 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             pnl_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_fundoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(abas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnl_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnl_cadastroAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnl_pesquisaAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         pnl_fundoLayout.setVerticalGroup(
             pnl_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_fundoLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_fundoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(abas)
-                .addContainerGap())
+                .addComponent(pnl_cadastroAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnl_pesquisaAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -440,14 +415,6 @@ public class Frm_CadAluno extends javax.swing.JFrame {
         setEnabledFields(false);
         setEnabledButtons(true);
     }//GEN-LAST:event_btn_cancelarActionPerformed
-
-    private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
-        abas.setSelectedIndex(1);
-    }//GEN-LAST:event_btn_consultarActionPerformed
-
-    private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
-        abas.setSelectedIndex(0);
-    }//GEN-LAST:event_btn_voltarActionPerformed
 
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
         validaCampos();
@@ -489,15 +456,12 @@ public class Frm_CadAluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane abas;
     private javax.swing.JButton btn_apagar;
     private javax.swing.JButton btn_cancelar;
-    private javax.swing.JButton btn_consultar;
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_novo;
     private javax.swing.JButton btn_salvar;
     private javax.swing.JButton btn_selecionar;
-    private javax.swing.JButton btn_voltar;
     private javax.swing.JComboBox cbx_mae;
     private javax.swing.JComboBox cbx_pai;
     private javax.swing.JComboBox cbx_responsavel;
@@ -554,7 +518,6 @@ public class Frm_CadAluno extends javax.swing.JFrame {
     private void setEnabledButtons(boolean tipo) {
         btn_novo.setEnabled(tipo);
         btn_editar.setEnabled(tipo);
-        btn_consultar.setEnabled(tipo);
         btn_apagar.setEnabled(tipo);
         btn_salvar.setEnabled(!tipo);
         btn_cancelar.setEnabled(!tipo);
