@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Model.Serie;
+import Model.Livro;
 import Util.Classes.Conexao;
 import java.util.List;
 
@@ -13,29 +13,28 @@ import java.util.List;
  *
  * @author Tadeu
  */
-public class SerieDAO extends Conexao{
+public class LivroDAO extends Conexao{
     
-    public void salvar(Serie serie){
+    public void salvar(Livro livro){
         em.getTransaction().begin();
-        em.merge(serie);
+        em.merge(livro);
         em.getTransaction().commit();
     }
-    public void remover(Serie serie){
+    public void remover(Livro livro){
         em.getTransaction().begin();
-        em.remove(serie);
+        em.remove(livro);
         em.getTransaction().commit();
     }
-    
-    public List<Serie> listar(){
+    public List<Livro> listar(){
         em.getTransaction().begin();
-        query=em.createNamedQuery("Serie.findAll");
+        query=em.createNamedQuery("Livro.findAll");
         em.getTransaction().commit();
         return query.getResultList();
     }
-    public Serie buscar(String nome){
+    public Livro buscar(String nome){
         em.getTransaction().begin();
-        query=em.createNamedQuery("Serie.findByNome").setParameter("nome", nome);
+        query=em.createNamedQuery("Livro.findByDescricao").setParameter("descricao", nome);
         em.getTransaction().commit();
-        return (Serie) query.getSingleResult();
+        return (Livro) query.getSingleResult();
     }
 }
