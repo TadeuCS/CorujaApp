@@ -20,6 +20,11 @@ public class PessoaDAO extends Conexao {
         em.merge(pessoa);
         em.getTransaction().commit();
     }
+    public void remover(Pessoa pessoa) {
+        em.getTransaction().begin();
+        em.remove(pessoa);
+        em.getTransaction().commit();
+    }
 
     public List<Pessoa> listar() {
         em.getTransaction().begin();
@@ -28,9 +33,9 @@ public class PessoaDAO extends Conexao {
         return query.getResultList();
     }
 
-    public Pessoa buscar(String pessoa) {
+    public Pessoa buscar(String cpf) {
         em.getTransaction().begin();
-        query = em.createNamedQuery("Pessoa.findByNome").setParameter("nome", pessoa);
+        query = em.createNamedQuery("Pessoa.findByCpf").setParameter("cpf", cpf);
         em.getTransaction().commit();
         return (Pessoa) query.getSingleResult();
     }

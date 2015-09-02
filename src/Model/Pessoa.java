@@ -47,10 +47,10 @@ public class Pessoa implements Serializable {
     private String nome;
     @Column(name = "FONE")
     private String fone;
-    @Column(name = "EMAIL")
+    @Column(name = "EMAIL",nullable = true)
     private String email;
     @Basic(optional = false)
-    @Column(name = "CPF")
+    @Column(name = "CPF",unique = true)
     private String cpf;
     @Basic(optional = false)
     @Column(name = "SEXO")
