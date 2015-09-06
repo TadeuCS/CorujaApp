@@ -20,6 +20,11 @@ public class ResponsavelDAO extends Conexao {
         em.merge(responsavel);
         em.getTransaction().commit();
     }
+    public void remove(Responsavel responsavel) {
+        em.getTransaction().begin();
+        em.remove(responsavel);
+        em.getTransaction().commit();
+    }
 
     public List<Responsavel> listar() {
         em.getTransaction().begin();
@@ -28,7 +33,13 @@ public class ResponsavelDAO extends Conexao {
         return query.getResultList();
     }
 
-    public Responsavel buscar(String cpf) {
+    public Responsavel buscarByCodigo(int codigo) {
+        em.getTransaction().begin();
+        query = em.createNamedQuery("Responsavel.findByCodresponsavel").setParameter("codresponsavel", codigo);
+        em.getTransaction().commit();
+        return (Responsavel) query.getSingleResult();
+    }
+    public Responsavel buscarByCPF(String cpf) {
         em.getTransaction().begin();
         query = em.createNamedQuery("Responsavel.findByCpf").setParameter("cpf", cpf);
         em.getTransaction().commit();

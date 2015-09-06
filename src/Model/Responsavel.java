@@ -69,7 +69,7 @@ public class Responsavel implements Serializable {
     @Column(name = "FONE")
     private String fone;
     @Column(name = "EMAIL")
-    private Integer email;
+    private String email;
     @Column(name = "CELULAR")
     private String celular;
     @Column(name = "OBSERVACAO")
@@ -160,11 +160,11 @@ public class Responsavel implements Serializable {
         this.fone = fone;
     }
 
-    public Integer getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Integer email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
