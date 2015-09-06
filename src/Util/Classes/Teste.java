@@ -3,21 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Util;
+package Util.Classes;
 
-import javax.swing.JOptionPane;
-
-/**
- *
- * @author Tadeu
- */
 public class Teste {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a Série " ,"",0,0);
+        GeraCPF g= new GeraCPF();
+        System.out.println(g.geraCPFFinal());
     }
     
 }

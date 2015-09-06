@@ -20,6 +20,11 @@ public class AlunoDAO extends Conexao {
         em.merge(aluno);
         em.getTransaction().commit();
     }
+    public void remover(Aluno aluno) {
+        em.getTransaction().begin();
+        em.remove(aluno);
+        em.getTransaction().commit();
+    }
 
     public List<Aluno> listar() {
         em.getTransaction().begin();
@@ -28,9 +33,9 @@ public class AlunoDAO extends Conexao {
         return query.getResultList();
     }
 
-    public Aluno buscar(String nome) {
+    public Aluno buscar(int codigo) {
         em.getTransaction().begin();
-        query = em.createNamedQuery("Aluno.findByNome").setParameter("nome", nome);
+        query = em.createNamedQuery("Aluno.findByCodaluno").setParameter("codaluno", codigo);
         em.getTransaction().commit();
         return (Aluno) query.getSingleResult();
     }

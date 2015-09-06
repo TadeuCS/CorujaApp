@@ -5,6 +5,13 @@
  */
 package View.Cadastros;
 
+import Controller.LivroDAO;
+import Controller.SerieDAO;
+import Model.Livro;
+import Model.Serie;
+import Util.Classes.TableConfig;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Tadeu
@@ -16,6 +23,7 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
      */
     public Frm_CadResponsavel() {
         initComponents();
+        setVisible(true);
     }
 
     /**
@@ -34,7 +42,6 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_pais = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
-        btn_selecionar = new javax.swing.JButton();
         btn_editar = new javax.swing.JButton();
         btn_apagar = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
@@ -73,6 +80,7 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Responsável Financeiro");
+        setResizable(false);
 
         pnl_pesquisa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -129,15 +137,10 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btn_selecionar.setText("Selecionar");
-        btn_selecionar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_selecionarActionPerformed(evt);
-            }
-        });
-
+        btn_editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Util/Img/alterar.png"))); // NOI18N
         btn_editar.setText("Editar");
 
+        btn_apagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Util/Img/excluir.png"))); // NOI18N
         btn_apagar.setText("Apagar");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -146,19 +149,16 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btn_apagar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_selecionar)
-                .addContainerGap())
+                .addComponent(btn_apagar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(720, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_selecionar)
                     .addComponent(btn_editar)
                     .addComponent(btn_apagar))
                 .addContainerGap())
@@ -166,6 +166,7 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
 
         jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        btn_novo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Util/Img/adicionar.png"))); // NOI18N
         btn_novo.setText("Novo");
         btn_novo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,6 +174,7 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
             }
         });
 
+        btn_cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Util/Img/cancelar.png"))); // NOI18N
         btn_cancelar.setText("Cancelar");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,6 +182,7 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
             }
         });
 
+        btn_salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Util/Img/salvar.png"))); // NOI18N
         btn_salvar.setText("Salvar");
         btn_salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,11 +196,11 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -389,12 +392,13 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(txt_cep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(txt_bairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel12)
-                        .addComponent(txt_cidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txt_cidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel11)
+                        .addComponent(txt_bairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -457,6 +461,7 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_novoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novoActionPerformed
@@ -470,10 +475,6 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
 
     }//GEN-LAST:event_btn_salvarActionPerformed
-
-    private void btn_selecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_selecionarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_selecionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -516,7 +517,6 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_novo;
     private javax.swing.JButton btn_salvar;
-    private javax.swing.JButton btn_selecionar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -555,4 +555,83 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
     private javax.swing.JTextArea txt_observacao;
     private javax.swing.JFormattedTextField txt_telefone;
     // End of variables declaration//GEN-END:variables
+
+    private void setEnabledFields(boolean b) {
+        txt_descricao.setEnabled(b);
+        cbx_serie.setEnabled(b);
+        txt_filtro.setEnabled(!b);
+    }
+
+    private void setEnabledButtons(boolean b) {
+        btn_novo.setEnabled(b);
+        btn_editar.setEnabled(b);
+        btn_apagar.setEnabled(b);
+        btn_salvar.setEnabled(!b);
+        btn_cancelar.setEnabled(!b);
+        tb_livros.setEnabled(b);
+        setEnabledFields(!b);
+    }
+
+    private void salvar() {
+        try {
+            livro = new Livro();
+            if (!txt_codigo.getText().isEmpty()) {
+                livro.setCodlivro(Integer.parseInt(txt_codigo.getText()));
+            }
+            livro.setDescricao(txt_descricao.getText());
+            livro.setCodserie(serieDAO.buscar(cbx_serie.getSelectedItem().toString()));
+            livroDAO = new LivroDAO();
+            livroDAO.salvar(livro);
+            JOptionPane.showMessageDialog(null, "Livro salvo com sucesso!\n");
+            limparCampos();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao salvar o Livro!\n" + e);
+        } finally {
+            listaLivros();
+        }
+    }
+
+    private void carregaSeries() {
+        try {
+            serieDAO = new SerieDAO();
+            cbx_serie.removeAllItems();
+            for (Serie serie : serieDAO.listar()) {
+                cbx_serie.addItem(serie.getNome());
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar as séries!\n" + e);
+        }
+    }
+
+    private void limparCampos() {
+        txt_codigo.setText(null);
+        txt_descricao.setText(null);
+        cbx_serie.setSelectedIndex(0);
+        setEnabledButtons(true);
+    }
+
+    private void listaLivros() {
+        try {
+            TableConfig.limpaTabela(tb_livros);
+            livroDAO = new LivroDAO();
+            for (Livro livro : livroDAO.listar()) {
+                String[] linha = new String[]{livro.getCodlivro().toString(), livro.getDescricao(), livro.getCodserie().getNome()};
+                TableConfig.getModel(tb_livros).addRow(linha);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao listar os Livros!\n" + e);
+        }
+    }
+
+    private void removeLivro(String livro) {
+        try {
+            livroDAO = new LivroDAO();
+            livroDAO.remover(livroDAO.buscar(livro));
+            TableConfig.getModel(tb_livros).removeRow(tb_livros.getSelectedRow());
+            JOptionPane.showMessageDialog(null, "Livro removido com sucesso!\n");
+            setEnabledButtons(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao remover o Livro!\n" + e);
+        }
+    }
 }

@@ -43,7 +43,7 @@ public class Frm_CadLivro extends javax.swing.JFrame {
         cbx_serie = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         txt_codigo = new javax.swing.JTextField();
-        btn_cancelar1 = new javax.swing.JButton();
+        btn_cadSerie = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txt_filtro = new javax.swing.JTextField();
@@ -85,10 +85,10 @@ public class Frm_CadLivro extends javax.swing.JFrame {
 
         txt_codigo.setEnabled(false);
 
-        btn_cancelar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Util/Img/cadastro.png"))); // NOI18N
-        btn_cancelar1.addActionListener(new java.awt.event.ActionListener() {
+        btn_cadSerie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Util/Img/cadastro.png"))); // NOI18N
+        btn_cadSerie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cancelar1ActionPerformed(evt);
+                btn_cadSerieActionPerformed(evt);
             }
         });
 
@@ -110,7 +110,7 @@ public class Frm_CadLivro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbx_serie, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(btn_cancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_cadSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -121,7 +121,7 @@ public class Frm_CadLivro extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
                         .addComponent(cbx_serie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_cancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_cadSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel4)
                         .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -369,9 +369,9 @@ public class Frm_CadLivro extends javax.swing.JFrame {
         TableConfig.filtrar(tb_livros, txt_filtro);
     }//GEN-LAST:event_txt_filtroActionPerformed
 
-    private void btn_cancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelar1ActionPerformed
+    private void btn_cadSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadSerieActionPerformed
         Frm_CadSerie f = new Frm_CadSerie();
-    }//GEN-LAST:event_btn_cancelar1ActionPerformed
+    }//GEN-LAST:event_btn_cadSerieActionPerformed
 
     private void cbx_serieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_serieActionPerformed
     }//GEN-LAST:event_cbx_serieActionPerformed
@@ -425,8 +425,8 @@ public class Frm_CadLivro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_apagar;
+    private javax.swing.JButton btn_cadSerie;
     private javax.swing.JButton btn_cancelar;
-    private javax.swing.JButton btn_cancelar1;
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_novo;
     private javax.swing.JButton btn_salvar;
@@ -522,6 +522,6 @@ public class Frm_CadLivro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Livro removido com sucesso!\n");
             setEnabledButtons(true);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao remover os Livros!\n" + e);        }
+            JOptionPane.showMessageDialog(null, "Erro ao remover o Livro!\n" + e);        }
     }
 }
