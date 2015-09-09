@@ -40,7 +40,7 @@ public class StatusContrato implements Serializable {
     @Column(name = "CODSTATUS_CONTRATO")
     private Integer codstatusContrato;
     @Basic(optional = false)
-    @Column(name = "DESCRICAO")
+    @Column(name = "DESCRICAO",unique = true)
     private String descricao;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codstatusContrato")
     private List<Contrato> contratoList;

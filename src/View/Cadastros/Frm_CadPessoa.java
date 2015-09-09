@@ -7,7 +7,9 @@ package View.Cadastros;
 
 import Controller.PessoaDAO;
 import Model.Pessoa;
+import Util.Classes.LowerDocument;
 import Util.Classes.TableConfig;
+import Util.Classes.UpperDocument;
 import Util.Classes.ValidarCGCCPF;
 import javax.persistence.NoResultException;
 import javax.swing.JOptionPane;
@@ -28,6 +30,7 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
         setVisible(true);
         setEnabledButtons(true);
         listaPessoas();
+        setFieldsCase();
     }
 
     @SuppressWarnings("unchecked")
@@ -142,6 +145,12 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
         txt_cpf.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         jLabel7.setText("Email:");
+
+        txt_email.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_emailFocusLost(evt);
+            }
+        });
 
         rbt_feminino.setText("Feminino");
 
@@ -383,17 +392,7 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Sexo Inválido!");
                         rbt_masculino.requestFocus();
                     } else {
-                        try {
-                            pessoaDAO = new PessoaDAO();
-                            pessoaDAO.buscar(txt_cpf.getText());
-                            if (txt_codigo.getText().isEmpty()) {
-                                JOptionPane.showMessageDialog(null, "Pessoa Ja cadastrada!");
-                            }else{
-                                salvar();
-                            }
-                        } catch (NoResultException e) {
-                            salvar();
-                        }
+                        salvar();
                     }
                 }
             }
@@ -437,6 +436,10 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btn_apagarActionPerformed
+
+    private void txt_emailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_emailFocusLost
+        btn_salvar.requestFocus();
+    }//GEN-LAST:event_txt_emailFocusLost
 
     /**
      * @param args the command line arguments
@@ -531,11 +534,11 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
             if (!txt_codigo.getText().isEmpty()) {
                 pessoa.setCodpessoa(Integer.parseInt(txt_codigo.getText()));
             }
-            pessoa.setNome(txt_nome.getText());
+            pessoa.setNome(txt_nome.getText().trim());
             pessoa.setCpf(txt_cpf.getText());
             if (!txt_email.getText().isEmpty()) {
-                pessoa.setEmail(txt_email.getText());
-            }else{
+                pessoa.setEmail(txt_email.getText().trim());
+            } else {
                 pessoa.setEmail("");
             }
             pessoa.setFone(txt_telefone.getText());
@@ -543,8 +546,13 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
             pessoaDAO.salvar(pessoa);
             JOptionPane.showMessageDialog(null, "Pessoa salva com sucesso!\n");
             limparCampos();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao salvar a Pessoa!\n" + e);
+        } catch (Exception ex) {
+            if (ex.toString().contains("com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException")) {
+                JOptionPane.showMessageDialog(null, "Já existe uma Pessoa já cadastrada com este CPF!");
+                txt_cpf.requestFocus();
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao salvar a Pessoa!\n" + ex);
+            }
         } finally {
             listaPessoas();
         }
@@ -602,5 +610,10 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
         } else {
             rbt_masculino.setSelected(true);
         }
+    }
+
+    private void setFieldsCase() {
+        txt_nome.setDocument(new UpperDocument(255));
+        txt_email.setDocument(new LowerDocument(255));
     }
 }

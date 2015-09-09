@@ -52,7 +52,7 @@ public class Responsavel implements Serializable {
     @Column(name = "NOME")
     private String nome;
     @Basic(optional = false)
-    @Column(name = "CPF")
+    @Column(name = "CPF",unique = true)
     private String cpf;
     @Basic(optional = false)
     @Column(name = "ENDERECO")

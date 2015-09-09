@@ -38,7 +38,7 @@ public class Livro implements Serializable {
     @Column(name = "CODLIVRO")
     private Integer codlivro;
     @Basic(optional = false)
-    @Column(name = "DESCRICAO")
+    @Column(name = "DESCRICAO",unique = true,nullable = false)
     private String descricao;
     @JoinColumn(name = "CODSERIE", referencedColumnName = "CODSERIE")
     @ManyToOne(optional = false)

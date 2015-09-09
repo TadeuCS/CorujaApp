@@ -8,9 +8,9 @@ package View.Cadastros;
 import Controller.SerieDAO;
 import Model.Serie;
 import Util.Classes.TableConfig;
+import Util.Classes.UpperDocument;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
-import javax.persistence.NoResultException;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,6 +28,7 @@ public class Frm_CadSerie extends javax.swing.JFrame {
         setVisible(true);
         setEnabledButtons(true);
         listaSerie();
+        txt_descricao.setDocument(new UpperDocument(255));
     }
 
     @SuppressWarnings("unchecked")
@@ -351,7 +352,7 @@ public class Frm_CadSerie extends javax.swing.JFrame {
         if (tb_series.getSelectedRowCount() != 1) {
             JOptionPane.showMessageDialog(null, "Selecione 1 linha de cada vez para Apagar!");
         } else {
-            if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a Série " + tb_series.getValueAt(tb_series.getSelectedRow(), 1).toString(),"",0,0) == 0) {
+            if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a Série " + tb_series.getValueAt(tb_series.getSelectedRow(), 1).toString(), "", 0, 0) == 0) {
                 removeSerie(tb_series.getValueAt(tb_series.getSelectedRow(), 1).toString());
             }
         }
@@ -449,25 +450,26 @@ public class Frm_CadSerie extends javax.swing.JFrame {
 
     private void salvar() {
         serieDAO = new SerieDAO();
+        serie = new Serie();
         try {
-            serieDAO.buscar(txt_descricao.getText());
-            JOptionPane.showMessageDialog(null, "Série ja cadastrada no Banco!\n");
-        } catch (NoResultException e) {
-            try {
-                serie = new Serie();
-                if (!txt_codigo.getText().isEmpty()) {
-                    serie.setCodserie(Integer.parseInt(txt_codigo.getText()));
-                }
-                serie.setNome(txt_descricao.getText());
-                serie.setPreco(BigDecimal.valueOf(Double.parseDouble(txt_preco.getText().replace(".", "").replace(",", "."))));
-                serieDAO.salvar(serie);
-                JOptionPane.showMessageDialog(null, "Série salva com sucesso!\n");
-                limparCampos();
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Erro ao salvar a Série!\n" + e);
-            } finally {
-                listaSerie();
+            serie = new Serie();
+            if (!txt_codigo.getText().isEmpty()) {
+                serie.setCodserie(Integer.parseInt(txt_codigo.getText()));
             }
+            serie.setNome(txt_descricao.getText());
+            serie.setPreco(BigDecimal.valueOf(Double.parseDouble(txt_preco.getText().replace(".", "").replace(",", "."))));
+            serieDAO.salvar(serie);
+            JOptionPane.showMessageDialog(null, "Série salva com sucesso!\n");
+            limparCampos();
+        } catch (Exception ex) {
+            if (ex.toString().contains("com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException")) {
+                JOptionPane.showMessageDialog(null, "Série já cadastrada!");
+                txt_descricao.requestFocus();
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao salvar a Série!\n" + ex);
+            }
+        } finally {
+            listaSerie();
         }
     }
 
@@ -494,7 +496,7 @@ public class Frm_CadSerie extends javax.swing.JFrame {
 
     private void removeSerie(String serie) {
         try {
-            serieDAO=new SerieDAO();
+            serieDAO = new SerieDAO();
             serieDAO.remover(serieDAO.buscar(serie));
             TableConfig.getModel(tb_series).removeRow(tb_series.getSelectedRow());
             JOptionPane.showMessageDialog(null, "Série removida com sucesso!\n");

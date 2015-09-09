@@ -7,7 +7,7 @@ package Util.Classes;
 
 import javax.swing.text.*;
 
-public class MonetarioDocument extends PlainDocument {
+public class MoneyDocument extends PlainDocument {
 
     public static final int NUMERO_DIGITOS_MAXIMO = 12;
 

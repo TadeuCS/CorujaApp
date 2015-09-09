@@ -14,7 +14,9 @@ import Model.Pessoa;
 import Model.Responsavel;
 import Model.Serie;
 import Util.Classes.Data;
+import Util.Classes.LowerDocument;
 import Util.Classes.TableConfig;
+import Util.Classes.UpperDocument;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -42,6 +44,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
         carregaPais();
         carregaResponsavel();
         listaAlunos();
+        setFieldsCase();
     }
 
     @SuppressWarnings("unchecked")
@@ -120,6 +123,11 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txt_dataNascimento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_dataNascimento.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_dataNascimentoFocusLost(evt);
+            }
+        });
 
         txt_codigo.setEnabled(false);
 
@@ -458,7 +466,6 @@ public class Frm_CadAluno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_novoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novoActionPerformed
-        setEnabledFields(true);
         setEnabledButtons(false);
         txt_nome.requestFocus();
     }//GEN-LAST:event_btn_novoActionPerformed
@@ -506,6 +513,10 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btn_apagarActionPerformed
+
+    private void txt_dataNascimentoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_dataNascimentoFocusLost
+        btn_salvar.requestFocus();
+    }//GEN-LAST:event_txt_dataNascimentoFocusLost
 
     /**
      * @param args the command line arguments
@@ -752,17 +763,17 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             if(!txt_codigo.getText().isEmpty()){
                 aluno.setCodaluno(Integer.parseInt(txt_codigo.getText()));
             }
-            aluno.setNome(txt_nome.getText());
+            aluno.setNome(txt_nome.getText().trim());
             aluno.setCodserie(serieDAO.buscar(cbx_serie.getSelectedItem().toString()));
             aluno.setCodpai(pais.get(cbx_pai.getSelectedIndex()));
             aluno.setCodmae(maes.get(cbx_mae.getSelectedIndex()));
-            aluno.setEndereco(txt_endereco.getText());
-            aluno.setBairro(txt_bairro.getText());
+            aluno.setEndereco(txt_endereco.getText().trim());
+            aluno.setBairro(txt_bairro.getText().trim());
             if (!txt_email.getText().isEmpty()) {
-                aluno.setEmail(txt_email.getText());
+                aluno.setEmail(txt_email.getText().trim());
             }
-            aluno.setCidade(txt_cidade.getText());
-            aluno.setUf(txt_estado.getText());
+            aluno.setCidade(txt_cidade.getText().trim());
+            aluno.setUf(txt_estado.getText().trim());
             aluno.setCodresponsavel(responsaveis.get(cbx_responsavel.getSelectedIndex()));
             if (!txt_telefone.getText().isEmpty()) {
                 aluno.setFone(txt_telefone.getText());
@@ -841,5 +852,14 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             }
         }
         return retorno;
+    }
+
+    private void setFieldsCase() {
+        txt_nome.setDocument(new UpperDocument(255));
+        txt_endereco.setDocument(new UpperDocument(255));
+        txt_bairro.setDocument(new UpperDocument(255));
+        txt_cidade.setDocument(new UpperDocument(255));
+        txt_estado.setDocument(new UpperDocument(2));
+        txt_email.setDocument(new LowerDocument(255));
     }
 }

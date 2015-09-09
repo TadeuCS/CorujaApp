@@ -5,7 +5,7 @@ package Util.Classes;
 import javax.swing.text.AttributeSet;  
 import javax.swing.text.BadLocationException;  
   
-public class IntegerDocument extends FixedLengthDocument {  
+public class IntegerDocument extends NormalDocument {  
     public IntegerDocument(int maxlen) {  
         super(maxlen);  
     }  

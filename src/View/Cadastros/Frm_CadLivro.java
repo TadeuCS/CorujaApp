@@ -9,8 +9,8 @@ import Controller.LivroDAO;
 import Controller.SerieDAO;
 import Model.Livro;
 import Model.Serie;
-import Util.Classes.FixedLengthDocument;
 import Util.Classes.TableConfig;
+import Util.Classes.UpperDocument;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,7 +25,7 @@ public class Frm_CadLivro extends javax.swing.JFrame {
 
     public Frm_CadLivro() {
         initComponents();
-        txt_descricao.setDocument(new FixedLengthDocument(255));
+        txt_descricao.setDocument(new UpperDocument(255));
         carregaSeries();
         setEnabledButtons(true);
         listaLivros();
@@ -360,7 +360,7 @@ public class Frm_CadLivro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione 1 linha de cada vez para Apagar!");
         } else {
             if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar o livro " + tb_livros.getValueAt(tb_livros.getSelectedRow(), 1).toString(), "", 0, 0) == 0) {
-                removeLivro(tb_livros.getValueAt(tb_livros.getSelectedRow(), 1).toString());
+                removeLivro(Integer.parseInt(tb_livros.getValueAt(tb_livros.getSelectedRow(), 0).toString()));
             }
         }
     }//GEN-LAST:event_btn_apagarActionPerformed
@@ -469,14 +469,19 @@ public class Frm_CadLivro extends javax.swing.JFrame {
             if (!txt_codigo.getText().isEmpty()) {
                 livro.setCodlivro(Integer.parseInt(txt_codigo.getText()));
             }
-            livro.setDescricao(txt_descricao.getText());
+            livro.setDescricao(txt_descricao.getText().trim());
             livro.setCodserie(serieDAO.buscar(cbx_serie.getSelectedItem().toString()));
             livroDAO = new LivroDAO();
             livroDAO.salvar(livro);
             JOptionPane.showMessageDialog(null, "Livro salvo com sucesso!\n");
             limparCampos();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao salvar o Livro!\n" + e);
+        } catch (Exception ex) {
+            if (ex.toString().contains("com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException")) {
+                JOptionPane.showMessageDialog(null, "Livro já cadastrado!");
+                txt_descricao.requestFocus();
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao salvar o Livro!\n" + ex);
+            }
         } finally {
             listaLivros();
         }
@@ -514,7 +519,7 @@ public class Frm_CadLivro extends javax.swing.JFrame {
         }
     }
 
-    private void removeLivro(String livro) {
+    private void removeLivro(int livro) {
         try {
             livroDAO = new LivroDAO();
             livroDAO.remover(livroDAO.buscar(livro));

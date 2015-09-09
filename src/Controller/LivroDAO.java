@@ -31,9 +31,9 @@ public class LivroDAO extends Conexao{
         em.getTransaction().commit();
         return query.getResultList();
     }
-    public Livro buscar(String nome){
+    public Livro buscar(int codigo){
         em.getTransaction().begin();
-        query=em.createNamedQuery("Livro.findByDescricao").setParameter("descricao", nome);
+        query=em.createNamedQuery("Livro.findByCodlivro").setParameter("codlivro", codigo);
         em.getTransaction().commit();
         return (Livro) query.getSingleResult();
     }

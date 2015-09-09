@@ -5,6 +5,7 @@
  */
 package Model;
 
+import com.sun.istack.internal.Nullable;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -47,13 +48,13 @@ public class Pessoa implements Serializable {
     private String nome;
     @Column(name = "FONE")
     private String fone;
-    @Column(name = "EMAIL",nullable = true)
+    @Column(name = "EMAIL")
     private String email;
     @Basic(optional = false)
-    @Column(name = "CPF",unique = true)
+    @Column(name = "CPF",unique = true,nullable = false)
     private String cpf;
     @Basic(optional = false)
-    @Column(name = "SEXO")
+    @Column(name = "SEXO",nullable = false)
     private Character sexo;
     @OneToMany(mappedBy = "codmae")
     private List<Aluno> alunoList;
