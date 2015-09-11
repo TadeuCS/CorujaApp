@@ -5,17 +5,24 @@
  */
 package View.Home;
 
+import Controller.ResponsavelDAO;
+import Model.Responsavel;
+import Util.Classes.TableConfig;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Tadeu
  */
 public class Frm_Contrato extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Frm_Contrato
-     */
+    ResponsavelDAO responsavelDAO;
+
     public Frm_Contrato() {
         initComponents();
+        grupoBotoes.add(rbt_total);
+        grupoBotoes.add(rbt_parcial);
+        listaResponsaveis();
     }
 
     /**
@@ -31,15 +38,17 @@ public class Frm_Contrato extends javax.swing.JFrame {
         pnl_fundo = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tb_responsaveis1 = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tb_responsaveis2 = new javax.swing.JTable();
+        tb_responsaveis = new javax.swing.JTable();
         btn_inserir = new javax.swing.JButton();
         btn_remover = new javax.swing.JButton();
         btn_inserirTodos = new javax.swing.JButton();
         btn_removerTodos = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txt_filtro = new javax.swing.JTextField();
+        txt_filtro2 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tb_responsaveis2 = new javax.swing.JTable();
         btn_gerar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         rbt_total = new javax.swing.JRadioButton();
@@ -55,7 +64,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        tb_responsaveis1.setModel(new javax.swing.table.DefaultTableModel(
+        tb_responsaveis.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -71,32 +80,76 @@ public class Frm_Contrato extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tb_responsaveis1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tb_responsaveis1);
-        if (tb_responsaveis1.getColumnModel().getColumnCount() > 0) {
-            tb_responsaveis1.getColumnModel().getColumn(0).setMinWidth(80);
-            tb_responsaveis1.getColumnModel().getColumn(0).setPreferredWidth(80);
-            tb_responsaveis1.getColumnModel().getColumn(0).setMaxWidth(80);
-            tb_responsaveis1.getColumnModel().getColumn(2).setMinWidth(100);
-            tb_responsaveis1.getColumnModel().getColumn(2).setPreferredWidth(100);
-            tb_responsaveis1.getColumnModel().getColumn(2).setMaxWidth(100);
-            tb_responsaveis1.getColumnModel().getColumn(2).setHeaderValue("CPF");
-            tb_responsaveis1.getColumnModel().getColumn(3).setMinWidth(80);
-            tb_responsaveis1.getColumnModel().getColumn(3).setPreferredWidth(80);
-            tb_responsaveis1.getColumnModel().getColumn(3).setMaxWidth(80);
-            tb_responsaveis1.getColumnModel().getColumn(3).setHeaderValue("Telefone");
+        tb_responsaveis.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tb_responsaveis);
+        if (tb_responsaveis.getColumnModel().getColumnCount() > 0) {
+            tb_responsaveis.getColumnModel().getColumn(0).setMinWidth(80);
+            tb_responsaveis.getColumnModel().getColumn(0).setPreferredWidth(80);
+            tb_responsaveis.getColumnModel().getColumn(0).setMaxWidth(80);
+            tb_responsaveis.getColumnModel().getColumn(2).setMinWidth(100);
+            tb_responsaveis.getColumnModel().getColumn(2).setPreferredWidth(100);
+            tb_responsaveis.getColumnModel().getColumn(2).setMaxWidth(100);
+            tb_responsaveis.getColumnModel().getColumn(2).setHeaderValue("CPF");
+            tb_responsaveis.getColumnModel().getColumn(3).setMinWidth(80);
+            tb_responsaveis.getColumnModel().getColumn(3).setPreferredWidth(80);
+            tb_responsaveis.getColumnModel().getColumn(3).setMaxWidth(80);
+            tb_responsaveis.getColumnModel().getColumn(3).setHeaderValue("Telefone");
         }
+
+        btn_inserir.setText(">");
+        btn_inserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_inserirActionPerformed(evt);
+            }
+        });
+
+        btn_remover.setText("<");
+        btn_remover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_removerActionPerformed(evt);
+            }
+        });
+
+        btn_inserirTodos.setText(">>");
+        btn_inserirTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_inserirTodosActionPerformed(evt);
+            }
+        });
+
+        btn_removerTodos.setText("<<");
+        btn_removerTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_removerTodosActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Filtro *:");
+
+        txt_filtro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_filtroKeyReleased(evt);
+            }
+        });
+
+        txt_filtro2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_filtro2KeyReleased(evt);
+            }
+        });
+
+        jLabel4.setText("Filtro *:");
 
         tb_responsaveis2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Código", "Nome"
+                "Código", "Nome", "CPF", "Telefone"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -104,22 +157,20 @@ public class Frm_Contrato extends javax.swing.JFrame {
             }
         });
         tb_responsaveis2.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(tb_responsaveis2);
+        jScrollPane3.setViewportView(tb_responsaveis2);
         if (tb_responsaveis2.getColumnModel().getColumnCount() > 0) {
             tb_responsaveis2.getColumnModel().getColumn(0).setMinWidth(80);
             tb_responsaveis2.getColumnModel().getColumn(0).setPreferredWidth(80);
             tb_responsaveis2.getColumnModel().getColumn(0).setMaxWidth(80);
+            tb_responsaveis2.getColumnModel().getColumn(2).setMinWidth(100);
+            tb_responsaveis2.getColumnModel().getColumn(2).setPreferredWidth(100);
+            tb_responsaveis2.getColumnModel().getColumn(2).setMaxWidth(100);
+            tb_responsaveis2.getColumnModel().getColumn(2).setHeaderValue("CPF");
+            tb_responsaveis2.getColumnModel().getColumn(3).setMinWidth(80);
+            tb_responsaveis2.getColumnModel().getColumn(3).setPreferredWidth(80);
+            tb_responsaveis2.getColumnModel().getColumn(3).setMaxWidth(80);
+            tb_responsaveis2.getColumnModel().getColumn(3).setHeaderValue("Telefone");
         }
-
-        btn_inserir.setText(">");
-
-        btn_remover.setText("<");
-
-        btn_inserirTodos.setText(">>");
-
-        btn_removerTodos.setText("<<");
-
-        jLabel3.setText("Filtro *:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -129,20 +180,26 @@ public class Frm_Contrato extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_inserir, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(btn_remover, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(btn_inserirTodos, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(btn_removerTodos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 212, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
-                .addGap(18, 18, 18)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_inserir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_remover, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_inserirTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_removerTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_filtro2, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(223, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,11 +218,13 @@ public class Frm_Contrato extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(txt_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txt_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(txt_filtro2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE))))
                 .addContainerGap())
         );
 
@@ -289,6 +348,66 @@ public class Frm_Contrato extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txt_filtroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filtroKeyReleased
+        TableConfig.filtrar(tb_responsaveis, txt_filtro);
+    }//GEN-LAST:event_txt_filtroKeyReleased
+
+    private void txt_filtro2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filtro2KeyReleased
+        TableConfig.filtrar(tb_responsaveis2, txt_filtro2);
+    }//GEN-LAST:event_txt_filtro2KeyReleased
+
+    private void btn_inserirTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inserirTodosActionPerformed
+        while (tb_responsaveis.getRowCount() > 0) {
+            String[] linha = new String[]{
+                tb_responsaveis.getValueAt(0, 0).toString(),
+                tb_responsaveis.getValueAt(0, 1).toString(),
+                tb_responsaveis.getValueAt(0, 2).toString(),
+                tb_responsaveis.getValueAt(0, 3).toString()};
+            TableConfig.getModel(tb_responsaveis2).addRow(linha);
+            TableConfig.getModel(tb_responsaveis).removeRow(0);
+        }
+    }//GEN-LAST:event_btn_inserirTodosActionPerformed
+
+    private void btn_removerTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_removerTodosActionPerformed
+        while (tb_responsaveis2.getRowCount() > 0) {
+            String[] linha = new String[]{
+                tb_responsaveis2.getValueAt(0, 0).toString(),
+                tb_responsaveis2.getValueAt(0, 1).toString(),
+                tb_responsaveis2.getValueAt(0, 2).toString(),
+                tb_responsaveis2.getValueAt(0, 3).toString()};
+            TableConfig.getModel(tb_responsaveis).addRow(linha);
+            TableConfig.getModel(tb_responsaveis2).removeRow(0);
+        }
+    }//GEN-LAST:event_btn_removerTodosActionPerformed
+
+    private void btn_inserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inserirActionPerformed
+        if (tb_responsaveis.getSelectedRowCount() == 1) {
+            String[] linha = new String[]{
+                tb_responsaveis.getValueAt(tb_responsaveis.getSelectedRow(), 0).toString(),
+                tb_responsaveis.getValueAt(tb_responsaveis.getSelectedRow(), 1).toString(),
+                tb_responsaveis.getValueAt(tb_responsaveis.getSelectedRow(), 2).toString(),
+                tb_responsaveis.getValueAt(tb_responsaveis.getSelectedRow(), 3).toString()};
+            TableConfig.getModel(tb_responsaveis2).addRow(linha);
+            TableConfig.getModel(tb_responsaveis).removeRow(tb_responsaveis.getSelectedRow());
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione apelas 1 linha!");
+        }
+    }//GEN-LAST:event_btn_inserirActionPerformed
+
+    private void btn_removerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_removerActionPerformed
+        if (tb_responsaveis2.getSelectedRowCount() == 1) {
+            String[] linha = new String[]{
+                tb_responsaveis2.getValueAt(tb_responsaveis2.getSelectedRow(), 0).toString(),
+                tb_responsaveis2.getValueAt(tb_responsaveis2.getSelectedRow(), 1).toString(),
+                tb_responsaveis2.getValueAt(tb_responsaveis2.getSelectedRow(), 2).toString(),
+                tb_responsaveis2.getValueAt(tb_responsaveis2.getSelectedRow(), 3).toString()};
+            TableConfig.getModel(tb_responsaveis).addRow(linha);
+            TableConfig.getModel(tb_responsaveis2).removeRow(tb_responsaveis2.getSelectedRow());
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione apelas 1 linha!");
+        }
+    }//GEN-LAST:event_btn_removerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -300,7 +419,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -334,18 +453,33 @@ public class Frm_Contrato extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel pnl_fundo;
     private javax.swing.JRadioButton rbt_parcial;
     private javax.swing.JRadioButton rbt_total;
-    private javax.swing.JTable tb_responsaveis1;
+    private javax.swing.JTable tb_responsaveis;
     private javax.swing.JTable tb_responsaveis2;
     private javax.swing.JFormattedTextField txt_dataMatricula;
     private javax.swing.JFormattedTextField txt_dataParcela;
     private javax.swing.JTextField txt_filtro;
+    private javax.swing.JTextField txt_filtro2;
     // End of variables declaration//GEN-END:variables
+
+    private void listaResponsaveis() {
+        try {
+            TableConfig.limpaTabela(tb_responsaveis);
+            responsavelDAO = new ResponsavelDAO();
+            for (Responsavel resp : responsavelDAO.listar()) {
+                String[] linha = new String[]{resp.getCodresponsavel().toString(), resp.getNome(), resp.getCpf(), resp.getFone()};
+                TableConfig.getModel(tb_responsaveis).addRow(linha);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao listar os Responsaveis!\n" + e);
+        }
+    }
 }
