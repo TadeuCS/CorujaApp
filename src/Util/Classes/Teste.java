@@ -11,7 +11,7 @@ public class Teste {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println(Data.getData("MMM/yyyy"));
+        
     }
     
 }
