@@ -5,14 +5,15 @@
  */
 package Util.Classes;
 
+import java.util.Date;
+
 public class Teste {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        GeraCPF g= new GeraCPF();
-        System.out.println(g.geraCPFFinal());
+        System.out.println(Data.getData("MMM/yyyy"));
     }
     
 }

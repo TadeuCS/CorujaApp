@@ -8,6 +8,8 @@ package View.Home;
 import Controller.ResponsavelDAO;
 import Model.Responsavel;
 import Util.Classes.TableConfig;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,6 +19,7 @@ import javax.swing.JOptionPane;
 public class Frm_Contrato extends javax.swing.JFrame {
 
     ResponsavelDAO responsavelDAO;
+    List<Responsavel> responsaveis = new ArrayList<>();
 
     public Frm_Contrato() {
         initComponents();
@@ -357,14 +360,18 @@ public class Frm_Contrato extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_filtro2KeyReleased
 
     private void btn_inserirTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inserirTodosActionPerformed
-        while (tb_responsaveis.getRowCount() > 0) {
-            String[] linha = new String[]{
-                tb_responsaveis.getValueAt(0, 0).toString(),
-                tb_responsaveis.getValueAt(0, 1).toString(),
-                tb_responsaveis.getValueAt(0, 2).toString(),
-                tb_responsaveis.getValueAt(0, 3).toString()};
-            TableConfig.getModel(tb_responsaveis2).addRow(linha);
-            TableConfig.getModel(tb_responsaveis).removeRow(0);
+        try {
+            while (tb_responsaveis.getRowCount() > 0) {
+                String[] linha = new String[]{
+                    tb_responsaveis.getValueAt(0, 0).toString(),
+                    tb_responsaveis.getValueAt(0, 1).toString(),
+                    tb_responsaveis.getValueAt(0, 2).toString(),
+                    tb_responsaveis.getValueAt(0, 3).toString()};
+                TableConfig.getModel(tb_responsaveis2).addRow(linha);
+                TableConfig.getModel(tb_responsaveis).removeRow(0);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao inserir responsaveis na lista!\n" + e);
         }
     }//GEN-LAST:event_btn_inserirTodosActionPerformed
 
@@ -389,7 +396,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
                 tb_responsaveis.getValueAt(tb_responsaveis.getSelectedRow(), 3).toString()};
             TableConfig.getModel(tb_responsaveis2).addRow(linha);
             TableConfig.getModel(tb_responsaveis).removeRow(tb_responsaveis.getSelectedRow());
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Selecione apelas 1 linha!");
         }
     }//GEN-LAST:event_btn_inserirActionPerformed
@@ -403,7 +410,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
                 tb_responsaveis2.getValueAt(tb_responsaveis2.getSelectedRow(), 3).toString()};
             TableConfig.getModel(tb_responsaveis).addRow(linha);
             TableConfig.getModel(tb_responsaveis2).removeRow(tb_responsaveis2.getSelectedRow());
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Selecione apelas 1 linha!");
         }
     }//GEN-LAST:event_btn_removerActionPerformed

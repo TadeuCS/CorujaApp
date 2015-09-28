@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Rel_ContratoParcial" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e1992d99-3ba6-4f98-8de3-7221bd7b2369">
+	<property name="ireport.zoom" value="1.6105100000000019"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="336"/>
+	<parameter name="codigo" class="java.lang.String"/>
+	<parameter name="nome" class="java.lang.String"/>
+	<parameter name="cpf" class="java.lang.String"/>
+	<parameter name="dataVencimento1" class="java.lang.String"/>
+	<parameter name="dataVencimento2" class="java.lang.String"/>
+	<parameter name="dataVencimento3" class="java.lang.String"/>
+	<parameter name="dataVencimento4" class="java.lang.String"/>
+	<parameter name="dataVencimento5" class="java.lang.String"/>
+	<parameter name="dataVencimento6" class="java.lang.String"/>
+	<parameter name="dataVencimento7" class="java.lang.String"/>
+	<parameter name="dataMatricula" class="java.lang.String"/>
+	<field name="nomeAluno" class="java.lang.String"/>
+	<field name="serieAluno" class="java.lang.String"/>
+	<field name="VLRAPRAZO" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="240" splitType="Stretch">
+			<rectangle>
+				<reportElement x="104" y="0" width="450" height="79" uuid="db74fee3-70ce-46b7-9a74-9555fe9678de"/>
+			</rectangle>
+			<image scaleImage="FillFrame">
+				<reportElement x="1" y="1" width="101" height="78" uuid="8f897f26-8a02-4cb7-a594-61fb350305ef"/>
+				<imageExpression><![CDATA["C:\\Users\\Tadeu\\Desktop\\Coruja Books\\logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="102" y="0" width="450" height="78" uuid="f284af71-ff3a-447d-b6eb-b1b1d0596474"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Adriana Martins da Costa Moreira – ME
+CNPJ nº 21.025.684/0001-56 Inscrição Estadual: 002429343.00-59
+Av. Waldemar Lopes Cançado nº 17, Abner Afonso
+Patos de Minas - CEP: 38702-136
+Tel.: (34) 3814-9393 – Email: corujabooks.books@yahoo.com.br
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="79" width="555" height="20" uuid="216917de-6622-465e-abff-e5188d3a0de8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATO DE COMPRA E VENDA DE MATERIAL DIDÁTICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="98" width="553" height="38" uuid="a304811d-64b2-4a6b-82c9-73b0a0306fe6"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
+				<text><![CDATA[Pelo presente instrumento particular, de um lado ADRIANA MARTINS DA COSTA MOREIRA – ME, inscrita no CNPJ nº 21.025.684/0001-56, com sede na Av. Waldemar Lopes Cançado nº 17, bairro Abner Afonso, nesta cidade, neste ato representada por Adriana Martins da Costa Moreira, denominada VENDEDORA, de outro lado o abaixo identificado:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="2" y="136" width="550" height="20" forecolor="#999999" backcolor="#CCCCCC" uuid="d2c2d903-8cf4-4eaa-ab2d-8b8588cc2b2d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="136" width="53" height="20" uuid="23a3221a-2c4c-425d-a311-7a4330f7d7bb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CÓDIGO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="116" y="136" width="41" height="20" uuid="36feffdd-da3b-4e11-a6a9-d3d45791cc81"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOME:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="406" y="136" width="28" height="20" uuid="d4f1e09a-355b-421f-83c3-15e3ae7cfa61"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CPF:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="55" y="136" width="61" height="20" uuid="2ddcf2a1-6598-445d-87a1-1839b77b0ae0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="157" y="136" width="249" height="20" uuid="3c4e726c-8f80-4d6a-b243-502d64dbc5bf"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="434" y="136" width="118" height="20" uuid="0572f396-bb4b-40e9-86c1-c1ba4f45f64a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cpf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="157" width="554" height="82" uuid="8ae67bae-0d17-4e4b-a4d9-b4fdd993c1ee"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[denominado COMPRADOR(A) e responsável financeiro do(as) aluno(as) abaixo identificado(a)s, tem entre si justo e acertado as cláusulas e condições a seguir:
+CLÁUSULA PRIMEIRA: O objeto do presente instrumento é a venda de material didático do SISTEMA POSITIVO, constituído por:  G-2-Kit c/05 itens + maleta, G.3-02 vols. + 1 anual, G.4 e G.5-04 vols., 1º, 2º e 3º 4 vols., 4º e 5º Anos-04 vols. + 1 vol. H.G., 6º, 7º e 8º Anos-04 vols. + Livro Atividades e PES, 9º Ano 04 vols. + Livro Atividades, 1º e 2º Série EM-04 vols. + Livro Ling.Esp. e Kit C.E.Avanç., 3º Série EM-07 vols. + Cad.ENEM EXPRESS, aos alunos de acordo com o descriminado abaixo:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="44" splitType="Stretch">
+			<textField>
+				<reportElement x="434" y="2" width="118" height="20" uuid="fa8414ef-58a5-4124-b554-b9bf27ced4c0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cpf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="157" y="2" width="249" height="20" uuid="057aa858-84c0-4ee6-ba7d-3605fedb141a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nome}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="1" width="555" height="20" forecolor="#999999" backcolor="#CCCCCC" uuid="4132b920-35fc-430c-a9a9-cc6532f1d05e"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="1" width="53" height="20" uuid="a1675043-b15f-45fe-8b18-2140301eef24"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ALUNO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="365" y="1" width="41" height="20" uuid="384a4a00-71d9-4445-ae48-d35b77fd7924"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SÉRIE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="22" width="363" height="20" uuid="d41f6429-d82f-4034-a9f7-14737c4022f1"/>
+				<textFieldExpression><![CDATA[$F{nomeAluno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="365" y="22" width="189" height="20" uuid="0925bf96-ff1b-4145-a395-17bfec00cee0"/>
+				<textFieldExpression><![CDATA[$F{serieAluno}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="518" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="20" width="555" height="20" uuid="951823ff-4e30-4c45-8cf9-9cf1ad705489"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="149" width="551" height="286" uuid="66cbb752-71f0-466e-90df-c3f1e05bd769"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[Parágrafo Segundo: Havendo atraso no pagamento de qualquer das parcelas descritas acima, o(a) COMPRADOR pagará o valor em atraso acrescido de multa contratual de 2% (dois por cento), mais juros de mora de 1% (um por cento) ao mês.
+CLÁUSULA TERCEIRA: O (A) COMPRADOR (A) declara ter ciência de que os materiais didáticos são protegidos pela Lei 9.610/98 (Lei de Direitos Autorais), assim não podem ser reproduzidos, ficando sujeitos à sanções legais, em caso de violação da Lei.
+CLÁUSULA QUARTA: O material será entregue ao(s) aluno(s) descrito(s) acima, em sala de aula, de acordo com o cronograma estabelecido junto a Instituição de Ensino, que segue abaixo:
+*3º Livro Didático Integrado.
+*4º Livro Didático Integrado, para os que optaram pelo parcelamento, a entrega ficará vinculada com quitação das parcelas de 20/07 a 20/09/2015.
+Parágrafo Primeiro: Os livros didáticos serão entregues aos alunos em sala de aula, somente depois de confirmados os pagamentos dos boletos emitidos a(os) Responsável (eis) Financeiro(s) pelo material didático.
+Parágrafo Segundo: A inadimplência das parcelas ocasionará retenção do material ainda não entregue até sua regularização financeira.
+CLÁUSULA QUINTA: No caso de cancelamento do presente contrato, pelo COMPRADOR, este terá direito a restituição dos valores já pagos ou cancelamento dos boletos referentes aos materiais ainda não entregues.
+Parágrafo Único: Será retida uma taxa administrativa no valor de 10% do valor total contratado, a fim de cobrir as despesas administrativas já efetuadas.
+CLÁUSULA SEXTA: O presente contrato passa a vigorar entre as partes a partir da assinatura do mesmo, as quais elegem o foro da cidade de Patos de Minas – MG, para dirimirem quaisquer dúvidas provenientes da execução e cumprimento do mesmo.
+E, por estarem justas e convencionadas as partes assinam o presente CONTRATO DE COMPRA E VENDA em duas vias.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="435" width="553" height="15" uuid="43e912dc-f566-4ea9-aa92-2fb6375322f0"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Patos de Minas, MG,______________ de ___________________ de 2015.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="450" width="523" height="68" uuid="77a1e490-66c0-4f6a-9ef7-61527c39055b"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[____________________________________		_________________________________
+        Adriana Martins da Costa Moreira                                                                          Comprador
+                          Vendedora
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="20" forecolor="#999999" backcolor="#CCCCCC" uuid="8e6e3277-19f8-4aff-b083-32cff9f75931"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="0" width="69" height="20" uuid="8d7bd8f9-e9b0-4e2b-a062-11ecb770d267"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[A VISTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="0" width="69" height="20" uuid="4ca8257a-d339-4160-bcc4-9b4783edc3f5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[1 X PARC.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="0" width="69" height="20" uuid="b715d6bd-0042-4864-b271-b1b4776e8fd3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2 X PARC.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="209" y="0" width="69" height="20" uuid="171fe3ec-d3ea-428b-a3d6-084c805b97ee"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3 X PARC.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="0" width="69" height="20" uuid="da461aad-03cf-49cd-9228-31c9b07a03a3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[4 X PARC.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="347" y="0" width="69" height="20" uuid="2e8993d9-7567-4f3f-b218-031eff39ecc9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[5 X PARC.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="416" y="0" width="69" height="20" uuid="b65de5de-9793-4acd-bfca-5af5fec0bbfd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[6 X PARC.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="485" y="0" width="69" height="20" uuid="6ab6230b-4615-4319-baa1-24f88dced745"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[7 X PARC.]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="1" y="20" width="70" height="20" uuid="d261d8ae-8314-4abc-9d61-8a5357e028dc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{VLRAPRAZO}]]></textFieldExpression>
+				<patternExpression><![CDATA[$F{VLRAPRAZO}-($F{VLRAPRAZO}*5/100)
+]]></patternExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="71" y="20" width="69" height="20" uuid="286bbced-1e7e-45e4-bc58-83323c164024"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{VLRAPRAZO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="140" y="20" width="69" height="20" uuid="8da1349f-3424-4010-bcd0-de4f77ef92eb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{VLRAPRAZO}]]></textFieldExpression>
+				<patternExpression><![CDATA[$F{VLRAPRAZO}/2]]></patternExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="209" y="20" width="69" height="20" uuid="c5ad717c-efdc-452d-9b55-0cc9d118b8f2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{VLRAPRAZO}]]></textFieldExpression>
+				<patternExpression><![CDATA[$F{VLRAPRAZO}/3]]></patternExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="278" y="20" width="69" height="20" uuid="5db8ed34-3a52-4b2c-82db-399d1a27dc4e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{VLRAPRAZO}]]></textFieldExpression>
+				<patternExpression><![CDATA[$F{VLRAPRAZO}/4]]></patternExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="347" y="20" width="69" height="20" uuid="d50d4d49-8a24-4f38-abab-b2f6fdbf91ba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{VLRAPRAZO}]]></textFieldExpression>
+				<patternExpression><![CDATA[$F{VLRAPRAZO}/5]]></patternExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="416" y="20" width="69" height="20" uuid="1dfb0968-f36c-4981-8be2-b647c03dbf8c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{VLRAPRAZO}]]></textFieldExpression>
+				<patternExpression><![CDATA[$F{VLRAPRAZO}/6]]></patternExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="485" y="20" width="69" height="20" uuid="20f2a78a-ebea-495a-a543-ec94a3d83353"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{VLRAPRAZO}]]></textFieldExpression>
+				<patternExpression><![CDATA[$F{VLRAPRAZO}/7]]></patternExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="40" width="555" height="16" uuid="d2d375cc-4ee9-4a7d-a3cf-7934c825b364"/>
+				<text><![CDATA[Parágrafo Primeiro: O COMPRADOR (A) terá as opções de aquisição abaixo descritas:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="56" width="553" height="16" uuid="5e35c081-58fe-4d38-aee9-e421f1fb7d4b"/>
+				<text><![CDATA[[  ] Pagamento à Vista (Ato da Matrícula, cheque ou cartão)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="72" width="214" height="16" uuid="64faf048-9b93-43f4-9da7-26c0d3f21a66"/>
+				<text><![CDATA[[  ] 1ª OP. - 1 x Parcelas - Boleto ou CH. - Venc. ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="216" y="72" width="44" height="16" uuid="ebf84b71-846b-49c9-925d-d472ab75ccc2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dataVencimento1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="260" y="72" width="142" height="16" uuid="e211c2c0-1a33-4828-b921-797a2d0ab710"/>
+				<text><![CDATA[para Matrículas efetuadas até ]]></text>
+			</staticText>
+			<textField pattern="">
+				<reportElement x="402" y="72" width="81" height="16" uuid="18d16649-0796-4a7a-92ca-3550999534da"/>
+				<textFieldExpression><![CDATA[$P{dataMatricula}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="406" y="88" width="142" height="16" uuid="1dbae656-0be0-485c-9808-fe876678517f"/>
+				<text><![CDATA[para Matrículas efetuadas até ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="88" width="280" height="16" uuid="fdd8ca8c-f70d-48fd-96f7-527ad2d05c66"/>
+				<text><![CDATA[[  ] 2ª OP. - 1 x Parcelas - Boleto ou Cartão de Crédioto - Venc. ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="282" y="88" width="48" height="16" uuid="e19222bd-2519-458d-bdfd-4f1d706f6427"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dataVencimento1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="329" y="88" width="3" height="16" uuid="256fe920-6b3b-4337-8c6d-b74279c5ef58"/>
+				<text><![CDATA[,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="216" y="123" width="3" height="16" uuid="e22f9de3-0ec4-4204-ae2f-1f5aadaf1af3"/>
+				<text><![CDATA[,]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="432" y="2" width="80" height="20" uuid="20c802a1-b6e4-4338-b27c-a89cf47b633c"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="513" y="2" width="40" height="20" uuid="813b8357-22e0-4898-ad9f-6aa4ae8b73c2"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
