@@ -25,6 +25,7 @@ public class Frm_CadLivro extends javax.swing.JFrame {
 
     public Frm_CadLivro() {
         initComponents();
+        setVisible(true);
         txt_descricao.setDocument(new UpperDocument(255));
         carregaSeries();
         setEnabledButtons(true);
@@ -418,7 +419,7 @@ public class Frm_CadLivro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Frm_CadLivro().setVisible(true);
+//                new Frm_CadLivro().setVisible(true);
             }
         });
     }

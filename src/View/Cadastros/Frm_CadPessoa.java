@@ -25,6 +25,7 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
 
     public Frm_CadPessoa() {
         initComponents();
+        setVisible(true);
         grupoSexo.add(rbt_masculino);
         grupoSexo.add(rbt_feminino);
         setVisible(true);
@@ -471,7 +472,7 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Frm_CadPessoa().setVisible(true);
+//                new Frm_CadPessoa().setVisible(true);
             }
         });
     }

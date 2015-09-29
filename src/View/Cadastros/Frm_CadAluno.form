@@ -323,6 +323,9 @@
                       <StringArray count="0"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbx_paiMousePressed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_endereco">
                 </Component>
@@ -337,6 +340,9 @@
                       <StringArray count="0"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbx_maeMousePressed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel15">
                   <Properties>
@@ -354,6 +360,9 @@
                       <StringArray count="0"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbx_responsavelMousePressed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_bairro">
                 </Component>
@@ -373,6 +382,9 @@
                       <StringArray count="0"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbx_serieMousePressed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_cidade">
                 </Component>

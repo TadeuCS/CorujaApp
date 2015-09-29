@@ -1,6 +1,10 @@
 package View.Home;
 
 import View.Cadastros.Frm_CadAluno;
+import View.Cadastros.Frm_CadLivro;
+import View.Cadastros.Frm_CadPessoa;
+import View.Cadastros.Frm_CadResponsavel;
+import View.Cadastros.Frm_CadSerie;
 import java.awt.Event;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -32,16 +36,16 @@ public class Frm_Principal extends javax.swing.JFrame {
         atalhoAbrirAtendimento1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         Menu_barra = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        item_cadUsuario = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        item_cadConvenio = new javax.swing.JMenuItem();
-        item_cadConvenio1 = new javax.swing.JMenuItem();
-        Menu_Utilitários = new javax.swing.JMenu();
-        item_AlterarSenha = new javax.swing.JMenuItem();
-        item_AlterarSenha1 = new javax.swing.JMenuItem();
-        item_trocaUsuario = new javax.swing.JMenuItem();
+        menu_cadastros = new javax.swing.JMenu();
+        item_cadAluno = new javax.swing.JMenuItem();
+        item_cadLivro = new javax.swing.JMenuItem();
+        item_cadPessoa = new javax.swing.JMenuItem();
+        item_cadResponsavel = new javax.swing.JMenuItem();
+        item_cadSerie = new javax.swing.JMenuItem();
+        menu_relatorios = new javax.swing.JMenu();
+        item_RelAlunosBySerie = new javax.swing.JMenuItem();
+        item_RelAlunosByResponsavel = new javax.swing.JMenuItem();
+        item_RelQuitação = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("OftalSIS 1.0");
@@ -190,82 +194,82 @@ public class Frm_Principal extends javax.swing.JFrame {
                 .addContainerGap(475, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("Cadastros");
+        menu_cadastros.setText("Cadastros");
 
-        item_cadUsuario.setText("Aluno");
-        item_cadUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+        item_cadAluno.setText("Aluno");
+        item_cadAluno.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                item_cadUsuarioMousePressed(evt);
+                item_cadAlunoMousePressed(evt);
             }
         });
-        item_cadUsuario.addActionListener(new java.awt.event.ActionListener() {
+        item_cadAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                item_cadUsuarioActionPerformed(evt);
+                item_cadAlunoActionPerformed(evt);
             }
         });
-        jMenu1.add(item_cadUsuario);
+        menu_cadastros.add(item_cadAluno);
 
-        jMenuItem1.setText("Livro");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        item_cadLivro.setText("Livro");
+        item_cadLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                item_cadLivroActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        menu_cadastros.add(item_cadLivro);
 
-        jMenuItem2.setText("Pai/Mãe");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        item_cadPessoa.setText("Pai/Mãe");
+        item_cadPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                item_cadPessoaActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        menu_cadastros.add(item_cadPessoa);
 
-        item_cadConvenio.setText("Responsável");
-        item_cadConvenio.addActionListener(new java.awt.event.ActionListener() {
+        item_cadResponsavel.setText("Responsável");
+        item_cadResponsavel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                item_cadConvenioActionPerformed(evt);
+                item_cadResponsavelActionPerformed(evt);
             }
         });
-        jMenu1.add(item_cadConvenio);
+        menu_cadastros.add(item_cadResponsavel);
 
-        item_cadConvenio1.setText("Série");
-        item_cadConvenio1.addActionListener(new java.awt.event.ActionListener() {
+        item_cadSerie.setText("Série");
+        item_cadSerie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                item_cadConvenio1ActionPerformed(evt);
+                item_cadSerieActionPerformed(evt);
             }
         });
-        jMenu1.add(item_cadConvenio1);
+        menu_cadastros.add(item_cadSerie);
 
-        Menu_barra.add(jMenu1);
+        Menu_barra.add(menu_cadastros);
 
-        Menu_Utilitários.setText("Relatorios");
+        menu_relatorios.setText("Relatorios");
 
-        item_AlterarSenha.setText("Alunos por Série");
-        item_AlterarSenha.addActionListener(new java.awt.event.ActionListener() {
+        item_RelAlunosBySerie.setText("Alunos por Série");
+        item_RelAlunosBySerie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                item_AlterarSenhaActionPerformed(evt);
+                item_RelAlunosBySerieActionPerformed(evt);
             }
         });
-        Menu_Utilitários.add(item_AlterarSenha);
+        menu_relatorios.add(item_RelAlunosBySerie);
 
-        item_AlterarSenha1.setText("Alunos por Responsável");
-        item_AlterarSenha1.addActionListener(new java.awt.event.ActionListener() {
+        item_RelAlunosByResponsavel.setText("Alunos por Responsável");
+        item_RelAlunosByResponsavel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                item_AlterarSenha1ActionPerformed(evt);
+                item_RelAlunosByResponsavelActionPerformed(evt);
             }
         });
-        Menu_Utilitários.add(item_AlterarSenha1);
+        menu_relatorios.add(item_RelAlunosByResponsavel);
 
-        item_trocaUsuario.setText("Quitação de Débitos");
-        item_trocaUsuario.addActionListener(new java.awt.event.ActionListener() {
+        item_RelQuitação.setText("Quitação de Débitos");
+        item_RelQuitação.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                item_trocaUsuarioActionPerformed(evt);
+                item_RelQuitaçãoActionPerformed(evt);
             }
         });
-        Menu_Utilitários.add(item_trocaUsuario);
+        menu_relatorios.add(item_RelQuitação);
 
-        Menu_barra.add(Menu_Utilitários);
+        Menu_barra.add(menu_relatorios);
 
         setJMenuBar(Menu_barra);
 
@@ -284,8 +288,8 @@ public class Frm_Principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void item_trocaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_trocaUsuarioActionPerformed
-    }//GEN-LAST:event_item_trocaUsuarioActionPerformed
+    private void item_RelQuitaçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_RelQuitaçãoActionPerformed
+    }//GEN-LAST:event_item_RelQuitaçãoActionPerformed
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         if (evt.getKeyCode() == Event.ESCAPE) {
@@ -295,40 +299,45 @@ public class Frm_Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formKeyPressed
 
-    private void item_AlterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_AlterarSenhaActionPerformed
-    }//GEN-LAST:event_item_AlterarSenhaActionPerformed
+    private void item_RelAlunosBySerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_RelAlunosBySerieActionPerformed
+    }//GEN-LAST:event_item_RelAlunosBySerieActionPerformed
 
     private void atalhoCadastroClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atalhoCadastroClienteMousePressed
         Frm_CadAluno f= new Frm_CadAluno();
     }//GEN-LAST:event_atalhoCadastroClienteMousePressed
 
     private void atalhoAbrirAtendimentoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atalhoAbrirAtendimentoMousePressed
+        Frm_Contrato f= new Frm_Contrato();
     }//GEN-LAST:event_atalhoAbrirAtendimentoMousePressed
 
-    private void item_cadUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_item_cadUsuarioMousePressed
-    }//GEN-LAST:event_item_cadUsuarioMousePressed
+    private void item_cadAlunoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_item_cadAlunoMousePressed
+    }//GEN-LAST:event_item_cadAlunoMousePressed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void item_cadLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_cadLivroActionPerformed
+        Frm_CadLivro f = new Frm_CadLivro();
+    }//GEN-LAST:event_item_cadLivroActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void item_cadPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_cadPessoaActionPerformed
+        Frm_CadPessoa f= new Frm_CadPessoa();
+    }//GEN-LAST:event_item_cadPessoaActionPerformed
 
-    private void item_cadUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_cadUsuarioActionPerformed
+    private void item_cadAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_cadAlunoActionPerformed
         Frm_CadAluno f= new Frm_CadAluno();
-    }//GEN-LAST:event_item_cadUsuarioActionPerformed
+    }//GEN-LAST:event_item_cadAlunoActionPerformed
 
-    private void item_cadConvenioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_cadConvenioActionPerformed
-    }//GEN-LAST:event_item_cadConvenioActionPerformed
+    private void item_cadResponsavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_cadResponsavelActionPerformed
+        Frm_CadResponsavel f = new Frm_CadResponsavel();
+    }//GEN-LAST:event_item_cadResponsavelActionPerformed
 
-    private void item_cadConvenio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_cadConvenio1ActionPerformed
-    }//GEN-LAST:event_item_cadConvenio1ActionPerformed
+    private void item_cadSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_cadSerieActionPerformed
+        Frm_CadSerie f= new Frm_CadSerie();
+    }//GEN-LAST:event_item_cadSerieActionPerformed
 
-    private void item_AlterarSenha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_AlterarSenha1ActionPerformed
-    }//GEN-LAST:event_item_AlterarSenha1ActionPerformed
+    private void item_RelAlunosByResponsavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_RelAlunosByResponsavelActionPerformed
+    }//GEN-LAST:event_item_RelAlunosByResponsavelActionPerformed
 
     private void atalhoAbrirAtendimento1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atalhoAbrirAtendimento1MousePressed
-        // TODO add your handling code here:
+        Frm_CadResponsavel f = new Frm_CadResponsavel();
     }//GEN-LAST:event_atalhoAbrirAtendimento1MousePressed
 
     public static void main(String args[]) {
@@ -373,23 +382,23 @@ public class Frm_Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu Menu_Utilitários;
     private javax.swing.JMenuBar Menu_barra;
     private javax.swing.JLabel atalhoAbrirAtendimento;
     private javax.swing.JLabel atalhoAbrirAtendimento1;
     private javax.swing.JLabel atalhoCadastroCliente;
-    private javax.swing.JMenuItem item_AlterarSenha;
-    private javax.swing.JMenuItem item_AlterarSenha1;
-    private javax.swing.JMenuItem item_cadConvenio;
-    private javax.swing.JMenuItem item_cadConvenio1;
-    private javax.swing.JMenuItem item_cadUsuario;
-    private javax.swing.JMenuItem item_trocaUsuario;
+    private javax.swing.JMenuItem item_RelAlunosByResponsavel;
+    private javax.swing.JMenuItem item_RelAlunosBySerie;
+    private javax.swing.JMenuItem item_RelQuitação;
+    private javax.swing.JMenuItem item_cadAluno;
+    private javax.swing.JMenuItem item_cadLivro;
+    private javax.swing.JMenuItem item_cadPessoa;
+    private javax.swing.JMenuItem item_cadResponsavel;
+    private javax.swing.JMenuItem item_cadSerie;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenu menu_cadastros;
+    private javax.swing.JMenu menu_relatorios;
     private javax.swing.JPanel pnl_aberturaAtendimento;
     private javax.swing.JPanel pnl_aberturaAtendimento1;
     private javax.swing.JPanel pnl_atalhos;

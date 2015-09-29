@@ -137,15 +137,39 @@ public class Frm_CadAluno extends javax.swing.JFrame {
 
         jLabel2.setText("Nome *:");
 
+        cbx_pai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_paiMousePressed(evt);
+            }
+        });
+
         jLabel4.setText("Endereço :*");
+
+        cbx_mae.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_maeMousePressed(evt);
+            }
+        });
 
         jLabel15.setText("Mãe:");
 
         jLabel16.setText("Responsavel *:");
 
+        cbx_responsavel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_responsavelMousePressed(evt);
+            }
+        });
+
         jLabel17.setText("Série *:");
 
         jLabel6.setText("Bairro *:");
+
+        cbx_serie.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbx_serieMousePressed(evt);
+            }
+        });
 
         jLabel8.setText("Cidade *:");
 
@@ -518,6 +542,22 @@ public class Frm_CadAluno extends javax.swing.JFrame {
         btn_salvar.requestFocus();
     }//GEN-LAST:event_txt_dataNascimentoFocusLost
 
+    private void cbx_serieMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_serieMousePressed
+        carregaSeries();
+    }//GEN-LAST:event_cbx_serieMousePressed
+
+    private void cbx_paiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_paiMousePressed
+        carregaPais();
+    }//GEN-LAST:event_cbx_paiMousePressed
+
+    private void cbx_maeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_maeMousePressed
+        carregaPais();
+    }//GEN-LAST:event_cbx_maeMousePressed
+
+    private void cbx_responsavelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_responsavelMousePressed
+        carregaResponsavel();
+    }//GEN-LAST:event_cbx_responsavelMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -548,7 +588,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Frm_CadAluno().setVisible(true);
+//                new Frm_CadAluno().setVisible(true);
             }
         });
     }

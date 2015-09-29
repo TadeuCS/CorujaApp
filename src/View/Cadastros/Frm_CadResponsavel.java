@@ -11,9 +11,7 @@ import Util.Classes.LowerDocument;
 import Util.Classes.NormalDocument;
 import Util.Classes.TableConfig;
 import Util.Classes.UpperDocument;
-import Util.Classes.ValidaEmail;
 import Util.Classes.ValidarCGCCPF;
-import javax.persistence.NoResultException;
 import javax.swing.JOptionPane;
 
 /**
@@ -513,7 +511,7 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Frm_CadResponsavel().setVisible(true);
+//                new Frm_CadResponsavel().setVisible(true);
             }
         });
     }
