@@ -68,7 +68,7 @@ public class Frm_CadSerie extends javax.swing.JFrame {
 
         txt_codigo.setEnabled(false);
 
-        jLabel13.setText("Preço *:");
+        jLabel13.setText("Preço A Prazo *:");
 
         txt_preco.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(  new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,###.00"))));
         txt_preco.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -169,7 +169,7 @@ public class Frm_CadSerie extends javax.swing.JFrame {
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_filtro))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 685, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 766, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel13Layout.setVerticalGroup(

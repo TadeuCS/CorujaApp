@@ -1,6 +1,7 @@
 package Util.Classes;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -127,9 +128,9 @@ public class Data {
         }
     }
 
-    public String addDayOfDate(Date data, int dias) {
+    public static String addDayOfDate(Date data, int dias) {
         Calendar c = Calendar.getInstance();
-        format = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         try {
             c.setTime(data);
             c.add(Calendar.DATE, +dias);
@@ -138,4 +139,17 @@ public class Data {
         }
         return format.format(c.getTime());
     }
+
+    public static String addMes(Date data, int mes,String formato) {
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat format = new SimpleDateFormat(formato);
+        try {
+            c.setTime(data);
+            c.add(Calendar.MONTH, +mes);
+        } catch (Exception e) {
+            System.out.println("Erro ao adicionar " + mes + "\n" + e.getMessage());
+        }
+        return format.format(c.getTime());
+    }
+
 }

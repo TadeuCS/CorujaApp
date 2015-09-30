@@ -7,6 +7,7 @@ package Controller;
 
 import Model.Responsavel;
 import Util.Classes.Conexao;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -20,6 +21,7 @@ public class ResponsavelDAO extends Conexao {
         em.merge(responsavel);
         em.getTransaction().commit();
     }
+
     public void remove(Responsavel responsavel) {
         em.getTransaction().begin();
         em.remove(responsavel);
@@ -39,6 +41,18 @@ public class ResponsavelDAO extends Conexao {
         em.getTransaction().commit();
         return (Responsavel) query.getSingleResult();
     }
+
+    public BigDecimal retornaTotalAPrazoByCodigo(int codigo) {
+        em.getTransaction().begin();
+        query = em.createNativeQuery("select\n"
+                + "sum(s.`PRECO`) vlrTotalAPrazo\n"
+                + "from aluno a\n"
+                + "inner join responsavel r on a.CODRESPONSAVEL=r.CODRESPONSAVEL\n"
+                + "inner join serie s on s.CODSERIE=a.CODSERIE");
+        em.getTransaction().commit();
+        return (BigDecimal) query.getSingleResult();
+    }
+
     public Responsavel buscarByCPF(String cpf) {
         em.getTransaction().begin();
         query = em.createNamedQuery("Responsavel.findByCpf").setParameter("cpf", cpf);

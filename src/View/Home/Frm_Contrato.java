@@ -6,12 +6,18 @@
 package View.Home;
 
 import Controller.ResponsavelDAO;
+import Model.Aluno;
 import Model.Responsavel;
+import Util.Classes.Data;
+import Util.Classes.GeraRelatorios;
 import Util.Classes.TableConfig;
+import java.io.File;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +29,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
     ResponsavelDAO responsavelDAO;
     List<Responsavel> responsaveis = new ArrayList<>();
     Map parameters;
+
     public Frm_Contrato() {
         initComponents();
         setVisible(true);
@@ -423,7 +430,22 @@ public class Frm_Contrato extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_removerActionPerformed
 
     private void btn_gerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gerarActionPerformed
-        gerarRelatorioByList(responsaveis);
+        if (rbt_total.getSelectedObjects() == null && rbt_parcial.getSelectedObjects() == null) {
+            JOptionPane.showMessageDialog(null, "Selecione um Tipo de contrato!");
+                rbt_total.requestFocus();
+        }else{
+            if (txt_dataParcela.getText().replace("/", "").trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Data das Parcelas Inválidas!");
+                txt_dataParcela.requestFocus();
+            } else {
+                if (txt_dataMatricula.getText().replace("/", "").trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Data da Matrícula Inválidas!");
+                    txt_dataMatricula.requestFocus();
+                } else {
+                    gerarRelatorioByList(responsaveis);
+                }
+            }
+        }
     }//GEN-LAST:event_btn_gerarActionPerformed
 
     /**
@@ -509,6 +531,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro ao adicionar o Responsavel!\n" + e);
         }
     }
+
     private void removeResponsavel(String codResponsavel) {
         try {
             responsavelDAO = new ResponsavelDAO();
@@ -519,14 +542,68 @@ public class Frm_Contrato extends javax.swing.JFrame {
     }
 
     private void gerarRelatorioByList(List<Responsavel> responsaveis) {
-        if(!responsaveis.isEmpty()){
+        if (responsaveis.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Insira pelo menos um Responsável na lista da direita para gerar o contrato!");
+        } else {
+            for (Responsavel responsavel : responsaveis) {
+                GeraRelatorios geraRelatorios = new GeraRelatorios();
+                if (rbt_parcial.getSelectedObjects() != null) {
+                    geraRelatorios.imprimirRelatorioEmCodigo("SELECT\n"
+                            + "a.`NOME` nomeAluno,s.`NOME` serie,s.`PRECO` vlrAPrazo,r.`CODRESPONSAVEL` codigo,r.`NOME` nomeResponsavel,r.`CPF` cpf\n"
+                            + "from aluno a\n"
+                            + "inner join responsavel r on a.CODRESPONSAVEL=r.CODRESPONSAVEL\n"
+                            + "inner join serie s on s.CODSERIE=a.CODSERIE\n"
+                            + "where r.`CODRESPONSAVEL` = " + responsavel.getCodresponsavel(), "src/Relatorios/Rel_ContratoParcial.jasper",
+                            getParametros(responsavel), getDiretorioDestino(responsavel.getCodresponsavel().toString()));
+                } else {
+                    geraRelatorios.imprimirRelatorioEmCodigo("SELECT\n"
+                            + "a.`NOME` nomeAluno,s.`NOME` serie,s.`PRECO` vlrAPrazo,r.`CODRESPONSAVEL` codigo,r.`NOME` nomeResponsavel,r.`CPF` cpf\n"
+                            + "from aluno a\n"
+                            + "inner join responsavel r on a.CODRESPONSAVEL=r.CODRESPONSAVEL\n"
+                            + "inner join serie s on s.CODSERIE=a.CODSERIE\n"
+                            + "where r.`CODRESPONSAVEL` = " + responsavel.getCodresponsavel(), "src/Relatorios/Rel_ContratoTotal.jasper",
+                            getParametros(responsavel), getDiretorioDestino(responsavel.getCodresponsavel().toString()));
+                }
+            }
         }
     }
 
-    private void carregaParametros() {
+    private Map getParametros(Responsavel responsavel) {
+        parameters = new HashMap();
         try {
-           parameters=new HashMap();
+            parameters.put("dataVencimento1", Data.getDataByDate(Data.getDataByTexto(txt_dataParcela.getText(), "dd/MM/yyyy"), "dd/MM"));
+            parameters.put("dataVencimento2", Data.addMes(Data.getDataByTexto(txt_dataParcela.getText(), "dd/MM/yyyy"), 1, "dd/MM"));
+            parameters.put("dataVencimento3", Data.addMes(Data.getDataByTexto(txt_dataParcela.getText(), "dd/MM/yyyy"), 2, "dd/MM"));
+            parameters.put("dataVencimento4", Data.addMes(Data.getDataByTexto(txt_dataParcela.getText(), "dd/MM/yyyy"), 3, "dd/MM"));
+            parameters.put("dataVencimento5", Data.addMes(Data.getDataByTexto(txt_dataParcela.getText(), "dd/MM/yyyy"), 4, "dd/MM"));
+            parameters.put("dataVencimento6", Data.addMes(Data.getDataByTexto(txt_dataParcela.getText(), "dd/MM/yyyy"), 5, "dd/MM"));
+            parameters.put("dataVencimento7", Data.addMes(Data.getDataByTexto(txt_dataParcela.getText(), "dd/MM/yyyy"), 6, "dd/MM"));
+            parameters.put("dataMatricula", Data.getDataByDate(Data.getDataByTexto(txt_dataMatricula.getText(), "dd/MM/yyyy"), "MMM/yyyy"));
+            responsavelDAO = new ResponsavelDAO();
+            BigDecimal valorAprazo = responsavelDAO.retornaTotalAPrazoByCodigo(responsavel.getCodresponsavel());
+            parameters.put("vlrAPrazo", valorAprazo);
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar os parâmetros!\n" + e);
         }
+        return parameters;
+    }
+
+    private String getDiretorioDestino(String nome) {
+        String diretorio = null;
+        try {
+            JFileChooser fc = new JFileChooser();
+            // restringe a amostra a diretorios apenas
+            fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+            int res = fc.showOpenDialog(null);
+            if (res == JFileChooser.APPROVE_OPTION) {
+                File file = fc.getSelectedFile();
+                diretorio = file.getAbsolutePath() + File.separator + nome + ".pdf";
+                diretorio = diretorio.replace("\\", "/");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar um diretório para salvar os contratos!\n" + e);
+        }
+        return diretorio;
     }
 }
