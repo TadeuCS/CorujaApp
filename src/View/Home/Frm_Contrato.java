@@ -189,7 +189,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btn_inserir, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
@@ -206,9 +206,9 @@ public class Frm_Contrato extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_filtro2, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(223, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3)))
+                        .addComponent(txt_filtro2, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,8 +232,8 @@ public class Frm_Contrato extends javax.swing.JFrame {
                             .addComponent(txt_filtro2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE))))
                 .addContainerGap())
         );
 
@@ -600,6 +600,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
     private Map getParametros(Responsavel responsavel) {
         parameters = new HashMap();
         try {
+            parameters.put("logo", "C:/Users/Tadeu-/Documents/NetBeansProjects/CorujaApp/src/Util/Img/logo.png");
             parameters.put("dataVencimento1", Data.getDataByDate(Data.getDataByTexto(txt_dataParcela.getText(), "dd/MM/yyyy"), "dd/MM"));
             parameters.put("dataVencimento2", Data.addMes(Data.getDataByTexto(txt_dataParcela.getText(), "dd/MM/yyyy"), 1, "dd/MM"));
             parameters.put("dataVencimento3", Data.addMes(Data.getDataByTexto(txt_dataParcela.getText(), "dd/MM/yyyy"), 2, "dd/MM"));

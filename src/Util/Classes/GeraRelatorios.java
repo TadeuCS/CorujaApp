@@ -59,7 +59,7 @@ public class GeraRelatorios {
 
             // Carrega conexão via JDBC
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CorujaDB?zeroDateTimeBehavior=convertToNull", "root", "1234");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CorujaDB?zeroDateTimeBehavior=convertToNull", "root", "mutkch");
             Statement sql = conn.createStatement();
 
             // Carrega fonte de dados

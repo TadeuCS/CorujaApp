@@ -17,6 +17,7 @@ import Util.Classes.Data;
 import Util.Classes.LowerDocument;
 import Util.Classes.TableConfig;
 import Util.Classes.UpperDocument;
+import java.awt.Event;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -126,6 +127,11 @@ public class Frm_CadAluno extends javax.swing.JFrame {
         txt_dataNascimento.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txt_dataNascimentoFocusLost(evt);
+            }
+        });
+        txt_dataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_dataNascimentoKeyPressed(evt);
             }
         });
 
@@ -249,7 +255,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_dataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(cbx_serie, 0, 291, Short.MAX_VALUE)
+                        .addComponent(cbx_serie, 0, 143, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_cadSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -557,6 +563,13 @@ public class Frm_CadAluno extends javax.swing.JFrame {
     private void cbx_responsavelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_responsavelMousePressed
         carregaResponsavel();
     }//GEN-LAST:event_cbx_responsavelMousePressed
+
+    private void txt_dataNascimentoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_dataNascimentoKeyPressed
+        if (evt.getKeyCode() == Event.ENTER) {
+            Data data=new Data();
+            txt_dataNascimento.setText(data.completaData(txt_dataNascimento.getText(), "dd/MM/yyyy"));
+        }
+    }//GEN-LAST:event_txt_dataNascimentoKeyPressed
 
     /**
      * @param args the command line arguments

@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Rel_ContratoTotal" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e1992d99-3ba6-4f98-8de3-7221bd7b2369">
 	<property name="ireport.zoom" value="1.7715610000000022"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="284"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="dataVencimento1" class="java.lang.String"/>
 	<parameter name="dataVencimento2" class="java.lang.String"/>
 	<parameter name="dataVencimento3" class="java.lang.String"/>
@@ -12,6 +12,7 @@
 	<parameter name="dataVencimento7" class="java.lang.String"/>
 	<parameter name="dataMatricula" class="java.lang.String"/>
 	<parameter name="vlrAPrazo" class="java.lang.Double"/>
+	<parameter name="logo" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select
 a.`NOME` nomeAluno,s.`NOME` serie,s.`PRECO` vlrAPrazo,r.`CODRESPONSAVEL` codigo,r.`NOME` nomeResponsavel,r.`CPF` cpf
@@ -58,7 +59,7 @@ inner join serie s on s.CODSERIE=a.CODSERIE]]>
 			</rectangle>
 			<image scaleImage="FillFrame">
 				<reportElement x="0" y="0" width="101" height="78" uuid="8f897f26-8a02-4cb7-a594-61fb350305ef"/>
-				<imageExpression><![CDATA["C:\\Users\\Tadeu\\Desktop\\Coruja Books\\logo.png"]]></imageExpression>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="103" y="0" width="450" height="78" uuid="f284af71-ff3a-447d-b6eb-b1b1d0596474"/>
