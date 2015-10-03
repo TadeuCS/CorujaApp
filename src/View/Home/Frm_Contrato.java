@@ -66,6 +66,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
         txt_dataParcela = new javax.swing.JFormattedTextField();
         txt_dataMatricula = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
+        barra = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Emissão de Contratos");
@@ -231,8 +232,8 @@ public class Frm_Contrato extends javax.swing.JFrame {
                             .addComponent(txt_filtro2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE))))
                 .addContainerGap())
         );
 
@@ -279,6 +280,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txt_dataParcela.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_dataParcela.setText("10/01/2016");
 
         try {
             txt_dataMatricula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -286,6 +288,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txt_dataMatricula.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_dataMatricula.setText("31/12/2015");
 
         jLabel2.setText("Data Matricula *:");
 
@@ -298,6 +301,8 @@ public class Frm_Contrato extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txt_dataParcela, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(222, 222, 222)
+                .addComponent(barra, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -307,14 +312,16 @@ public class Frm_Contrato extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(txt_dataMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(txt_dataParcela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(barra, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txt_dataMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txt_dataParcela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(6, 6, 6))
         );
 
         javax.swing.GroupLayout pnl_fundoLayout = new javax.swing.GroupLayout(pnl_fundo);
@@ -329,8 +336,9 @@ public class Frm_Contrato extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_gerar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_gerar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)))
                 .addContainerGap())
         );
         pnl_fundoLayout.setVerticalGroup(
@@ -338,11 +346,15 @@ public class Frm_Contrato extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_fundoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(11, 11, 11)
-                .addGroup(pnl_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(btn_gerar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnl_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_fundoLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addGroup(pnl_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(pnl_fundoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_gerar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -432,8 +444,8 @@ public class Frm_Contrato extends javax.swing.JFrame {
     private void btn_gerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gerarActionPerformed
         if (rbt_total.getSelectedObjects() == null && rbt_parcial.getSelectedObjects() == null) {
             JOptionPane.showMessageDialog(null, "Selecione um Tipo de contrato!");
-                rbt_total.requestFocus();
-        }else{
+            rbt_total.requestFocus();
+        } else {
             if (txt_dataParcela.getText().replace("/", "").trim().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Data das Parcelas Inválidas!");
                 txt_dataParcela.requestFocus();
@@ -442,7 +454,29 @@ public class Frm_Contrato extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Data da Matrícula Inválidas!");
                     txt_dataMatricula.requestFocus();
                 } else {
-                    gerarRelatorioByList(responsaveis);
+                    if (responsaveis.isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Insira pelo menos um Responsável na lista da direita para gerar o contrato!");
+                    } else {
+                        barra.setMaximum(responsaveis.size());
+                        barra.setValue(0);
+                        Thread acao;
+                        acao = new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    String diretorio = getDiretorioDestino();
+                                    for (Responsavel responsavel : responsaveis) {
+                                        gerarRelatorioByList(responsavel, diretorio + responsavel.getCodresponsavel() + ".pdf");
+                                        barra.setValue(barra.getValue() + 1);
+                                    }
+                                    JOptionPane.showMessageDialog(null, "Contratos gerados com sucesso no diretório:\n" + diretorio);
+                                    barra.setValue(0);
+                                } catch (Exception e) {
+                                }
+                            }
+                        });
+                        acao.start();
+                    }
                 }
             }
         }
@@ -484,6 +518,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JProgressBar barra;
     private javax.swing.JButton btn_gerar;
     private javax.swing.JButton btn_inserir;
     private javax.swing.JButton btn_inserirTodos;
@@ -541,30 +576,24 @@ public class Frm_Contrato extends javax.swing.JFrame {
         }
     }
 
-    private void gerarRelatorioByList(List<Responsavel> responsaveis) {
-        if (responsaveis.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Insira pelo menos um Responsável na lista da direita para gerar o contrato!");
+    private void gerarRelatorioByList(Responsavel responsavel, String destino) {
+        GeraRelatorios geraRelatorios = new GeraRelatorios();
+        if (rbt_parcial.getSelectedObjects() != null) {
+            geraRelatorios.imprimirRelatorioEmCodigo("SELECT\n"
+                    + "a.`NOME` nomeAluno,s.`NOME` serie,s.`PRECO` vlrAPrazo,r.`CODRESPONSAVEL` codigo,r.`NOME` nomeResponsavel,r.`CPF` cpf\n"
+                    + "from aluno a\n"
+                    + "inner join responsavel r on a.CODRESPONSAVEL=r.CODRESPONSAVEL\n"
+                    + "inner join serie s on s.CODSERIE=a.CODSERIE\n"
+                    + "where r.`CODRESPONSAVEL` = " + responsavel.getCodresponsavel(), "src/Relatorios/Rel_ContratoParcial.jasper",
+                    getParametros(responsavel), destino);
         } else {
-            for (Responsavel responsavel : responsaveis) {
-                GeraRelatorios geraRelatorios = new GeraRelatorios();
-                if (rbt_parcial.getSelectedObjects() != null) {
-                    geraRelatorios.imprimirRelatorioEmCodigo("SELECT\n"
-                            + "a.`NOME` nomeAluno,s.`NOME` serie,s.`PRECO` vlrAPrazo,r.`CODRESPONSAVEL` codigo,r.`NOME` nomeResponsavel,r.`CPF` cpf\n"
-                            + "from aluno a\n"
-                            + "inner join responsavel r on a.CODRESPONSAVEL=r.CODRESPONSAVEL\n"
-                            + "inner join serie s on s.CODSERIE=a.CODSERIE\n"
-                            + "where r.`CODRESPONSAVEL` = " + responsavel.getCodresponsavel(), "src/Relatorios/Rel_ContratoParcial.jasper",
-                            getParametros(responsavel), getDiretorioDestino(responsavel.getCodresponsavel().toString()));
-                } else {
-                    geraRelatorios.imprimirRelatorioEmCodigo("SELECT\n"
-                            + "a.`NOME` nomeAluno,s.`NOME` serie,s.`PRECO` vlrAPrazo,r.`CODRESPONSAVEL` codigo,r.`NOME` nomeResponsavel,r.`CPF` cpf\n"
-                            + "from aluno a\n"
-                            + "inner join responsavel r on a.CODRESPONSAVEL=r.CODRESPONSAVEL\n"
-                            + "inner join serie s on s.CODSERIE=a.CODSERIE\n"
-                            + "where r.`CODRESPONSAVEL` = " + responsavel.getCodresponsavel(), "src/Relatorios/Rel_ContratoTotal.jasper",
-                            getParametros(responsavel), getDiretorioDestino(responsavel.getCodresponsavel().toString()));
-                }
-            }
+            geraRelatorios.imprimirRelatorioEmCodigo("SELECT\n"
+                    + "a.`NOME` nomeAluno,s.`NOME` serie,s.`PRECO` vlrAPrazo,r.`CODRESPONSAVEL` codigo,r.`NOME` nomeResponsavel,r.`CPF` cpf\n"
+                    + "from aluno a\n"
+                    + "inner join responsavel r on a.CODRESPONSAVEL=r.CODRESPONSAVEL\n"
+                    + "inner join serie s on s.CODSERIE=a.CODSERIE\n"
+                    + "where r.`CODRESPONSAVEL` = " + responsavel.getCodresponsavel(), "src/Relatorios/Rel_ContratoTotal.jasper",
+                    getParametros(responsavel), destino);
         }
     }
 
@@ -588,17 +617,15 @@ public class Frm_Contrato extends javax.swing.JFrame {
         return parameters;
     }
 
-    private String getDiretorioDestino(String nome) {
+    private String getDiretorioDestino() {
         String diretorio = null;
         try {
             JFileChooser fc = new JFileChooser();
-            // restringe a amostra a diretorios apenas
             fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-
             int res = fc.showOpenDialog(null);
             if (res == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
-                diretorio = file.getAbsolutePath() + File.separator + nome + ".pdf";
+                diretorio = file.getAbsolutePath() + File.separator;
                 diretorio = diretorio.replace("\\", "/");
             }
         } catch (Exception e) {
