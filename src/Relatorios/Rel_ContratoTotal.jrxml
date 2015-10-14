@@ -372,63 +372,63 @@ E, por estarem justas e convencionadas as partes assinam o presente CONTRATO DE 
 				<text><![CDATA[[  ] 1ª OP. - 1 x Parcelas - Boleto ou CH. - Venc. 10/01/2016 para Matrículas efetuadas até DEZ/2015;]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="13" y="0" width="182" height="20" uuid="fc60a8f1-f595-4c69-82e2-2dfade0307f5"/>
+				<reportElement x="8" y="0" width="193" height="20" uuid="fc60a8f1-f595-4c69-82e2-2dfade0307f5"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TOTAIS]]></text>
 			</staticText>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
-				<reportElement x="200" y="0" width="44" height="20" uuid="5a0a4b59-5fd3-4997-abdb-b97b7128bbc7"/>
+				<reportElement x="201" y="3" width="44" height="15" uuid="5a0a4b59-5fd3-4997-abdb-b97b7128bbc7"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{vlrAPrazo}-($P{vlrAPrazo}*5/100)]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
-				<reportElement x="244" y="0" width="44" height="20" uuid="8888366b-3330-4973-ae1d-0c636116937c"/>
+				<reportElement x="245" y="3" width="44" height="15" uuid="8888366b-3330-4973-ae1d-0c636116937c"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{vlrAPrazo}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
-				<reportElement x="288" y="0" width="44" height="20" uuid="4205ab0f-49bc-4159-8dd9-6848d2978f3f"/>
+				<reportElement x="289" y="3" width="44" height="15" uuid="4205ab0f-49bc-4159-8dd9-6848d2978f3f"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{vlrAPrazo}/2]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
-				<reportElement x="333" y="0" width="43" height="20" uuid="566161bd-85bb-4a9a-85ab-1faccfdb123e"/>
+				<reportElement x="333" y="3" width="44" height="15" uuid="566161bd-85bb-4a9a-85ab-1faccfdb123e"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{vlrAPrazo}/3]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
-				<reportElement x="376" y="0" width="44" height="20" uuid="cb5f5e9d-4160-4080-91ec-68f02a96ecb4"/>
+				<reportElement x="377" y="3" width="44" height="15" uuid="cb5f5e9d-4160-4080-91ec-68f02a96ecb4"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{vlrAPrazo}/4]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
-				<reportElement x="420" y="0" width="44" height="20" uuid="ddc5a692-b5ac-477e-a347-2fadc0b785d4"/>
+				<reportElement x="421" y="3" width="44" height="15" uuid="ddc5a692-b5ac-477e-a347-2fadc0b785d4"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{vlrAPrazo}/5]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
-				<reportElement x="464" y="0" width="44" height="20" uuid="d3145f9e-0d9a-44df-91f9-ffca0114222c"/>
+				<reportElement x="465" y="3" width="44" height="15" uuid="d3145f9e-0d9a-44df-91f9-ffca0114222c"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{vlrAPrazo}/6]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
-				<reportElement x="508" y="0" width="46" height="20" uuid="015ec6ef-3d3b-439f-becd-fa93a2071260"/>
+				<reportElement x="509" y="3" width="44" height="15" uuid="015ec6ef-3d3b-439f-becd-fa93a2071260"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>

@@ -1,5 +1,6 @@
 package View.Home;
 
+import Util.Classes.GeraRelatorios;
 import View.Cadastros.Frm_CadAluno;
 import View.Cadastros.Frm_CadLivro;
 import View.Cadastros.Frm_CadMae;
@@ -7,6 +8,8 @@ import View.Cadastros.Frm_CadPai;
 import View.Cadastros.Frm_CadResponsavel;
 import View.Cadastros.Frm_CadSerie;
 import java.awt.Event;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -14,7 +17,7 @@ public class Frm_Principal extends javax.swing.JFrame {
 
     public static Frm_Principal j = null;
     int tentativas;
-
+    GeraRelatorios geraRelatorios;
     public Frm_Principal() {
         initComponents();
         setVisible(true);
@@ -300,6 +303,12 @@ public class Frm_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_formKeyPressed
 
     private void item_RelAlunosBySerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_RelAlunosBySerieActionPerformed
+        try {
+            Map parametros= new HashMap();
+            geraRelatorios.imprimirRelatorioSQLNoRelatorio(null, null);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "erro"+e);
+        }
     }//GEN-LAST:event_item_RelAlunosBySerieActionPerformed
 
     private void atalhoCadastroClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atalhoCadastroClienteMousePressed
