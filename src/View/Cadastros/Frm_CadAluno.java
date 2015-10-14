@@ -6,11 +6,13 @@
 package View.Cadastros;
 
 import Controller.AlunoDAO;
-import Controller.PessoaDAO;
+import Controller.PaiDAO;
+import Controller.MaeDAO;
 import Controller.ResponsavelDAO;
 import Controller.SerieDAO;
 import Model.Aluno;
-import Model.Pessoa;
+import Model.Mae;
+import Model.Pai;
 import Model.Responsavel;
 import Model.Serie;
 import Util.Classes.Data;
@@ -21,6 +23,8 @@ import java.awt.Event;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -28,14 +32,15 @@ import javax.swing.JOptionPane;
  */
 public class Frm_CadAluno extends javax.swing.JFrame {
 
+    PaiDAO paiDAO;
+    MaeDAO maeDAO;
     SerieDAO serieDAO;
-    PessoaDAO pessoaDAO;
     ResponsavelDAO responsavelDAO;
     AlunoDAO alunoDAO;
     Aluno aluno;
     List<Responsavel> responsaveis = new ArrayList<>();
-    List<Pessoa> pais = new ArrayList<>();
-    List<Pessoa> maes = new ArrayList<>();
+    List<Pai> pais = new ArrayList<>();
+    List<Mae> maes = new ArrayList<>();
 
     public Frm_CadAluno() {
         initComponents();
@@ -43,6 +48,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
         setEnabledButtons(true);
         carregaSeries();
         carregaPais();
+        carregaMaes();
         carregaResponsavel();
         listaAlunos();
         setFieldsCase();
@@ -52,7 +58,6 @@ public class Frm_CadAluno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        grupoSexo = new javax.swing.ButtonGroup();
         pnl_fundo = new javax.swing.JPanel();
         pnl_cadastroAluno = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -86,6 +91,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
         btn_cadPai = new javax.swing.JButton();
         btn_cadMae = new javax.swing.JButton();
         btn_cadResponsavel = new javax.swing.JButton();
+        cbx_nonoDigito = new javax.swing.JCheckBox();
         btn_novo = new javax.swing.JButton();
         btn_salvar = new javax.swing.JButton();
         btn_cancelar = new javax.swing.JButton();
@@ -109,7 +115,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
 
         jLabel10.setText("Email:");
 
-        jLabel11.setText("Telefone:");
+        jLabel11.setText("Celular");
 
         try {
             txt_telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
@@ -209,6 +215,13 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             }
         });
 
+        cbx_nonoDigito.setText("9 digitos");
+        cbx_nonoDigito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbx_nonoDigitoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -250,6 +263,8 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                         .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(txt_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbx_nonoDigito)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -321,7 +336,8 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                     .addComponent(txt_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
                     .addComponent(txt_dataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
+                    .addComponent(jLabel13)
+                    .addComponent(cbx_nonoDigito))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -381,6 +397,12 @@ public class Frm_CadAluno extends javax.swing.JFrame {
         pnl_pesquisaAluno.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel18.setText("Filtro:");
+
+        txt_filtro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_filtroKeyReleased(evt);
+            }
+        });
 
         tb_alunos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -513,11 +535,11 @@ public class Frm_CadAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_cadSerieActionPerformed
 
     private void btn_cadPaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadPaiActionPerformed
-        Frm_CadPessoa f = new Frm_CadPessoa();
+        Frm_CadPai f = new Frm_CadPai();
     }//GEN-LAST:event_btn_cadPaiActionPerformed
 
     private void btn_cadMaeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadMaeActionPerformed
-        Frm_CadPessoa f = new Frm_CadPessoa();
+        Frm_CadMae f = new Frm_CadMae();
     }//GEN-LAST:event_btn_cadMaeActionPerformed
 
     private void btn_cadResponsavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadResponsavelActionPerformed
@@ -557,7 +579,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_cbx_paiMousePressed
 
     private void cbx_maeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_maeMousePressed
-        carregaPais();
+        carregaMaes();
     }//GEN-LAST:event_cbx_maeMousePressed
 
     private void cbx_responsavelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_responsavelMousePressed
@@ -566,10 +588,38 @@ public class Frm_CadAluno extends javax.swing.JFrame {
 
     private void txt_dataNascimentoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_dataNascimentoKeyPressed
         if (evt.getKeyCode() == Event.ENTER) {
-            Data data=new Data();
+            Data data = new Data();
             txt_dataNascimento.setText(data.completaData(txt_dataNascimento.getText(), "dd/MM/yyyy"));
         }
     }//GEN-LAST:event_txt_dataNascimentoKeyPressed
+
+    private void cbx_nonoDigitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_nonoDigitoActionPerformed
+        if (cbx_nonoDigito.isSelected()) {
+            try {
+                txt_telefone.setValue(null);
+                MaskFormatter cpf = new MaskFormatter("(##) #####-####");
+                txt_telefone.setFormatterFactory(
+                        new DefaultFormatterFactory(cpf));
+                txt_telefone.requestFocus();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao inserir o nono digito!\n" + e);
+            }
+        } else {
+            try {
+                txt_telefone.setValue(null);
+                MaskFormatter cpf = new MaskFormatter("(##) ####-####");
+                txt_telefone.setFormatterFactory(
+                        new DefaultFormatterFactory(cpf));
+                txt_telefone.requestFocus();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao inserir o nono digito!\n" + e);
+            }
+        }
+    }//GEN-LAST:event_cbx_nonoDigitoActionPerformed
+
+    private void txt_filtroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filtroKeyReleased
+        TableConfig.filtrar(tb_alunos, txt_filtro);
+    }//GEN-LAST:event_txt_filtroKeyReleased
 
     /**
      * @param args the command line arguments
@@ -617,10 +667,10 @@ public class Frm_CadAluno extends javax.swing.JFrame {
     private javax.swing.JButton btn_novo;
     private javax.swing.JButton btn_salvar;
     private javax.swing.JComboBox cbx_mae;
+    private javax.swing.JCheckBox cbx_nonoDigito;
     private javax.swing.JComboBox cbx_pai;
     private javax.swing.JComboBox cbx_responsavel;
     private javax.swing.JComboBox cbx_serie;
-    private javax.swing.ButtonGroup grupoSexo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -715,18 +765,10 @@ public class Frm_CadAluno extends javax.swing.JFrame {
     private void carregaPais() {
         try {
             cbx_pai.removeAllItems();
-            cbx_mae.removeAllItems();
-            pessoaDAO = new PessoaDAO();
-            for (Pessoa pessoa : pessoaDAO.listar()) {
-                if (pessoa.getSexo().equals('F') == true) {
-                    cbx_mae.addItem(pessoa.getNome());
-                    maes.add(pessoa);
-                } else {
-                    if (pessoa.getSexo().equals('M') == true) {
-                        cbx_pai.addItem(pessoa.getNome());
-                        pais.add(pessoa);
-                    }
-                }
+            cbx_pai.addItem("Selecione um Pai");
+            paiDAO = new PaiDAO();
+            for (Pai pai : paiDAO.listar()) {
+                cbx_pai.addItem(pai.getNome());
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, "Erro ao carregar os Pais!\n" + e);
@@ -747,51 +789,39 @@ public class Frm_CadAluno extends javax.swing.JFrame {
     }
 
     private void validaCampos() {
-        try {
-            if (txt_nome.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Nome inválido!");
-                txt_nome.requestFocus();
+        if (txt_nome.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nome inválido!");
+            txt_nome.requestFocus();
+        } else {
+            if (cbx_serie.getSelectedItem().toString().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Série inválida!");
+                cbx_serie.requestFocus();
             } else {
-                if (cbx_serie.getSelectedItem().toString().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Série inválida!");
-                    cbx_serie.requestFocus();
+                if (txt_endereco.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Endereço inválido!");
+                    txt_endereco.requestFocus();
                 } else {
-                    if (cbx_pai.getSelectedItem() == null) {
-                        JOptionPane.showMessageDialog(null, "Pai inválido!");
-                        cbx_pai.requestFocus();
+                    if (txt_bairro.getText().isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Bairro inválido!");
+                        txt_bairro.requestFocus();
                     } else {
-                        if (cbx_mae.getSelectedItem().toString().isEmpty()) {
-                            JOptionPane.showMessageDialog(null, "Mãe inválida!");
-                            cbx_mae.requestFocus();
+                        if (txt_cidade.getText().isEmpty()) {
+                            JOptionPane.showMessageDialog(null, "Cidade inválida!");
+                            txt_cidade.requestFocus();
                         } else {
-                            if (txt_endereco.getText().isEmpty()) {
-                                JOptionPane.showMessageDialog(null, "Endereço inválido!");
-                                txt_endereco.requestFocus();
+                            if (txt_estado.getText().isEmpty()) {
+                                JOptionPane.showMessageDialog(null, "Estado inválido!");
+                                txt_estado.requestFocus();
                             } else {
-                                if (txt_bairro.getText().isEmpty()) {
-                                    JOptionPane.showMessageDialog(null, "Bairro inválido!");
-                                    txt_bairro.requestFocus();
+                                if (cbx_responsavel.getSelectedItem() == null) {
+                                    JOptionPane.showMessageDialog(null, "Responsável inválido!");
+                                    cbx_responsavel.requestFocus();
                                 } else {
-                                    if (txt_cidade.getText().isEmpty()) {
-                                        JOptionPane.showMessageDialog(null, "Cidade inválida!");
-                                        txt_cidade.requestFocus();
+                                    if (Data.getDataByTexto(txt_dataNascimento.getText(), "dd/MM/yyyy") == null) {
+                                        JOptionPane.showMessageDialog(null, "Data de Nascimento inválida!");
+                                        txt_dataNascimento.requestFocus();
                                     } else {
-                                        if (txt_estado.getText().isEmpty()) {
-                                            JOptionPane.showMessageDialog(null, "Estado inválido!");
-                                            txt_estado.requestFocus();
-                                        } else {
-                                            if (cbx_responsavel.getSelectedItem() == null) {
-                                                JOptionPane.showMessageDialog(null, "Responsável inválido!");
-                                                cbx_responsavel.requestFocus();
-                                            } else {
-                                                if (Data.getDataByTexto(txt_dataNascimento.getText(), "dd/MM/yyyy") == null) {
-                                                    JOptionPane.showMessageDialog(null, "Data de Nascimento inválida!");
-                                                    txt_dataNascimento.requestFocus();
-                                                } else {
-                                                    salvar();
-                                                }
-                                            }
-                                        }
+                                        salvar();
                                     }
                                 }
                             }
@@ -799,27 +829,26 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                     }
                 }
             }
-            if (txt_codigo.getText().isEmpty()) {
-
-            }
-        } catch (Exception e) {
         }
     }
 
     private void salvar() {
         try {
             serieDAO = new SerieDAO();
-            pessoaDAO = new PessoaDAO();
             responsavelDAO = new ResponsavelDAO();
             alunoDAO = new AlunoDAO();
             aluno = new Aluno();
-            if(!txt_codigo.getText().isEmpty()){
+            if (!txt_codigo.getText().isEmpty()) {
                 aluno.setCodaluno(Integer.parseInt(txt_codigo.getText()));
             }
             aluno.setNome(txt_nome.getText().trim());
             aluno.setCodserie(serieDAO.buscar(cbx_serie.getSelectedItem().toString()));
-            aluno.setCodpai(pais.get(cbx_pai.getSelectedIndex()));
-            aluno.setCodmae(maes.get(cbx_mae.getSelectedIndex()));
+            if (cbx_pai.getSelectedIndex() > 0) {
+                aluno.setCodpai(pais.get(cbx_pai.getSelectedIndex()));
+            }
+            if (cbx_mae.getSelectedIndex() > 0) {
+                aluno.setCodmae(maes.get(cbx_mae.getSelectedIndex()));
+            }
             aluno.setEndereco(txt_endereco.getText().trim());
             aluno.setBairro(txt_bairro.getText().trim());
             if (!txt_email.getText().isEmpty()) {
@@ -885,23 +914,25 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Aluno removido com sucesso!\n");
             setEnabledButtons(true);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao remover o Aluno!\n" + e);        }
+            JOptionPane.showMessageDialog(null, "Erro ao remover o Aluno!\n" + e);
+        }
     }
 
     private int getMaeByAluno(Aluno aluno) {
-        int retorno=0;
-        for(int i=0;i<maes.size();i++){
-            if(aluno.getCodmae().equals(maes.get(i))==true){
-                retorno=i;
+        int retorno = 0;
+        for (int i = 0; i < maes.size(); i++) {
+            if (aluno.getCodmae().equals(maes.get(i)) == true) {
+                retorno = i;
             }
         }
         return retorno;
     }
+
     private int getPaiByAluno(Aluno aluno) {
-        int retorno=0;
-        for(int i=0;i<pais.size();i++){
-            if(aluno.getCodpai().equals(pais.get(i))==true){
-                retorno=i;
+        int retorno = 0;
+        for (int i = 0; i < pais.size(); i++) {
+            if (aluno.getCodpai().equals(pais.get(i)) == true) {
+                retorno = i;
             }
         }
         return retorno;
@@ -914,5 +945,18 @@ public class Frm_CadAluno extends javax.swing.JFrame {
         txt_cidade.setDocument(new UpperDocument(255));
         txt_estado.setDocument(new UpperDocument(2));
         txt_email.setDocument(new LowerDocument(255));
+    }
+
+    private void carregaMaes() {
+        try {
+            cbx_mae.removeAllItems();
+            cbx_mae.addItem("Selecione uma Mãe");
+            maeDAO = new MaeDAO();
+            for (Mae mae : maeDAO.listar()) {
+                cbx_mae.addItem(mae.getNome());
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Erro ao carregar as Mães!\n" + e);
+        }
     }
 }

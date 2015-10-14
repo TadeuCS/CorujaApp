@@ -5,7 +5,11 @@
  */
 package View.Cadastros;
 
+import Controller.MaeDAO;
+import Controller.PaiDAO;
 import Controller.ResponsavelDAO;
+import Model.Mae;
+import Model.Pai;
 import Model.Responsavel;
 import Util.Classes.LowerDocument;
 import Util.Classes.NormalDocument;
@@ -13,6 +17,8 @@ import Util.Classes.TableConfig;
 import Util.Classes.UpperDocument;
 import Util.Classes.ValidarCGCCPF;
 import javax.swing.JOptionPane;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -20,12 +26,16 @@ import javax.swing.JOptionPane;
  */
 public class Frm_CadResponsavel extends javax.swing.JFrame {
 
+    PaiDAO paiDAO;
+    MaeDAO maeDAO;
     ResponsavelDAO responsavelDAO;
     Responsavel responsavel;
 
     public Frm_CadResponsavel() {
         initComponents();
         setVisible(true);
+        grupoPais.add(rbt_mae);
+        grupoPais.add(rbt_pai);
         listaResponsaveis();
         setEnabledButtons(true);
         setFieldsCase();
@@ -35,6 +45,7 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupoPais = new javax.swing.ButtonGroup();
         pnl_fundo = new javax.swing.JPanel();
         pnl_pesquisa = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -49,6 +60,12 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
         btn_novo = new javax.swing.JButton();
         btn_cancelar = new javax.swing.JButton();
         btn_salvar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        rbt_pai = new javax.swing.JRadioButton();
+        rbt_mae = new javax.swing.JRadioButton();
+        jLabel8 = new javax.swing.JLabel();
+        txt_codigoImportacao = new javax.swing.JTextField();
+        btn_importar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txt_nome = new javax.swing.JTextField();
@@ -73,6 +90,7 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
         txt_bairro = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txt_cidade = new javax.swing.JTextField();
+        cbx_nonoDigito = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Responsável Financeiro");
@@ -164,7 +182,7 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
                 .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_apagar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(720, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,6 +220,49 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Parâmetros de Importação"));
+
+        rbt_pai.setText("Pai");
+
+        rbt_mae.setText("Mãe");
+
+        jLabel8.setText("Código");
+
+        btn_importar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Util/Img/carregar.png"))); // NOI18N
+        btn_importar.setText("Importar");
+        btn_importar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_importarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(rbt_pai)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rbt_mae)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txt_codigoImportacao, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_importar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(rbt_pai)
+                .addComponent(jLabel8)
+                .addComponent(txt_codigoImportacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rbt_mae)
+                .addComponent(btn_importar))
+        );
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -209,7 +270,9 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -217,13 +280,14 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_novo)
                     .addComponent(btn_salvar)
                     .addComponent(btn_cancelar))
                 .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -290,6 +354,13 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
             }
         });
 
+        cbx_nonoDigito.setText("9 digito");
+        cbx_nonoDigito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbx_nonoDigitoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -317,14 +388,16 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txt_celular, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbx_nonoDigito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txt_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txt_email, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE))
+                                .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txt_nome)))
                     .addComponent(jScrollPane2)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -351,7 +424,7 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
                         .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel1))
                     .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txt_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -360,7 +433,8 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
-                    .addComponent(txt_celular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_celular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_nonoDigito))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -481,6 +555,54 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
         btn_salvar.requestFocus();
     }//GEN-LAST:event_txt_cidadeFocusLost
 
+    private void cbx_nonoDigitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_nonoDigitoActionPerformed
+        if (cbx_nonoDigito.isSelected()) {
+            try {
+                txt_celular.setValue(null);
+                MaskFormatter cpf = new MaskFormatter("(##) #####-####");
+                txt_celular.setFormatterFactory(
+                        new DefaultFormatterFactory(cpf));
+                txt_celular.requestFocus();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao inserir o nono digito!\n" + e);
+            }
+        } else {
+            try {
+                txt_celular.setValue(null);
+                MaskFormatter cpf = new MaskFormatter("(##) ####-####");
+                txt_celular.setFormatterFactory(
+                        new DefaultFormatterFactory(cpf));
+                txt_celular.requestFocus();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao inserir o nono digito!\n" + e);
+            }
+        }
+    }//GEN-LAST:event_cbx_nonoDigitoActionPerformed
+
+    private void btn_importarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_importarActionPerformed
+        setEnabledButtons(false);
+        txt_nome.requestFocus();
+        if (txt_codigoImportacao.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o código de quem vai importar as informações!");
+            txt_codigoImportacao.requestFocus();
+        } else {
+            paiDAO = new PaiDAO();
+            maeDAO = new MaeDAO();
+            try {
+                if (rbt_pai.isSelected()) {
+                    setDadosNaTelaByPai(paiDAO.findByCodigo(Integer.parseInt(txt_codigoImportacao.getText())));
+                } else {
+                    setDadosNaTelaByMae(maeDAO.findByCodigo(Integer.parseInt(txt_codigoImportacao.getText())));
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Código inválido!");
+            } finally {
+                txt_codigoImportacao.setText(null);
+                txt_codigoImportacao.requestFocus();
+            }
+        }
+    }//GEN-LAST:event_btn_importarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -520,8 +642,11 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
     private javax.swing.JButton btn_apagar;
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_editar;
+    private javax.swing.JButton btn_importar;
     private javax.swing.JButton btn_novo;
     private javax.swing.JButton btn_salvar;
+    private javax.swing.JCheckBox cbx_nonoDigito;
+    private javax.swing.ButtonGroup grupoPais;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -533,7 +658,9 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
@@ -542,12 +669,15 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel pnl_fundo;
     private javax.swing.JPanel pnl_pesquisa;
+    private javax.swing.JRadioButton rbt_mae;
+    private javax.swing.JRadioButton rbt_pai;
     private javax.swing.JTable tb_responsaveis;
     private javax.swing.JTextField txt_bairro;
     private javax.swing.JFormattedTextField txt_celular;
     private javax.swing.JFormattedTextField txt_cep;
     private javax.swing.JTextField txt_cidade;
     private javax.swing.JTextField txt_codigo;
+    private javax.swing.JTextField txt_codigoImportacao;
     private javax.swing.JFormattedTextField txt_cpf;
     private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_endereco;
@@ -732,5 +862,23 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
         txt_endereco.setDocument(new UpperDocument(255));
         txt_bairro.setDocument(new UpperDocument(255));
         txt_cidade.setDocument(new UpperDocument(255));
+    }
+
+    private void setDadosNaTelaByPai(Pai pai) {
+        txt_codigo.setText(pai.getCodpai() + "");
+        txt_nome.setText(pai.getNome());
+        txt_telefone.setText(pai.getFone());
+        txt_cpf.setText(pai.getCpf());
+        txt_email.setText(pai.getEmail());
+        txt_celular.requestFocus();
+    }
+
+    private void setDadosNaTelaByMae(Mae mae) {
+        txt_codigo.setText(mae.getCodmae() + "");
+        txt_nome.setText(mae.getNome());
+        txt_telefone.setText(mae.getFone());
+        txt_cpf.setText(mae.getCpf());
+        txt_email.setText(mae.getEmail());
+        txt_celular.requestFocus();
     }
 }

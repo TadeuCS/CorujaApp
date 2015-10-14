@@ -2,7 +2,8 @@ package View.Home;
 
 import View.Cadastros.Frm_CadAluno;
 import View.Cadastros.Frm_CadLivro;
-import View.Cadastros.Frm_CadPessoa;
+import View.Cadastros.Frm_CadMae;
+import View.Cadastros.Frm_CadPai;
 import View.Cadastros.Frm_CadResponsavel;
 import View.Cadastros.Frm_CadSerie;
 import java.awt.Event;
@@ -39,13 +40,13 @@ public class Frm_Principal extends javax.swing.JFrame {
         menu_cadastros = new javax.swing.JMenu();
         item_cadAluno = new javax.swing.JMenuItem();
         item_cadLivro = new javax.swing.JMenuItem();
-        item_cadPessoa = new javax.swing.JMenuItem();
+        item_cadPai = new javax.swing.JMenuItem();
+        item_cadMae = new javax.swing.JMenuItem();
         item_cadResponsavel = new javax.swing.JMenuItem();
         item_cadSerie = new javax.swing.JMenuItem();
         menu_relatorios = new javax.swing.JMenu();
         item_RelAlunosBySerie = new javax.swing.JMenuItem();
         item_RelAlunosByResponsavel = new javax.swing.JMenuItem();
-        item_RelQuitação = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CorujaApp 1.0");
@@ -218,13 +219,21 @@ public class Frm_Principal extends javax.swing.JFrame {
         });
         menu_cadastros.add(item_cadLivro);
 
-        item_cadPessoa.setText("Pai/Mãe");
-        item_cadPessoa.addActionListener(new java.awt.event.ActionListener() {
+        item_cadPai.setText("Pai");
+        item_cadPai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                item_cadPessoaActionPerformed(evt);
+                item_cadPaiActionPerformed(evt);
             }
         });
-        menu_cadastros.add(item_cadPessoa);
+        menu_cadastros.add(item_cadPai);
+
+        item_cadMae.setText("Mãe");
+        item_cadMae.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                item_cadMaeActionPerformed(evt);
+            }
+        });
+        menu_cadastros.add(item_cadMae);
 
         item_cadResponsavel.setText("Responsável");
         item_cadResponsavel.addActionListener(new java.awt.event.ActionListener() {
@@ -262,14 +271,6 @@ public class Frm_Principal extends javax.swing.JFrame {
         });
         menu_relatorios.add(item_RelAlunosByResponsavel);
 
-        item_RelQuitação.setText("Quitação de Débitos");
-        item_RelQuitação.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                item_RelQuitaçãoActionPerformed(evt);
-            }
-        });
-        menu_relatorios.add(item_RelQuitação);
-
         Menu_barra.add(menu_relatorios);
 
         setJMenuBar(Menu_barra);
@@ -288,9 +289,6 @@ public class Frm_Principal extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1269, 676));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void item_RelQuitaçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_RelQuitaçãoActionPerformed
-    }//GEN-LAST:event_item_RelQuitaçãoActionPerformed
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         if (evt.getKeyCode() == Event.ESCAPE) {
@@ -319,9 +317,9 @@ public class Frm_Principal extends javax.swing.JFrame {
         Frm_CadLivro f = new Frm_CadLivro();
     }//GEN-LAST:event_item_cadLivroActionPerformed
 
-    private void item_cadPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_cadPessoaActionPerformed
-        Frm_CadPessoa f= new Frm_CadPessoa();
-    }//GEN-LAST:event_item_cadPessoaActionPerformed
+    private void item_cadPaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_cadPaiActionPerformed
+        Frm_CadPai f= new Frm_CadPai();
+    }//GEN-LAST:event_item_cadPaiActionPerformed
 
     private void item_cadAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_cadAlunoActionPerformed
         Frm_CadAluno f= new Frm_CadAluno();
@@ -341,6 +339,10 @@ public class Frm_Principal extends javax.swing.JFrame {
     private void atalhoAbrirAtendimento1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atalhoAbrirAtendimento1MousePressed
         Frm_CadResponsavel f = new Frm_CadResponsavel();
     }//GEN-LAST:event_atalhoAbrirAtendimento1MousePressed
+
+    private void item_cadMaeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_cadMaeActionPerformed
+        Frm_CadMae f= new Frm_CadMae();
+    }//GEN-LAST:event_item_cadMaeActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -390,10 +392,10 @@ public class Frm_Principal extends javax.swing.JFrame {
     private javax.swing.JLabel atalhoCadastroCliente;
     private javax.swing.JMenuItem item_RelAlunosByResponsavel;
     private javax.swing.JMenuItem item_RelAlunosBySerie;
-    private javax.swing.JMenuItem item_RelQuitação;
     private javax.swing.JMenuItem item_cadAluno;
     private javax.swing.JMenuItem item_cadLivro;
-    private javax.swing.JMenuItem item_cadPessoa;
+    private javax.swing.JMenuItem item_cadMae;
+    private javax.swing.JMenuItem item_cadPai;
     private javax.swing.JMenuItem item_cadResponsavel;
     private javax.swing.JMenuItem item_cadSerie;
     private javax.swing.JLabel jLabel10;

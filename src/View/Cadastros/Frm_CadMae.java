@@ -5,32 +5,28 @@
  */
 package View.Cadastros;
 
-import Controller.PessoaDAO;
-import Model.Pessoa;
+import Controller.MaeDAO;
+import Model.Mae;
 import Util.Classes.LowerDocument;
 import Util.Classes.TableConfig;
 import Util.Classes.UpperDocument;
 import Util.Classes.ValidarCGCCPF;
-import javax.persistence.NoResultException;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Tadeu
  */
-public class Frm_CadPessoa extends javax.swing.JFrame {
+public class Frm_CadMae extends javax.swing.JFrame {
 
-    PessoaDAO pessoaDAO;
-    Pessoa pessoa;
+    MaeDAO maeDAO;
+    Mae mae;
 
-    public Frm_CadPessoa() {
+    public Frm_CadMae() {
         initComponents();
         setVisible(true);
-        grupoSexo.add(rbt_masculino);
-        grupoSexo.add(rbt_feminino);
-        setVisible(true);
         setEnabledButtons(true);
-        listaPessoas();
+        listaMaes();
         setFieldsCase();
     }
 
@@ -38,7 +34,6 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        grupoSexo = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         btn_novo = new javax.swing.JButton();
@@ -55,14 +50,11 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
         txt_cpf = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
         txt_email = new javax.swing.JTextField();
-        rbt_feminino = new javax.swing.JRadioButton();
-        rbt_masculino = new javax.swing.JRadioButton();
-        jLabel8 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txt_filtro = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tb_pais = new javax.swing.JTable();
+        tb_maes = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         btn_editar = new javax.swing.JButton();
         btn_apagar = new javax.swing.JButton();
@@ -153,12 +145,6 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
             }
         });
 
-        rbt_feminino.setText("Feminino");
-
-        rbt_masculino.setText("Masculino");
-
-        jLabel8.setText("Sexo*:");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -175,25 +161,19 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1))
                     .addComponent(txt_telefone))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txt_nome)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rbt_masculino)
-                        .addGap(18, 18, 18)
-                        .addComponent(rbt_feminino))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addGap(20, 20, 20)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_email)))
+                        .addComponent(txt_email, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_nome)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -205,12 +185,8 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel1))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rbt_feminino)
-                        .addComponent(rbt_masculino)
-                        .addComponent(jLabel8))
                     .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
+                .addGap(12, 12, 12)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txt_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -231,7 +207,7 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
             }
         });
 
-        tb_pais.setModel(new javax.swing.table.DefaultTableModel(
+        tb_maes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -247,18 +223,18 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tb_pais.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tb_pais);
-        if (tb_pais.getColumnModel().getColumnCount() > 0) {
-            tb_pais.getColumnModel().getColumn(0).setMinWidth(80);
-            tb_pais.getColumnModel().getColumn(0).setPreferredWidth(80);
-            tb_pais.getColumnModel().getColumn(0).setMaxWidth(80);
-            tb_pais.getColumnModel().getColumn(2).setMinWidth(120);
-            tb_pais.getColumnModel().getColumn(2).setPreferredWidth(120);
-            tb_pais.getColumnModel().getColumn(2).setMaxWidth(120);
-            tb_pais.getColumnModel().getColumn(3).setMinWidth(120);
-            tb_pais.getColumnModel().getColumn(3).setPreferredWidth(120);
-            tb_pais.getColumnModel().getColumn(3).setMaxWidth(120);
+        tb_maes.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tb_maes);
+        if (tb_maes.getColumnModel().getColumnCount() > 0) {
+            tb_maes.getColumnModel().getColumn(0).setMinWidth(80);
+            tb_maes.getColumnModel().getColumn(0).setPreferredWidth(80);
+            tb_maes.getColumnModel().getColumn(0).setMaxWidth(80);
+            tb_maes.getColumnModel().getColumn(2).setMinWidth(120);
+            tb_maes.getColumnModel().getColumn(2).setPreferredWidth(120);
+            tb_maes.getColumnModel().getColumn(2).setMaxWidth(120);
+            tb_maes.getColumnModel().getColumn(3).setMinWidth(120);
+            tb_maes.getColumnModel().getColumn(3).setPreferredWidth(120);
+            tb_maes.getColumnModel().getColumn(3).setMaxWidth(120);
         }
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -389,39 +365,33 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Telefone Inválido!");
                     txt_telefone.requestFocus();
                 } else {
-                    if (grupoSexo.isSelected(null)) {
-                        JOptionPane.showMessageDialog(null, "Sexo Inválido!");
-                        rbt_masculino.requestFocus();
-                    } else {
-                        salvar();
-                    }
+                    salvar();
                 }
             }
         }
     }//GEN-LAST:event_btn_salvarActionPerformed
 
     private void txt_filtroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filtroKeyReleased
-        TableConfig.filtrar(tb_pais, txt_filtro);
+        TableConfig.filtrar(tb_maes, txt_filtro);
     }//GEN-LAST:event_txt_filtroKeyReleased
 
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
-        if (tb_pais.getSelectedRowCount() != 1) {
+        if (tb_maes.getSelectedRowCount() != 1) {
             JOptionPane.showMessageDialog(null, "Selecione 1 linha de cada vez para Editar!");
         } else {
             try {
-                pessoa = new Pessoa();
-                pessoaDAO = new PessoaDAO();
-                pessoa = pessoaDAO.buscar(tb_pais.getValueAt(tb_pais.getSelectedRow(), 2).toString());
-                txt_codigo.setText(pessoa.getCodpessoa().toString());
-                txt_nome.setText(pessoa.getNome());
-                setSexoSelecionado(pessoa.getSexo());
-                txt_telefone.setText(pessoa.getFone());
-                txt_cpf.setText(pessoa.getCpf());
-                if (!pessoa.getEmail().isEmpty()) {
-                    txt_email.setText(pessoa.getEmail());
+                mae = new Mae();
+                maeDAO = new MaeDAO();
+                mae = maeDAO.buscar(tb_maes.getValueAt(tb_maes.getSelectedRow(), 2).toString());
+                txt_codigo.setText(mae.getCodmae().toString());
+                txt_nome.setText(mae.getNome());
+                txt_telefone.setText(mae.getFone());
+                txt_cpf.setText(mae.getCpf());
+                if (!mae.getEmail().isEmpty()) {
+                    txt_email.setText(mae.getEmail());
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Erro ao carregar os dados da Pessoa!\n" + e);
+                JOptionPane.showMessageDialog(null, "Erro ao carregar os dados da Mae!\n" + e);
             }
             setEnabledButtons(false);
             txt_nome.requestFocus();
@@ -429,11 +399,11 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_editarActionPerformed
 
     private void btn_apagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_apagarActionPerformed
-        if (tb_pais.getSelectedRowCount() != 1) {
+        if (tb_maes.getSelectedRowCount() != 1) {
             JOptionPane.showMessageDialog(null, "Selecione 1 linha de cada vez para Apagar!");
         } else {
-            if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a Pessoa " + tb_pais.getValueAt(tb_pais.getSelectedRow(), 0).toString(), "", 0, 0) == 0) {
-                removePessoa(tb_pais.getValueAt(tb_pais.getSelectedRow(), 0).toString());
+            if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a Mae " + tb_maes.getValueAt(tb_maes.getSelectedRow(), 0).toString(), "", 0, 0) == 0) {
+                removeMae(tb_maes.getValueAt(tb_maes.getSelectedRow(), 0).toString());
             }
         }
     }//GEN-LAST:event_btn_apagarActionPerformed
@@ -459,20 +429,23 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Frm_CadPessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_CadMae.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Frm_CadPessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_CadMae.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Frm_CadPessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_CadMae.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Frm_CadPessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_CadMae.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-//                new Frm_CadPessoa().setVisible(true);
+//                new Frm_CadMae().setVisible(true);
             }
         });
     }
@@ -483,23 +456,19 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_novo;
     private javax.swing.JButton btn_salvar;
-    private javax.swing.ButtonGroup grupoSexo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JRadioButton rbt_feminino;
-    private javax.swing.JRadioButton rbt_masculino;
-    private javax.swing.JTable tb_pais;
+    private javax.swing.JTable tb_maes;
     private javax.swing.JTextField txt_codigo;
     private javax.swing.JFormattedTextField txt_cpf;
     private javax.swing.JTextField txt_email;
@@ -513,8 +482,6 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
         txt_cpf.setEnabled(b);
         txt_email.setEnabled(b);
         txt_telefone.setEnabled(b);
-        rbt_masculino.setEnabled(b);
-        rbt_feminino.setEnabled(b);
         txt_filtro.setEnabled(!b);
     }
 
@@ -524,38 +491,37 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
         btn_apagar.setEnabled(b);
         btn_salvar.setEnabled(!b);
         btn_cancelar.setEnabled(!b);
-        tb_pais.setEnabled(b);
+        tb_maes.setEnabled(b);
         setEnabledFields(!b);
     }
 
     private void salvar() {
-        pessoaDAO = new PessoaDAO();
+        maeDAO = new MaeDAO();
         try {
-            pessoa = new Pessoa();
+            mae = new Mae();
             if (!txt_codigo.getText().isEmpty()) {
-                pessoa.setCodpessoa(Integer.parseInt(txt_codigo.getText()));
+                mae.setCodmae(Integer.parseInt(txt_codigo.getText()));
             }
-            pessoa.setNome(txt_nome.getText().trim());
-            pessoa.setCpf(txt_cpf.getText());
+            mae.setNome(txt_nome.getText().trim());
+            mae.setCpf(txt_cpf.getText());
             if (!txt_email.getText().isEmpty()) {
-                pessoa.setEmail(txt_email.getText().trim());
+                mae.setEmail(txt_email.getText().trim());
             } else {
-                pessoa.setEmail("");
+                mae.setEmail("");
             }
-            pessoa.setFone(txt_telefone.getText());
-            pessoa.setSexo(validaSexoSelecionado());
-            pessoaDAO.salvar(pessoa);
-            JOptionPane.showMessageDialog(null, "Pessoa salva com sucesso!\n");
+            mae.setFone(txt_telefone.getText());
+            maeDAO.salvar(mae);
+            JOptionPane.showMessageDialog(null, "Mae salva com sucesso!\n");
             limparCampos();
         } catch (Exception ex) {
             if (ex.toString().contains("com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException")) {
-                JOptionPane.showMessageDialog(null, "Já existe uma Pessoa já cadastrada com este CPF!");
+                JOptionPane.showMessageDialog(null, "Já existe uma Mae cadastrada com este CPF!");
                 txt_cpf.requestFocus();
             } else {
-                JOptionPane.showMessageDialog(null, "Erro ao salvar a Pessoa!\n" + ex);
+                JOptionPane.showMessageDialog(null, "Erro ao salvar a Mae!\n" + ex);
             }
         } finally {
-            listaPessoas();
+            listaMaes();
         }
     }
 
@@ -565,51 +531,33 @@ public class Frm_CadPessoa extends javax.swing.JFrame {
         txt_cpf.setText(null);
         txt_email.setText(null);
         txt_telefone.setText(null);
-        rbt_masculino.setSelected(false);
-        rbt_feminino.setSelected(false);
         txt_filtro.setText(null);
         setEnabledButtons(true);
     }
 
-    private void listaPessoas() {
+    private void listaMaes() {
         try {
-            TableConfig.limpaTabela(tb_pais);
-            pessoaDAO = new PessoaDAO();
-            for (Pessoa pessoa : pessoaDAO.listar()) {
-                String[] linha = new String[]{pessoa.getCodpessoa().toString(),
-                    pessoa.getNome(), pessoa.getCpf(), pessoa.getFone()};
-                TableConfig.getModel(tb_pais).addRow(linha);
+            TableConfig.limpaTabela(tb_maes);
+            maeDAO = new MaeDAO();
+            for (Mae mae : maeDAO.listar()) {
+                String[] linha = new String[]{mae.getCodmae().toString(),
+                    mae.getNome(), mae.getCpf(), mae.getFone()};
+                TableConfig.getModel(tb_maes).addRow(linha);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao listar as Séries!\n" + e);
+            JOptionPane.showMessageDialog(null, "Erro ao listar as Mães!\n" + e);
         }
     }
 
-    private void removePessoa(String codigo) {
+    private void removeMae(String codigo) {
         try {
-            pessoaDAO = new PessoaDAO();
-            pessoaDAO.remover(pessoaDAO.buscar(tb_pais.getValueAt(tb_pais.getSelectedRow(), 2).toString()));
-            TableConfig.getModel(tb_pais).removeRow(tb_pais.getSelectedRow());
-            JOptionPane.showMessageDialog(null, "Pessoa removida com sucesso!\n");
+            maeDAO = new MaeDAO();
+            maeDAO.remover(maeDAO.buscar(tb_maes.getValueAt(tb_maes.getSelectedRow(), 2).toString()));
+            TableConfig.getModel(tb_maes).removeRow(tb_maes.getSelectedRow());
+            JOptionPane.showMessageDialog(null, "Mae removida com sucesso!\n");
             setEnabledButtons(true);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao remover a Pessoa!\n" + e);
-        }
-    }
-
-    private Character validaSexoSelecionado() {
-        if (rbt_masculino.isSelected()) {
-            return 'M';
-        } else {
-            return 'F';
-        }
-    }
-
-    private void setSexoSelecionado(Character sexo) {
-        if (sexo.equals('F') == true) {
-            rbt_feminino.setSelected(true);
-        } else {
-            rbt_masculino.setSelected(true);
+            JOptionPane.showMessageDialog(null, "Erro ao remover a Mae!\n" + e);
         }
     }
 

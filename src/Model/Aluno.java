@@ -74,12 +74,12 @@ public class Aluno implements Serializable {
     @JoinColumn(name = "CODRESPONSAVEL", referencedColumnName = "CODRESPONSAVEL")
     @ManyToOne(optional = false)
     private Responsavel codresponsavel;
-    @JoinColumn(name = "CODMAE", referencedColumnName = "CODPESSOA")
-    @ManyToOne
-    private Pessoa codmae;
-    @JoinColumn(name = "CODPAI", referencedColumnName = "CODPESSOA")
-    @ManyToOne
-    private Pessoa codpai;
+    @JoinColumn(name = "CODMAE", referencedColumnName = "CODMAE")
+    @ManyToOne(optional = true)
+    private Mae codmae;
+    @JoinColumn(name = "CODPAI", referencedColumnName = "CODPAI")
+    @ManyToOne(optional = true)
+    private Pai codpai;
     @JoinColumn(name = "CODSERIE", referencedColumnName = "CODSERIE")
     @ManyToOne(optional = false)
     private Serie codserie;
@@ -100,6 +100,14 @@ public class Aluno implements Serializable {
         this.uf = uf;
         this.dtNascimento = dtNascimento;
         this.fone = fone;
+    }
+
+    public Mae getCodmae() {
+        return codmae;
+    }
+
+    public void setCodmae(Mae codmae) {
+        this.codmae = codmae;
     }
 
     public Integer getCodaluno() {
@@ -182,19 +190,11 @@ public class Aluno implements Serializable {
         this.codresponsavel = codresponsavel;
     }
 
-    public Pessoa getCodmae() {
-        return codmae;
-    }
-
-    public void setCodmae(Pessoa codmae) {
-        this.codmae = codmae;
-    }
-
-    public Pessoa getCodpai() {
+    public Pai getCodpai() {
         return codpai;
     }
 
-    public void setCodpai(Pessoa codpai) {
+    public void setCodpai(Pai codpai) {
         this.codpai = codpai;
     }
 

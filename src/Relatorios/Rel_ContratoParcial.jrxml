@@ -2,22 +2,11 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Rel_ContratoParcial" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e1992d99-3ba6-4f98-8de3-7221bd7b2369">
 	<property name="ireport.zoom" value="1.7715610000000022"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
-	<parameter name="dataVencimento1" class="java.lang.String"/>
-	<parameter name="dataVencimento2" class="java.lang.String"/>
-	<parameter name="dataVencimento3" class="java.lang.String"/>
-	<parameter name="dataVencimento4" class="java.lang.String"/>
-	<parameter name="dataVencimento5" class="java.lang.String"/>
-	<parameter name="dataVencimento6" class="java.lang.String"/>
-	<parameter name="dataVencimento7" class="java.lang.String"/>
-	<parameter name="dataMatricula" class="java.lang.String"/>
+	<property name="ireport.y" value="480"/>
 	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="vlrAPrazo" class="java.lang.Double"/>
 	<queryString>
-		<![CDATA[select
-a.`NOME` nomeAluno,s.`NOME` serie,s.`PRECO` vlrAPrazo,r.`CODRESPONSAVEL` codigo,r.`NOME` nomeResponsavel,r.`CPF` cpf
-from aluno a
-inner join responsavel r on a.CODRESPONSAVEL=r.CODRESPONSAVEL
-inner join serie s on s.CODSERIE=a.CODSERIE]]>
+		<![CDATA[]]>
 	</queryString>
 	<field name="nomeAluno" class="java.lang.String"/>
 	<field name="serie" class="java.lang.String"/>
@@ -280,17 +269,17 @@ CLÁUSULA PRIMEIRA: O objeto do presente instrumento é a venda de material did�
 				<text><![CDATA[CONTRATO DE COMPRA E VENDA DE MATERIAL DIDÁTICO]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="53" y="60" width="65" height="20" uuid="49b660e7-1113-4d07-b3a0-a8c34a5a3f0c"/>
+				<reportElement x="53" y="59" width="65" height="20" uuid="49b660e7-1113-4d07-b3a0-a8c34a5a3f0c"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="159" y="60" width="250" height="20" uuid="d52c21d2-15d1-4e4a-8f0f-723818ed5d0e"/>
+				<reportElement x="159" y="59" width="250" height="20" uuid="d52c21d2-15d1-4e4a-8f0f-723818ed5d0e"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nomeResponsavel}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="446" y="60" width="107" height="20" uuid="5976bbd1-3303-4a66-aabd-011c5866f167"/>
+				<reportElement x="446" y="59" width="107" height="20" uuid="5976bbd1-3303-4a66-aabd-011c5866f167"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
 			</textField>
@@ -352,461 +341,6 @@ CLÁUSULA PRIMEIRA: O objeto do presente instrumento é a venda de material did�
 			</textField>
 		</band>
 		<band height="443">
-			<textField>
-				<reportElement x="287" y="36" width="35" height="12" uuid="50e953bd-b65f-4a4d-b4d9-eb096213c6a7"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento2}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="322" y="36" width="8" height="12" uuid="53597d57-5084-4527-967e-6146df4f857d"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[e]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="280" y="36" width="7" height="12" uuid="9ba26625-3e56-4911-ad92-10fa9ec824bc"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[,]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="330" y="36" width="35" height="12" uuid="8b43059f-23ea-4319-a512-dcb734d4fe8f"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento3}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="364" y="48" width="8" height="12" uuid="89eb66f1-ccde-4c6f-910d-61e917407bd9"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[e]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="287" y="48" width="35" height="12" uuid="f51d79a7-867e-4b31-bb92-d39f8eeb2dda"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento2}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="407" y="48" width="7" height="12" uuid="09286237-32c7-4de4-90fb-2ea455125bac"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[;]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="329" y="48" width="35" height="12" uuid="17919991-b7cf-49ad-98fb-31475f53728a"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento3}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="48" width="245" height="12" uuid="e593293b-6d62-440d-b26e-8e247d9ee14f"/>
-				<textElement verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[[  ] 4ª OP. - 4 x Parcelas - Boleto ou Cartão de Crédioto - Venc. ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="280" y="48" width="7" height="12" uuid="af64f9f2-aef9-4db9-b775-df4983f7fd8f"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[,]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="245" y="48" width="35" height="12" uuid="d83ea31e-4d40-42ee-bda1-6d537d97fbe0"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento1}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="322" y="48" width="7" height="12" uuid="6688901b-a0b4-4ec5-95c2-e66e3952f5ac"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[,]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="372" y="48" width="35" height="12" uuid="9f5ba1eb-d847-45bc-ba10-8d3471826372"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento4}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="414" y="60" width="35" height="12" uuid="095d55e2-3370-4515-b50d-01c039c5c262"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento5}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="60" width="245" height="12" uuid="06083d0f-694e-4bd1-a5cc-1fa250dae276"/>
-				<textElement verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[[  ] 5ª OP. - 5 x Parcelas - Boleto ou Cartão de Crédioto - Venc. ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="280" y="60" width="7" height="12" uuid="80308e47-d52b-44f2-adf9-ae0ece7d5964"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[,]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="322" y="60" width="7" height="12" uuid="34bc7576-398a-47a0-8fb3-8775cfd92b9a"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[,]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="287" y="60" width="35" height="12" uuid="df84ee0d-b8f2-4e38-b6e1-afa1290058f9"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento2}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="406" y="60" width="8" height="12" uuid="45270bdb-f2c3-4e0b-bb8d-226a0a614378"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[e]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="245" y="60" width="35" height="12" uuid="bdd4cb60-b48b-411b-903d-ee13388d5986"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento1}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="449" y="60" width="7" height="12" uuid="5c472925-8d8a-4e5b-8c20-35d64ffe6230"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[;]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="329" y="60" width="35" height="12" uuid="b3d111a2-58d4-44a4-a178-0252269a5daa"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento3}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="364" y="60" width="7" height="12" uuid="cfe69b47-fa2d-4f97-9a96-85b239c2a3be"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[,]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="371" y="60" width="35" height="12" uuid="bad2d673-25d1-44a8-aefd-a73f091a0ded"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento4}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="287" y="72" width="35" height="12" uuid="be314e21-fcd7-4b0c-83da-7b4c2ca27372"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento2}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="322" y="72" width="7" height="12" uuid="2e3f918d-53f6-41cd-8739-52ad0aadc658"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[,]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="329" y="72" width="35" height="12" uuid="04887de0-0f42-4f57-8fe5-b9b61aebb458"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento3}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="413" y="72" width="35" height="12" uuid="358b9f31-ec12-48c7-a3a8-070c1cf451db"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento5}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="72" width="245" height="12" uuid="e45da734-6fd8-43f6-a87e-a4f3f9a224ab"/>
-				<textElement verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[[  ] 6ª OP. - 6 x Parcelas - Boleto ou Cartão de Crédioto - Venc. ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="491" y="72" width="7" height="12" uuid="bc0626da-13b5-470c-aa14-db51e8c8bb48"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[;]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="245" y="72" width="35" height="12" uuid="b6e7e869-670a-4b09-b467-ff17d2bc7ca0"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento1}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="371" y="72" width="35" height="12" uuid="d4b64b26-3c1a-486a-a961-5740041a1b99"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento4}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="448" y="72" width="8" height="12" uuid="c3729012-96d6-4353-b3d1-e82b39c100fe"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[e]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="280" y="72" width="7" height="12" uuid="5cd04ed1-90dd-471d-9913-d188d2c46efd"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[,]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="364" y="72" width="7" height="12" uuid="295e1c12-bb0d-4afe-bc32-14eef64dc452"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[,]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="406" y="72" width="7" height="12" uuid="50afdf16-bf15-4cd5-89ce-cf9c09e90008"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[,]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="456" y="72" width="35" height="12" uuid="8ca292eb-9cb8-48f2-8a05-9f0d95c55bd4"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento6}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="364" y="84" width="7" height="12" uuid="df25304c-ca52-4c3f-9831-ae9daa868b2e"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[,]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="371" y="84" width="35" height="12" uuid="441d4d98-c775-4289-a187-3c4f386a5234"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento4}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="455" y="84" width="35" height="12" uuid="329db9c4-6821-4c78-8671-716a0d90a854"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento6}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="245" y="84" width="35" height="12" uuid="9f78cd71-f255-45f7-9429-89e4dbfec437"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento1}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="406" y="84" width="7" height="12" uuid="617a9e79-6a02-467f-b007-64950535ca39"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[,]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="287" y="84" width="35" height="12" uuid="5bcce20d-e061-42aa-9e9f-af86665dd975"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento2}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="533" y="84" width="7" height="12" uuid="b013c90f-f04b-4359-942e-2d1f8e6a7cdd"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[;]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="84" width="245" height="12" uuid="bf0ca1f0-433e-4cc7-999c-b8d44b8fdd4c"/>
-				<textElement verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[[  ] 7ª OP. - 7 x Parcelas - Boleto ou Cartão de Crédioto - Venc. ]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="329" y="84" width="35" height="12" uuid="abeeef00-781d-4c4c-b854-22c4baad59bc"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento3}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="322" y="84" width="7" height="12" uuid="0823e889-69e9-4859-a3c1-a85fffea6d75"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[,]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="490" y="84" width="8" height="12" uuid="80161990-87bc-496c-8209-3a7daf836fee"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[e]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="413" y="84" width="35" height="12" uuid="94c8a06d-9d8f-4f14-ba69-ba79f37d9a79"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento5}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="280" y="84" width="7" height="12" uuid="368d610a-6419-4347-ac7a-9a6e1c64cc1a"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[,]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="448" y="84" width="7" height="12" uuid="ce162bce-91a2-413f-8966-5d724bde90a4"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[,]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="498" y="84" width="35" height="12" uuid="e81fd81d-e498-4211-b9b6-8e6545db7ae5"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento7}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="245" y="36" width="35" height="12" uuid="3f696371-41ee-4dfa-aae3-b993344cd0fd"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento1}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="36" width="245" height="12" uuid="a45af144-0202-4cd0-9b7a-cf6bbd54d4b4"/>
-				<textElement verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[[  ] 3ª OP. - 3 x Parcelas - Boleto ou Cartão de Crédioto - Venc. ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="280" y="24" width="18" height="12" uuid="256fe920-6b3b-4337-8c6d-b74279c5ef58"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[e]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="24" width="245" height="12" uuid="fdd8ca8c-f70d-48fd-96f7-527ad2d05c66"/>
-				<textElement verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[[  ] 2ª OP. - 2 x Parcelas - Boleto ou Cartão de Crédioto - Venc. ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="365" y="36" width="7" height="12" uuid="2eaff958-ab3b-40b0-a809-7691cd763ce7"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[;]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="333" y="24" width="7" height="12" uuid="1dbae656-0be0-485c-9808-fe876678517f"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[;]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="245" y="24" width="35" height="12" uuid="e19222bd-2519-458d-bdfd-4f1d706f6427"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento1}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="298" y="24" width="35" height="12" uuid="0e11a04d-a03b-4e53-8583-6eca5d2a4209"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento2}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="0" width="553" height="12" uuid="5e35c081-58fe-4d38-aee9-e421f1fb7d4b"/>
-				<textElement verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[[  ] Pagamento à Vista (Ato da Matrícula, cheque ou cartão)]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="220" y="12" width="142" height="12" uuid="e211c2c0-1a33-4828-b921-797a2d0ab710"/>
-				<textElement verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[para Matrículas efetuadas até ]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="185" y="12" width="35" height="12" uuid="ebf84b71-846b-49c9-925d-d472ab75ccc2"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataVencimento1}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="12" width="185" height="12" uuid="64faf048-9b93-43f4-9da7-26c0d3f21a66"/>
-				<textElement verticalAlignment="Bottom">
-					<font fontName="Arial" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[[  ] 1ª OP. - 1 x Parcelas - Boleto ou CH. - Venc. ]]></text>
-			</staticText>
-			<textField pattern="">
-				<reportElement x="362" y="12" width="81" height="12" uuid="18d16649-0796-4a7a-92ca-3550999534da"/>
-				<textElement verticalAlignment="Bottom">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dataMatricula}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="0" y="98" width="551" height="260" uuid="66cbb752-71f0-466e-90df-c3f1e05bd769"/>
 				<textElement textAlignment="Justified">
@@ -815,9 +349,9 @@ CLÁUSULA PRIMEIRA: O objeto do presente instrumento é a venda de material did�
 				<text><![CDATA[Parágrafo Segundo: Havendo atraso no pagamento de qualquer das parcelas descritas acima, o(a) COMPRADOR pagará o valor em atraso acrescido de multa contratual de 2% (dois por cento), mais juros de mora de 1% (um por cento) ao mês.
 CLÁUSULA TERCEIRA: O (A) COMPRADOR (A) declara ter ciência de que os materiais didáticos são protegidos pela Lei 9.610/98 (Lei de Direitos Autorais), assim não podem ser reproduzidos, ficando sujeitos à sanções legais, em caso de violação da Lei.
 CLÁUSULA QUARTA: O material será entregue ao(s) aluno(s) descrito(s) acima, em sala de aula, de acordo com o cronograma estabelecido junto a Instituição de Ensino, que segue abaixo:
-*1º Livro Didático Integrado será entregue no 1º dia de Aula para o Aluno com contrato firmado em NOV e DEZ/2014. Os demais alunos receberão o livro entre 15 (quinze) a 20(vinte) dias após o Contrato Firmado.
-*2º Livro Didático Integrado, para os que optarem pelo parcelamento, a entrega ficará vinculada com a quitação de todas as parcelas com vencimento até 10/04/2014.
-*3º Livro Didático Integrado, para os que optarem pelo parcelamento, a entrega ficará vinculada com a quitação de todas as parcelas com vencimento até 10/06/2014.
+*1º Livro Didático Integrado será entregue no 1º dia de Aula para o Aluno com contrato firmado em NOV e DEZ/2015. Os demais alunos receberão o livro entre 15 (quinze) a 20(vinte) dias após o Contrato Firmado.
+*2º Livro Didático Integrado, para os que optarem pelo parcelamento, a entrega ficará vinculada com a quitação de todas as parcelas com vencimento até 10/04/2015.
+*3º Livro Didático Integrado, para os que optarem pelo parcelamento, a entrega ficará vinculada com a quitação de todas as parcelas com vencimento até 10/06/2015.
 *4º Livro Didático Integrado, para os que optaram pelo parcelamento, a entrega ficará vinculada com quitação de todas as parcelas.
 Parágrafo Primeiro: Os livros didáticos serão entregues aos alunos em sala de aula, somente depois de confirmados os pagamentos dos boletos emitidos a(os) Responsável (eis) Financeiro(s) pelo material didático.
 Parágrafo Segundo: A inadimplência das parcelas ocasionará retenção do material ainda não entregue até sua regularização financeira.
@@ -838,6 +372,62 @@ E, por estarem justas e convencionadas as partes assinam o presente CONTRATO DE 
 				<reportElement x="0" y="360" width="555" height="15" uuid="43e912dc-f566-4ea9-aa92-2fb6375322f0"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Patos de Minas, MG,______________ de ___________________ de 2015.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="22" width="555" height="12" uuid="1ac8e8c2-6593-49e7-80af-61702e1292e3"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[[  ] 2ª OP. - 2 x Parcelas - Boleto ou Cartão de Crédioto - Venc. 10/01 e 10/02/2016;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="46" width="555" height="12" uuid="1c306371-5366-4312-81f2-390c680c89fd"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[[  ] 4ª OP. - 4 x Parcelas - Boleto ou Cartão de Crédioto - Venc. 10/01 e 10/02 e 10/03 e 10/04/2016;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="82" width="555" height="12" uuid="b8beaac8-bd00-4ca9-a911-ee2838ba1ba5"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[[  ] 7ª OP. - 7 x Parcelas - Boleto ou Cartão de Crédioto - Venc. 10/01 e 10/02 e 10/03 e 10/04 e 10/05 e 10/06 e 10/07/2016;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="34" width="555" height="12" uuid="d1b274b4-7a3c-4349-a9b6-08f7586c5c6d"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[[  ] 3ª OP. - 3 x Parcelas - Boleto ou Cartão de Crédioto - Venc. 10/01 e 10/02 e 10/03/2016;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="58" width="555" height="12" uuid="3eff2ea5-a8ea-4e92-a204-65b94fd4ed9c"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[[  ] 5ª OP. - 5 x Parcelas - Boleto ou Cartão de Crédioto - Venc. 10/01 e 10/02 e 10/03 e 10/04 e 10/05/2016;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="70" width="555" height="12" uuid="516c5a28-3dce-4462-a0a2-5f4f87681c3c"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[[  ] 6ª OP. - 6 x Parcelas - Boleto ou Cartão de Crédioto - Venc. 10/01 e 10/02 e 10/03 e 10/04 e 10/05 e 10/06/2016;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="10" width="555" height="12" uuid="25016e02-4ff1-4d29-a24d-45943e8693fd"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[[  ] 1ª OP. - 1 x Parcelas - Boleto ou CH. - Venc. 10/01/2016 para Matrículas efetuadas até DEZ/2015;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="-2" width="555" height="12" uuid="1079cbcd-d3ef-43e0-ac8c-c7b92cc4cf4e"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[[  ] Pagamento à Vista (Ato da Matrícula, cheque ou cartão);]]></text>
 			</staticText>
 		</band>
 	</detail>

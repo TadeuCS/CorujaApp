@@ -76,8 +76,6 @@ public class Responsavel implements Serializable {
     private String observacao;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codresponsavel")
     private List<Aluno> alunoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codresponsavel")
-    private List<Contrato> contratoList;
 
     public Responsavel() {
     }
@@ -191,15 +189,6 @@ public class Responsavel implements Serializable {
 
     public void setAlunoList(List<Aluno> alunoList) {
         this.alunoList = alunoList;
-    }
-
-    @XmlTransient
-    public List<Contrato> getContratoList() {
-        return contratoList;
-    }
-
-    public void setContratoList(List<Contrato> contratoList) {
-        this.contratoList = contratoList;
     }
 
     @Override

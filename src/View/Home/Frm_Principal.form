@@ -26,12 +26,20 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="item_cadLivroActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="item_cadPessoa">
+            <MenuItem class="javax.swing.JMenuItem" name="item_cadPai">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pai/M&#xe3;e"/>
+                <Property name="text" type="java.lang.String" value="Pai"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="item_cadPessoaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="item_cadPaiActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="item_cadMae">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="M&#xe3;e"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="item_cadMaeActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="item_cadResponsavel">
@@ -71,14 +79,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="item_RelAlunosByResponsavelActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="item_RelQuita&#xe7;&#xe3;o">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Quita&#xe7;&#xe3;o de D&#xe9;bitos"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="item_RelQuita&#xe7;&#xe3;oActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
