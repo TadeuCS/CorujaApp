@@ -35,7 +35,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
     public Frm_Contrato() {
         initComponents();
         setVisible(true);
-        props=new PropertiesManager();
+        props = new PropertiesManager();
         carregaLogo(props.ler("logo"));
         grupoBotoes.add(rbt_total);
         grupoBotoes.add(rbt_parcial);
@@ -344,33 +344,28 @@ public class Frm_Contrato extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_filtro2KeyReleased
 
     private void btn_inserirTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inserirTodosActionPerformed
-        try {
-            while (tb_responsaveis.getRowCount() > 0) {
-                String[] linha = new String[]{
-                    tb_responsaveis.getValueAt(0, 0).toString(),
-                    tb_responsaveis.getValueAt(0, 1).toString(),
-                    tb_responsaveis.getValueAt(0, 2).toString(),
-                    tb_responsaveis.getValueAt(0, 3).toString()};
-                addResponsavel(tb_responsaveis.getValueAt(0, 0).toString());
-                TableConfig.getModel(tb_responsaveis2).addRow(linha);
-                TableConfig.getModel(tb_responsaveis).removeRow(0);
+        if (txt_filtro.getText().isEmpty()) {
+            try {
+                int i = 0;
+                while (i < tb_responsaveis.getRowCount()) {
+                    String[] linha = new String[]{
+                        tb_responsaveis.getValueAt(i, 0).toString(),
+                        tb_responsaveis.getValueAt(i, 1).toString(),
+                        tb_responsaveis.getValueAt(i, 2).toString(),
+                        tb_responsaveis.getValueAt(i, 3).toString()};
+                    addResponsavel(tb_responsaveis.getValueAt(i, 0).toString());
+                    TableConfig.getModel(tb_responsaveis2).addRow(linha);
+//                TableConfig.getModel(tb_responsaveis).removeRow(0);
+                    i++;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao inserir responsaveis na lista!\n" + e);
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao inserir responsaveis na lista!\n" + e);
         }
     }//GEN-LAST:event_btn_inserirTodosActionPerformed
 
     private void btn_removerTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_removerTodosActionPerformed
-        while (tb_responsaveis2.getRowCount() > 0) {
-            String[] linha = new String[]{
-                tb_responsaveis2.getValueAt(0, 0).toString(),
-                tb_responsaveis2.getValueAt(0, 1).toString(),
-                tb_responsaveis2.getValueAt(0, 2).toString(),
-                tb_responsaveis2.getValueAt(0, 3).toString()};
-            removeResponsavel(tb_responsaveis2.getValueAt(0, 0).toString());
-            TableConfig.getModel(tb_responsaveis).addRow(linha);
-            TableConfig.getModel(tb_responsaveis2).removeRow(0);
-        }
+        limpaListaDeResponsaveisSelecionados();
     }//GEN-LAST:event_btn_removerTodosActionPerformed
 
     private void btn_inserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inserirActionPerformed
@@ -382,7 +377,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
                 tb_responsaveis.getValueAt(tb_responsaveis.getSelectedRow(), 3).toString()};
             addResponsavel(tb_responsaveis.getValueAt(0, 0).toString());
             TableConfig.getModel(tb_responsaveis2).addRow(linha);
-            TableConfig.getModel(tb_responsaveis).removeRow(tb_responsaveis.getSelectedRow());
+//            TableConfig.getModel(tb_responsaveis).removeRow(tb_responsaveis.getSelectedRow());
         } else {
             JOptionPane.showMessageDialog(null, "Selecione apelas 1 linha!");
         }
@@ -396,7 +391,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
                 tb_responsaveis2.getValueAt(tb_responsaveis2.getSelectedRow(), 2).toString(),
                 tb_responsaveis2.getValueAt(tb_responsaveis2.getSelectedRow(), 3).toString()};
             removeResponsavel(tb_responsaveis2.getValueAt(0, 0).toString());
-            TableConfig.getModel(tb_responsaveis).addRow(linha);
+//            TableConfig.getModel(tb_responsaveis).addRow(linha);
             TableConfig.getModel(tb_responsaveis2).removeRow(tb_responsaveis2.getSelectedRow());
         } else {
             JOptionPane.showMessageDialog(null, "Selecione apelas 1 linha!");
@@ -417,15 +412,15 @@ public class Frm_Contrato extends javax.swing.JFrame {
                 acao = new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            String diretorio = getDiretorioDestino();
+                        String diretorio = getDiretorioDestino();
+                        if (diretorio != null) {
                             for (Responsavel responsavel : responsaveis) {
                                 gerarRelatorioByList(responsavel, diretorio + responsavel.getCodresponsavel() + ".pdf");
                                 barra.setValue(barra.getValue() + 1);
                             }
                             JOptionPane.showMessageDialog(null, "Contratos gerados com sucesso no diretório:\n" + diretorio);
+                            limpaListaDeResponsaveisSelecionados();
                             barra.setValue(0);
-                        } catch (Exception e) {
                         }
                     }
                 });
@@ -607,6 +602,21 @@ public class Frm_Contrato extends javax.swing.JFrame {
             imagemConfig.carregaImagem(lb_logo2, caminho, lb_logo2.getWidth());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar a Logo!\n" + e);
+        }
+    }
+
+    private void limpaListaDeResponsaveisSelecionados() {
+        if (txt_filtro2.getText().isEmpty()) {
+            while (tb_responsaveis2.getRowCount() > 0) {
+                String[] linha = new String[]{
+                    tb_responsaveis2.getValueAt(0, 0).toString(),
+                    tb_responsaveis2.getValueAt(0, 1).toString(),
+                    tb_responsaveis2.getValueAt(0, 2).toString(),
+                    tb_responsaveis2.getValueAt(0, 3).toString()};
+                removeResponsavel(tb_responsaveis2.getValueAt(0, 0).toString());
+//            TableConfig.getModel(tb_responsaveis).addRow(linha);
+                TableConfig.getModel(tb_responsaveis2).removeRow(0);
+            }
         }
     }
 }

@@ -123,6 +123,11 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
             }
         });
         tb_responsaveis.getTableHeader().setReorderingAllowed(false);
+        tb_responsaveis.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tb_responsaveisMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tb_responsaveis);
         if (tb_responsaveis.getColumnModel().getColumnCount() > 0) {
             tb_responsaveis.getColumnModel().getColumn(0).setMinWidth(80);
@@ -603,6 +608,13 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_importarActionPerformed
 
+    private void tb_responsaveisMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_responsaveisMousePressed
+        if (tb_responsaveis.getSelectedRowCount() == 1) {
+            responsavelDAO = new ResponsavelDAO();
+            setResponsavelNaTela(responsavelDAO.buscarByCodigo(Integer.parseInt(tb_responsaveis.getValueAt(tb_responsaveis.getSelectedRow(), 0).toString())));
+        }
+    }//GEN-LAST:event_tb_responsaveisMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -865,7 +877,6 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
     }
 
     private void setDadosNaTelaByPai(Pai pai) {
-        txt_codigo.setText(pai.getCodpai() + "");
         txt_nome.setText(pai.getNome());
         txt_telefone.setText(pai.getFone());
         txt_cpf.setText(pai.getCpf());
@@ -874,7 +885,6 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
     }
 
     private void setDadosNaTelaByMae(Mae mae) {
-        txt_codigo.setText(mae.getCodmae() + "");
         txt_nome.setText(mae.getNome());
         txt_telefone.setText(mae.getFone());
         txt_cpf.setText(mae.getCpf());

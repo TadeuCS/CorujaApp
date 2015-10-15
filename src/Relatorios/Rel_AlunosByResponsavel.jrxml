@@ -17,8 +17,9 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select a.codaluno,a.nome,a.fone,r.nome responsavel from aluno a
+		<![CDATA[select a.codaluno,a.nome,a.fone,r.nome responsavel,s.nome serie from aluno a
 inner join responsavel r on a.codresponsavel=r.codresponsavel
+inner join serie s on a.codserie=s.codserie
 where a.codresponsavel=$P{codresponsavel}]]>
 	</queryString>
 	<field name="codaluno" class="java.lang.Integer">
@@ -31,6 +32,7 @@ where a.codresponsavel=$P{codresponsavel}]]>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="responsavel" class="java.lang.String"/>
+	<field name="serie" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -57,8 +59,10 @@ where a.codresponsavel=$P{codresponsavel}]]>
 				<text><![CDATA[Responsavel:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="371" y="64" width="185" height="25" uuid="7307f8e8-519d-48bf-82b9-f2f5e850b362"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement x="371" y="64" width="185" height="25" uuid="9b61fcd1-29a8-419e-9681-e2db49622f45"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{responsavel}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -69,7 +73,7 @@ where a.codresponsavel=$P{codresponsavel}]]>
 	<columnHeader>
 		<band height="25" splitType="Stretch">
 			<staticText>
-				<reportElement style="Column header" x="1" y="0" width="79" height="25" forecolor="#736343" uuid="8972f619-dcb2-459a-9269-60fb3784164b"/>
+				<reportElement style="Column header" x="1" y="0" width="61" height="25" forecolor="#736343" uuid="8972f619-dcb2-459a-9269-60fb3784164b"/>
 				<textElement verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
@@ -82,18 +86,25 @@ where a.codresponsavel=$P{codresponsavel}]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement style="Column header" x="81" y="0" width="290" height="25" forecolor="#736343" uuid="d574351f-231b-4b9e-a692-ecab1ee3e085"/>
+				<reportElement style="Column header" x="62" y="0" width="270" height="25" forecolor="#736343" uuid="d574351f-231b-4b9e-a692-ecab1ee3e085"/>
 				<textElement verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
-				<text><![CDATA[NOME]]></text>
+				<text><![CDATA[   NOME]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="370" y="0" width="185" height="25" forecolor="#736343" uuid="cd019c9e-2366-4fa7-86f2-5d76dc07bbb1"/>
+				<reportElement style="Column header" x="459" y="0" width="96" height="25" forecolor="#736343" uuid="cd019c9e-2366-4fa7-86f2-5d76dc07bbb1"/>
 				<textElement verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
 				<text><![CDATA[TELEFONE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="332" y="0" width="127" height="25" forecolor="#736343" uuid="19a6a15e-8328-4e36-9fd1-d96c447e42d7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[SÉRIE]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -102,16 +113,23 @@ where a.codresponsavel=$P{codresponsavel}]]>
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="15" uuid="abdc5cde-dd32-4a83-b303-156897ea7dd9"/>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="0" y="0" width="79" height="15" uuid="16acb0ea-19e9-41ec-acb9-3adb0de47063"/>
+					<reportElement style="Detail" x="0" y="0" width="62" height="15" uuid="16acb0ea-19e9-41ec-acb9-3adb0de47063"/>
 					<textFieldExpression><![CDATA[$F{codaluno}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="80" y="0" width="290" height="15" uuid="8825886a-ae42-4237-b548-3b40415b4ee8"/>
+					<reportElement style="Detail" x="72" y="0" width="260" height="15" uuid="8825886a-ae42-4237-b548-3b40415b4ee8"/>
 					<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="370" y="0" width="185" height="15" uuid="a9bf464d-f92d-41d5-97ce-4af95e358e3b"/>
+					<reportElement style="Detail" x="459" y="0" width="96" height="15" uuid="a9bf464d-f92d-41d5-97ce-4af95e358e3b"/>
 					<textFieldExpression><![CDATA[$F{fone}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="332" y="0" width="127" height="15" uuid="3874758c-f3f1-49ba-ade2-339869af1d53"/>
+					<textElement>
+						<font fontName="Arial" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{serie}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>

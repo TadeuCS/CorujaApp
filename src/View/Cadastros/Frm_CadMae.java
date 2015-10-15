@@ -60,7 +60,7 @@ public class Frm_CadMae extends javax.swing.JFrame {
         btn_apagar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastro dos Pais");
+        setTitle("Cadastro das Mães");
         setResizable(false);
 
         btn_novo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Util/Img/adicionar.png"))); // NOI18N
@@ -557,7 +557,11 @@ public class Frm_CadMae extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Mae removida com sucesso!\n");
             setEnabledButtons(true);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao remover a Mae!\n" + e);
+            if(e.toString().contains("MySQLIntegrityConstraintViolationException")==true){
+            JOptionPane.showMessageDialog(null, "Impossivel excluír esta mãe porque a mesma tem alunos vinculados!\n");    
+            }else{
+            JOptionPane.showMessageDialog(null, "Erro ao remover a Mãe!\n" + e);
+            }
         }
     }
 

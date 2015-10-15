@@ -409,11 +409,11 @@ public class Frm_CadAluno extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "Responsavel"
+                "Código", "Nome", "Responsavel", "Pai", "Mãe"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -421,6 +421,11 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             }
         });
         tb_alunos.getTableHeader().setReorderingAllowed(false);
+        tb_alunos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tb_alunosMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tb_alunos);
         if (tb_alunos.getColumnModel().getColumnCount() > 0) {
             tb_alunos.getColumnModel().getColumn(0).setMinWidth(80);
@@ -621,6 +626,12 @@ public class Frm_CadAluno extends javax.swing.JFrame {
         TableConfig.filtrar(tb_alunos, txt_filtro);
     }//GEN-LAST:event_txt_filtroKeyReleased
 
+    private void tb_alunosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_alunosMousePressed
+        if (tb_alunos.getSelectedRowCount() == 1) {
+            setAlunoNaTela(alunoDAO.buscar(Integer.parseInt(tb_alunos.getValueAt(tb_alunos.getSelectedRow(), 0).toString())));
+        }
+    }//GEN-LAST:event_tb_alunosMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -767,7 +778,8 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             cbx_pai.removeAllItems();
             cbx_pai.addItem("Selecione um Pai");
             paiDAO = new PaiDAO();
-            for (Pai pai : paiDAO.listar()) {
+            pais = paiDAO.listar();
+            for (Pai pai : pais) {
                 cbx_pai.addItem(pai.getNome());
             }
         } catch (Exception e) {
@@ -843,11 +855,11 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             }
             aluno.setNome(txt_nome.getText().trim());
             aluno.setCodserie(serieDAO.buscar(cbx_serie.getSelectedItem().toString()));
-            if (cbx_pai.getSelectedIndex() > 0) {
-                aluno.setCodpai(pais.get(cbx_pai.getSelectedIndex()));
+            if (cbx_pai.getSelectedIndex() != 0) {
+                aluno.setCodpai(pais.get(cbx_pai.getSelectedIndex() - 1));
             }
-            if (cbx_mae.getSelectedIndex() > 0) {
-                aluno.setCodmae(maes.get(cbx_mae.getSelectedIndex()));
+            if (cbx_mae.getSelectedIndex() != 0) {
+                aluno.setCodmae(maes.get(cbx_mae.getSelectedIndex() - 1));
             }
             aluno.setEndereco(txt_endereco.getText().trim());
             aluno.setBairro(txt_bairro.getText().trim());
@@ -876,7 +888,21 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             alunoDAO = new AlunoDAO();
             TableConfig.limpaTabela(tb_alunos);
             for (Aluno aluno : alunoDAO.listar()) {
-                String[] linha = new String[]{aluno.getCodaluno().toString(), aluno.getNome(), aluno.getCodresponsavel().getNome()};
+                String pai;
+                String mae;
+                if (aluno.getCodpai() == null) {
+                    pai = "";
+                } else {
+                    pai = aluno.getCodpai().getNome();
+                }
+                if (aluno.getCodmae() == null) {
+                    mae = "";
+                } else {
+                    mae = aluno.getCodmae().getNome();
+                }
+
+                String[] linha = new String[]{aluno.getCodaluno().toString(), aluno.getNome(),
+                    aluno.getCodresponsavel().getNome(), pai, mae};
                 TableConfig.getModel(tb_alunos).addRow(linha);
             }
         } catch (Exception e) {
@@ -889,8 +915,16 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             txt_codigo.setText(aluno.getCodaluno().toString());
             txt_nome.setText(aluno.getNome());
             cbx_serie.setSelectedItem(aluno.getCodserie().getNome());
-            cbx_mae.setSelectedIndex(getMaeByAluno(aluno));
-            cbx_pai.setSelectedIndex(getPaiByAluno(aluno));
+            if (aluno.getCodmae() == null) {
+                cbx_mae.setSelectedIndex(0);
+            } else {
+                cbx_mae.setSelectedIndex(getMaeByAluno(aluno)+1);
+            }
+            if (aluno.getCodpai() == null) {
+                cbx_pai.setSelectedIndex(0);
+            } else {
+                cbx_pai.setSelectedIndex(getPaiByAluno(aluno)+1);
+            }
             txt_endereco.setText(aluno.getEndereco());
             txt_bairro.setText(aluno.getBairro());
             txt_cidade.setText(aluno.getCidade());
@@ -952,7 +986,8 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             cbx_mae.removeAllItems();
             cbx_mae.addItem("Selecione uma Mãe");
             maeDAO = new MaeDAO();
-            for (Mae mae : maeDAO.listar()) {
+            maes = maeDAO.listar();
+            for (Mae mae : maes) {
                 cbx_mae.addItem(mae.getNome());
             }
         } catch (Exception e) {

@@ -557,7 +557,11 @@ public class Frm_CadPai extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Pessoa removida com sucesso!\n");
             setEnabledButtons(true);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao remover a Pessoa!\n" + e);
+            if(e.toString().contains("MySQLIntegrityConstraintViolationException")==true){
+            JOptionPane.showMessageDialog(null, "Impossivel excluír este pai porque o mesmo tem alunos vinculados!\n");    
+            }else{
+            JOptionPane.showMessageDialog(null, "Erro ao remover o Pai!\n" + e);
+            }
         }
     }
 

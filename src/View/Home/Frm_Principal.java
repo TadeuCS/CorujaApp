@@ -1,15 +1,14 @@
 package View.Home;
 
-import Util.Classes.GeraRelatorios;
 import View.Cadastros.Frm_CadAluno;
 import View.Cadastros.Frm_CadLivro;
 import View.Cadastros.Frm_CadMae;
 import View.Cadastros.Frm_CadPai;
 import View.Cadastros.Frm_CadResponsavel;
 import View.Cadastros.Frm_CadSerie;
+import View.Relatorios.Frm_RelAlunosByResponsavel;
+import View.Relatorios.Frm_RelAlunosBySerie;
 import java.awt.Event;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -17,7 +16,6 @@ public class Frm_Principal extends javax.swing.JFrame {
 
     public static Frm_Principal j = null;
     int tentativas;
-    GeraRelatorios geraRelatorios;
     public Frm_Principal() {
         initComponents();
         setVisible(true);
@@ -30,15 +28,21 @@ public class Frm_Principal extends javax.swing.JFrame {
 
         pnl_fundo = new javax.swing.JPanel();
         pnl_atalhos = new javax.swing.JPanel();
-        pnl_cadCliente = new javax.swing.JPanel();
+        atalho1 = new javax.swing.JPanel();
         atalhoCadastroCliente = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        pnl_aberturaAtendimento = new javax.swing.JPanel();
+        atalho2 = new javax.swing.JPanel();
         atalhoAbrirAtendimento = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        pnl_aberturaAtendimento1 = new javax.swing.JPanel();
+        atalho3 = new javax.swing.JPanel();
         atalhoAbrirAtendimento1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        atalho4 = new javax.swing.JPanel();
+        atalhoAbrirAtendimento2 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        atalho5 = new javax.swing.JPanel();
+        atalhoAbrirAtendimento3 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         Menu_barra = new javax.swing.JMenuBar();
         menu_cadastros = new javax.swing.JMenu();
         item_cadAluno = new javax.swing.JMenuItem();
@@ -73,22 +77,22 @@ public class Frm_Principal extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Cadastro de Aluno");
 
-        javax.swing.GroupLayout pnl_cadClienteLayout = new javax.swing.GroupLayout(pnl_cadCliente);
-        pnl_cadCliente.setLayout(pnl_cadClienteLayout);
-        pnl_cadClienteLayout.setHorizontalGroup(
-            pnl_cadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_cadClienteLayout.createSequentialGroup()
+        javax.swing.GroupLayout atalho1Layout = new javax.swing.GroupLayout(atalho1);
+        atalho1.setLayout(atalho1Layout);
+        atalho1Layout.setHorizontalGroup(
+            atalho1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(atalho1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnl_cadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(atalho1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(atalhoCadastroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                    .addGroup(pnl_cadClienteLayout.createSequentialGroup()
+                    .addGroup(atalho1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel8)))
                 .addContainerGap())
         );
-        pnl_cadClienteLayout.setVerticalGroup(
-            pnl_cadClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_cadClienteLayout.createSequentialGroup()
+        atalho1Layout.setVerticalGroup(
+            atalho1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(atalho1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(atalhoCadastroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -108,20 +112,20 @@ public class Frm_Principal extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Emitir Contrato");
 
-        javax.swing.GroupLayout pnl_aberturaAtendimentoLayout = new javax.swing.GroupLayout(pnl_aberturaAtendimento);
-        pnl_aberturaAtendimento.setLayout(pnl_aberturaAtendimentoLayout);
-        pnl_aberturaAtendimentoLayout.setHorizontalGroup(
-            pnl_aberturaAtendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_aberturaAtendimentoLayout.createSequentialGroup()
+        javax.swing.GroupLayout atalho2Layout = new javax.swing.GroupLayout(atalho2);
+        atalho2.setLayout(atalho2Layout);
+        atalho2Layout.setHorizontalGroup(
+            atalho2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(atalho2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnl_aberturaAtendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(atalho2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(atalhoAbrirAtendimento, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        pnl_aberturaAtendimentoLayout.setVerticalGroup(
-            pnl_aberturaAtendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_aberturaAtendimentoLayout.createSequentialGroup()
+        atalho2Layout.setVerticalGroup(
+            atalho2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(atalho2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(atalhoAbrirAtendimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -141,24 +145,90 @@ public class Frm_Principal extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Cadastrar Responsável");
 
-        javax.swing.GroupLayout pnl_aberturaAtendimento1Layout = new javax.swing.GroupLayout(pnl_aberturaAtendimento1);
-        pnl_aberturaAtendimento1.setLayout(pnl_aberturaAtendimento1Layout);
-        pnl_aberturaAtendimento1Layout.setHorizontalGroup(
-            pnl_aberturaAtendimento1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_aberturaAtendimento1Layout.createSequentialGroup()
+        javax.swing.GroupLayout atalho3Layout = new javax.swing.GroupLayout(atalho3);
+        atalho3.setLayout(atalho3Layout);
+        atalho3Layout.setHorizontalGroup(
+            atalho3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(atalho3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnl_aberturaAtendimento1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(atalho3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(atalhoAbrirAtendimento1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        pnl_aberturaAtendimento1Layout.setVerticalGroup(
-            pnl_aberturaAtendimento1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_aberturaAtendimento1Layout.createSequentialGroup()
+        atalho3Layout.setVerticalGroup(
+            atalho3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(atalho3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(atalhoAbrirAtendimento1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10)
+                .addContainerGap())
+        );
+
+        atalhoAbrirAtendimento2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        atalhoAbrirAtendimento2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Util/Img/cadPai.png"))); // NOI18N
+        atalhoAbrirAtendimento2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        atalhoAbrirAtendimento2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                atalhoAbrirAtendimento2MousePressed(evt);
+            }
+        });
+
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Cadastrar Pais");
+
+        javax.swing.GroupLayout atalho4Layout = new javax.swing.GroupLayout(atalho4);
+        atalho4.setLayout(atalho4Layout);
+        atalho4Layout.setHorizontalGroup(
+            atalho4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(atalho4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(atalho4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(atalhoAbrirAtendimento2, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        atalho4Layout.setVerticalGroup(
+            atalho4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(atalho4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(atalhoAbrirAtendimento2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11)
+                .addContainerGap())
+        );
+
+        atalhoAbrirAtendimento3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        atalhoAbrirAtendimento3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Util/Img/cadMae.png"))); // NOI18N
+        atalhoAbrirAtendimento3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        atalhoAbrirAtendimento3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                atalhoAbrirAtendimento3MousePressed(evt);
+            }
+        });
+
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Cadastrar Mães");
+
+        javax.swing.GroupLayout atalho5Layout = new javax.swing.GroupLayout(atalho5);
+        atalho5.setLayout(atalho5Layout);
+        atalho5Layout.setHorizontalGroup(
+            atalho5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(atalho5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(atalho5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(atalhoAbrirAtendimento3, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        atalho5Layout.setVerticalGroup(
+            atalho5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(atalho5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(atalhoAbrirAtendimento3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel12)
                 .addContainerGap())
         );
 
@@ -168,21 +238,27 @@ public class Frm_Principal extends javax.swing.JFrame {
             pnl_atalhosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_atalhosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnl_cadCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(atalho1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(pnl_aberturaAtendimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(atalho2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(pnl_aberturaAtendimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(783, Short.MAX_VALUE))
+                .addComponent(atalho3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(atalho4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(atalho5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(467, Short.MAX_VALUE))
         );
         pnl_atalhosLayout.setVerticalGroup(
             pnl_atalhosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_atalhosLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(pnl_atalhosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnl_cadCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnl_aberturaAtendimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnl_aberturaAtendimento1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(atalho1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(atalho2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(atalho3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(atalho4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(atalho5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -303,20 +379,15 @@ public class Frm_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_formKeyPressed
 
     private void item_RelAlunosBySerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_RelAlunosBySerieActionPerformed
-        try {
-            Map parametros= new HashMap();
-            geraRelatorios.imprimirRelatorioSQLNoRelatorio(null, null);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "erro"+e);
-        }
+        Frm_RelAlunosBySerie f= new Frm_RelAlunosBySerie();
     }//GEN-LAST:event_item_RelAlunosBySerieActionPerformed
 
     private void atalhoCadastroClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atalhoCadastroClienteMousePressed
-        Frm_CadAluno f= new Frm_CadAluno();
+        Frm_CadAluno f = new Frm_CadAluno();
     }//GEN-LAST:event_atalhoCadastroClienteMousePressed
 
     private void atalhoAbrirAtendimentoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atalhoAbrirAtendimentoMousePressed
-        Frm_Contrato f= new Frm_Contrato();
+        Frm_Contrato f = new Frm_Contrato();
     }//GEN-LAST:event_atalhoAbrirAtendimentoMousePressed
 
     private void item_cadAlunoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_item_cadAlunoMousePressed
@@ -327,11 +398,11 @@ public class Frm_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_item_cadLivroActionPerformed
 
     private void item_cadPaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_cadPaiActionPerformed
-        Frm_CadPai f= new Frm_CadPai();
+        Frm_CadPai f = new Frm_CadPai();
     }//GEN-LAST:event_item_cadPaiActionPerformed
 
     private void item_cadAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_cadAlunoActionPerformed
-        Frm_CadAluno f= new Frm_CadAluno();
+        Frm_CadAluno f = new Frm_CadAluno();
     }//GEN-LAST:event_item_cadAlunoActionPerformed
 
     private void item_cadResponsavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_cadResponsavelActionPerformed
@@ -339,10 +410,11 @@ public class Frm_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_item_cadResponsavelActionPerformed
 
     private void item_cadSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_cadSerieActionPerformed
-        Frm_CadSerie f= new Frm_CadSerie();
+        Frm_CadSerie f = new Frm_CadSerie();
     }//GEN-LAST:event_item_cadSerieActionPerformed
 
     private void item_RelAlunosByResponsavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_RelAlunosByResponsavelActionPerformed
+        Frm_RelAlunosByResponsavel f=new Frm_RelAlunosByResponsavel();
     }//GEN-LAST:event_item_RelAlunosByResponsavelActionPerformed
 
     private void atalhoAbrirAtendimento1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atalhoAbrirAtendimento1MousePressed
@@ -350,8 +422,16 @@ public class Frm_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_atalhoAbrirAtendimento1MousePressed
 
     private void item_cadMaeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_cadMaeActionPerformed
-        Frm_CadMae f= new Frm_CadMae();
+        Frm_CadMae f = new Frm_CadMae();
     }//GEN-LAST:event_item_cadMaeActionPerformed
+
+    private void atalhoAbrirAtendimento2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atalhoAbrirAtendimento2MousePressed
+        Frm_CadPai f= new Frm_CadPai();
+    }//GEN-LAST:event_atalhoAbrirAtendimento2MousePressed
+
+    private void atalhoAbrirAtendimento3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atalhoAbrirAtendimento3MousePressed
+        Frm_CadMae f = new Frm_CadMae();
+    }//GEN-LAST:event_atalhoAbrirAtendimento3MousePressed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -396,8 +476,15 @@ public class Frm_Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar Menu_barra;
+    private javax.swing.JPanel atalho1;
+    private javax.swing.JPanel atalho2;
+    private javax.swing.JPanel atalho3;
+    private javax.swing.JPanel atalho4;
+    private javax.swing.JPanel atalho5;
     private javax.swing.JLabel atalhoAbrirAtendimento;
     private javax.swing.JLabel atalhoAbrirAtendimento1;
+    private javax.swing.JLabel atalhoAbrirAtendimento2;
+    private javax.swing.JLabel atalhoAbrirAtendimento3;
     private javax.swing.JLabel atalhoCadastroCliente;
     private javax.swing.JMenuItem item_RelAlunosByResponsavel;
     private javax.swing.JMenuItem item_RelAlunosBySerie;
@@ -408,14 +495,13 @@ public class Frm_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem item_cadResponsavel;
     private javax.swing.JMenuItem item_cadSerie;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu menu_cadastros;
     private javax.swing.JMenu menu_relatorios;
-    private javax.swing.JPanel pnl_aberturaAtendimento;
-    private javax.swing.JPanel pnl_aberturaAtendimento1;
     private javax.swing.JPanel pnl_atalhos;
-    private javax.swing.JPanel pnl_cadCliente;
     private javax.swing.JPanel pnl_fundo;
     // End of variables declaration//GEN-END:variables
 
