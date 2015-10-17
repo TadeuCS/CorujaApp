@@ -49,7 +49,7 @@ public class Mae implements Serializable {
     @Column(name = "EMAIL")
     private String email;
     @Basic(optional = false)
-    @Column(name = "CPF",unique = true,nullable = false)
+    @Column(name = "CPF",nullable = false)
     private String cpf;
     @Basic(optional = false)
     @OneToMany(mappedBy = "codmae")

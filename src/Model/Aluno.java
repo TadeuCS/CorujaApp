@@ -62,7 +62,7 @@ public class Aluno implements Serializable {
     @Basic(optional = false)
     @Column(name = "UF")
     private String uf;
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "DT_NASCIMENTO")
     @Temporal(TemporalType.DATE)
     private Date dtNascimento;
@@ -81,7 +81,7 @@ public class Aluno implements Serializable {
     @ManyToOne(optional = true)
     private Pai codpai;
     @JoinColumn(name = "CODSERIE", referencedColumnName = "CODSERIE")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private Serie codserie;
 
     public Aluno() {

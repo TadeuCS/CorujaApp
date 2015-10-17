@@ -383,7 +383,7 @@ public class Frm_CadPai extends javax.swing.JFrame {
             try {
                 pai = new Pai();
                 paiDAO = new PaiDAO();
-                pai = paiDAO.buscar(tb_pais.getValueAt(tb_pais.getSelectedRow(), 2).toString());
+                pai = paiDAO.findByCodigo(Integer.parseInt(tb_pais.getValueAt(tb_pais.getSelectedRow(), 0).toString()));
                 txt_codigo.setText(pai.getCodpai().toString());
                 txt_nome.setText(pai.getNome());
                 txt_telefone.setText(pai.getFone());
@@ -552,7 +552,7 @@ public class Frm_CadPai extends javax.swing.JFrame {
     private void removePessoa(String codigo) {
         try {
             paiDAO = new PaiDAO();
-            paiDAO.remover(paiDAO.buscar(tb_pais.getValueAt(tb_pais.getSelectedRow(), 2).toString()));
+            paiDAO.remover(paiDAO.findByCodigo(Integer.parseInt(tb_pais.getValueAt(tb_pais.getSelectedRow(), 2).toString())));
             TableConfig.getModel(tb_pais).removeRow(tb_pais.getSelectedRow());
             JOptionPane.showMessageDialog(null, "Pessoa removida com sucesso!\n");
             setEnabledButtons(true);

@@ -382,7 +382,7 @@ public class Frm_CadMae extends javax.swing.JFrame {
             try {
                 mae = new Mae();
                 maeDAO = new MaeDAO();
-                mae = maeDAO.buscar(tb_maes.getValueAt(tb_maes.getSelectedRow(), 2).toString());
+                mae = maeDAO.findByCodigo(Integer.parseInt(tb_maes.getValueAt(tb_maes.getSelectedRow(), 2).toString()));
                 txt_codigo.setText(mae.getCodmae().toString());
                 txt_nome.setText(mae.getNome());
                 txt_telefone.setText(mae.getFone());
@@ -552,7 +552,7 @@ public class Frm_CadMae extends javax.swing.JFrame {
     private void removeMae(String codigo) {
         try {
             maeDAO = new MaeDAO();
-            maeDAO.remover(maeDAO.buscar(tb_maes.getValueAt(tb_maes.getSelectedRow(), 2).toString()));
+            maeDAO.remover(maeDAO.findByCodigo(Integer.parseInt(tb_maes.getValueAt(tb_maes.getSelectedRow(), 2).toString())));
             TableConfig.getModel(tb_maes).removeRow(tb_maes.getSelectedRow());
             JOptionPane.showMessageDialog(null, "Mae removida com sucesso!\n");
             setEnabledButtons(true);

@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Pai.findByEmail", query = "SELECT p FROM Pai p WHERE p.email = :email"),
     @NamedQuery(name = "Pai.findByCpf", query = "SELECT p FROM Pai p WHERE p.cpf = :cpf")})
 public class Pai implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,10 +50,10 @@ public class Pai implements Serializable {
     @Column(name = "EMAIL")
     private String email;
     @Basic(optional = false)
-    @Column(name = "CPF",unique = true,nullable = false)
+    @Column(name = "CPF", nullable = false)
     private String cpf;
     @OneToMany(mappedBy = "codpai")
-    private List<Aluno> alunoList1;
+    private List<Aluno> alunoList;
 
     public Pai() {
     }
@@ -108,12 +109,12 @@ public class Pai implements Serializable {
     }
 
     @XmlTransient
-    public List<Aluno> getAlunoList1() {
-        return alunoList1;
+    public List<Aluno> getAlunoList() {
+        return alunoList;
     }
 
-    public void setAlunoList1(List<Aluno> alunoList1) {
-        this.alunoList1 = alunoList1;
+    public void setAlunoList(List<Aluno> alunoList) {
+        this.alunoList = alunoList;
     }
 
     @Override
@@ -140,5 +141,5 @@ public class Pai implements Serializable {
     public String toString() {
         return "Model.Pai[ codpai=" + codpai + " ]";
     }
-    
+
 }

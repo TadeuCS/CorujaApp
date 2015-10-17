@@ -829,12 +829,12 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                                     JOptionPane.showMessageDialog(null, "Responsável inválido!");
                                     cbx_responsavel.requestFocus();
                                 } else {
-                                    if (Data.getDataByTexto(txt_dataNascimento.getText(), "dd/MM/yyyy") == null) {
-                                        JOptionPane.showMessageDialog(null, "Data de Nascimento inválida!");
-                                        txt_dataNascimento.requestFocus();
-                                    } else {
-                                        salvar();
-                                    }
+//                                    if (Data.getDataByTexto(txt_dataNascimento.getText(), "dd/MM/yyyy") == null) {
+//                                        JOptionPane.showMessageDialog(null, "Data de Nascimento inválida!");
+//                                        txt_dataNascimento.requestFocus();
+//                                    } else {
+                                    salvar();
+//                                    }
                                 }
                             }
                         }
@@ -872,7 +872,11 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             if (!txt_telefone.getText().isEmpty()) {
                 aluno.setFone(txt_telefone.getText());
             }
-            aluno.setDtNascimento(Data.getDataByTexto(txt_dataNascimento.getText(), "dd/MM/yyyy"));
+            if (txt_dataNascimento.getText().replace("/", "").trim().isEmpty()) {
+                aluno.setDtNascimento(null);
+            } else {
+                aluno.setDtNascimento(Data.getDataByTexto(txt_dataNascimento.getText(), "dd/MM/yyyy"));
+            }
             alunoDAO.salvar(aluno);
             JOptionPane.showMessageDialog(null, "Aluno Salvo com sucesso!");
             limpaCampos();
@@ -918,12 +922,12 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             if (aluno.getCodmae() == null) {
                 cbx_mae.setSelectedIndex(0);
             } else {
-                cbx_mae.setSelectedIndex(getMaeByAluno(aluno)+1);
+                cbx_mae.setSelectedIndex(getMaeByAluno(aluno) + 1);
             }
             if (aluno.getCodpai() == null) {
                 cbx_pai.setSelectedIndex(0);
             } else {
-                cbx_pai.setSelectedIndex(getPaiByAluno(aluno)+1);
+                cbx_pai.setSelectedIndex(getPaiByAluno(aluno) + 1);
             }
             txt_endereco.setText(aluno.getEndereco());
             txt_bairro.setText(aluno.getBairro());

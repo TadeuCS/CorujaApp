@@ -41,10 +41,4 @@ public class MaeDAO extends Conexao {
         return (Mae) query.getSingleResult();
     }
 
-    public Mae buscar(String cpf) {
-        em.getTransaction().begin();
-        query = em.createNamedQuery("Mae.findByCpf").setParameter("cpf", cpf);
-        em.getTransaction().commit();
-        return (Mae) query.getSingleResult();
-    }
 }

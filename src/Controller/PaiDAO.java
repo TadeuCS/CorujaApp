@@ -39,10 +39,10 @@ public class PaiDAO extends Conexao {
         em.getTransaction().commit();
         return (Pai) query.getSingleResult();
     }
-    public Pai buscar(String cpf) {
-        em.getTransaction().begin();
-        query = em.createNamedQuery("Pai.findByCpf").setParameter("cpf", cpf);
-        em.getTransaction().commit();
-        return (Pai) query.getSingleResult();
-    }
+//    public Pai buscar(String cpf) {
+//        em.getTransaction().begin();
+//        query = em.createNamedQuery("Pai.findByCpf").setParameter("cpf", cpf);
+//        em.getTransaction().commit();
+//        return (Pai) query.getSingleResult();
+//    }
 }
