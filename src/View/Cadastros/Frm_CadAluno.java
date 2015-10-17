@@ -715,6 +715,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setEnabledFields(boolean tipo) {
+        cbx_nonoDigito.setEnabled(tipo);
         txt_nome.setEnabled(tipo);
         cbx_serie.setEnabled(tipo);
         cbx_pai.setEnabled(tipo);
@@ -764,6 +765,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
     private void carregaSeries() {
         try {
             cbx_serie.removeAllItems();
+            cbx_serie.addItem("Selecione uma Série");
             serieDAO = new SerieDAO();
             for (Serie serie : serieDAO.listar()) {
                 cbx_serie.addItem(serie.getNome());
@@ -854,7 +856,9 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                 aluno.setCodaluno(Integer.parseInt(txt_codigo.getText()));
             }
             aluno.setNome(txt_nome.getText().trim());
+            if(cbx_serie.getSelectedIndex()!=0){
             aluno.setCodserie(serieDAO.buscar(cbx_serie.getSelectedItem().toString()));
+            }
             if (cbx_pai.getSelectedIndex() != 0) {
                 aluno.setCodpai(pais.get(cbx_pai.getSelectedIndex() - 1));
             }
@@ -892,6 +896,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             alunoDAO = new AlunoDAO();
             TableConfig.limpaTabela(tb_alunos);
             for (Aluno aluno : alunoDAO.listar()) {
+                System.out.println(alunoDAO.listar().size());
                 String pai;
                 String mae;
                 if (aluno.getCodpai() == null) {
@@ -918,7 +923,11 @@ public class Frm_CadAluno extends javax.swing.JFrame {
         try {
             txt_codigo.setText(aluno.getCodaluno().toString());
             txt_nome.setText(aluno.getNome());
+            if(aluno.getCodserie()!=null){
             cbx_serie.setSelectedItem(aluno.getCodserie().getNome());
+            }else{
+                cbx_serie.setSelectedIndex(0);
+            }
             if (aluno.getCodmae() == null) {
                 cbx_mae.setSelectedIndex(0);
             } else {

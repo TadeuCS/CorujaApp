@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Mae.findByEmail", query = "SELECT p FROM Mae p WHERE p.email = :email"),
     @NamedQuery(name = "Mae.findByCpf", query = "SELECT p FROM Mae p WHERE p.cpf = :cpf")})
 public class Mae implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,14 +45,13 @@ public class Mae implements Serializable {
     @Basic(optional = false)
     @Column(name = "NOME")
     private String nome;
-    @Column(name = "FONE",nullable = true)
+    @Column(name = "FONE", nullable = true)
     private String fone;
     @Column(name = "EMAIL")
     private String email;
     @Basic(optional = false)
-    @Column(name = "CPF",nullable = false)
+    @Column(name = "CPF", nullable = false)
     private String cpf;
-    @Basic(optional = false)
     @OneToMany(mappedBy = "codmae")
     private List<Aluno> alunoList;
 
@@ -141,5 +141,5 @@ public class Mae implements Serializable {
     public String toString() {
         return "Model.Mae[ codmae=" + codmae + " ]";
     }
-    
+
 }
