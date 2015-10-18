@@ -6,12 +6,15 @@
 package View.Cadastros;
 
 import Controller.MaeDAO;
+import Controller.ResponsavelDAO;
 import Model.Mae;
 import Util.Classes.LowerDocument;
 import Util.Classes.TableConfig;
 import Util.Classes.UpperDocument;
 import Util.Classes.ValidarCGCCPF;
 import javax.swing.JOptionPane;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -50,6 +53,7 @@ public class Frm_CadMae extends javax.swing.JFrame {
         txt_cpf = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
         txt_email = new javax.swing.JTextField();
+        chx_nonoDigito = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txt_filtro = new javax.swing.JTextField();
@@ -145,6 +149,13 @@ public class Frm_CadMae extends javax.swing.JFrame {
             }
         });
 
+        chx_nonoDigito.setText("9 digito");
+        chx_nonoDigito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chx_nonoDigitoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -161,19 +172,19 @@ public class Frm_CadMae extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1))
                     .addComponent(txt_telefone))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                        .addComponent(chx_nonoDigito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_email, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_nome)))
+                        .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_nome))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -186,14 +197,15 @@ public class Frm_CadMae extends javax.swing.JFrame {
                         .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel1))
                     .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                .addGap(11, 11, 11)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txt_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(txt_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chx_nonoDigito))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -224,6 +236,11 @@ public class Frm_CadMae extends javax.swing.JFrame {
             }
         });
         tb_maes.getTableHeader().setReorderingAllowed(false);
+        tb_maes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tb_maesMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tb_maes);
         if (tb_maes.getColumnModel().getColumnCount() > 0) {
             tb_maes.getColumnModel().getColumn(0).setMinWidth(80);
@@ -249,7 +266,7 @@ public class Frm_CadMae extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 86, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -289,7 +306,7 @@ public class Frm_CadMae extends javax.swing.JFrame {
                 .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_apagar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(487, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -382,14 +399,8 @@ public class Frm_CadMae extends javax.swing.JFrame {
             try {
                 mae = new Mae();
                 maeDAO = new MaeDAO();
-                mae = maeDAO.findByCodigo(Integer.parseInt(tb_maes.getValueAt(tb_maes.getSelectedRow(), 2).toString()));
-                txt_codigo.setText(mae.getCodmae().toString());
-                txt_nome.setText(mae.getNome());
-                txt_telefone.setText(mae.getFone());
-                txt_cpf.setText(mae.getCpf());
-                if (!mae.getEmail().isEmpty()) {
-                    txt_email.setText(mae.getEmail());
-                }
+                mae = maeDAO.findByCodigo(Integer.parseInt(tb_maes.getValueAt(tb_maes.getSelectedRow(), 0).toString()));
+                setMaeNaTela(mae);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Erro ao carregar os dados da Mae!\n" + e);
             }
@@ -411,6 +422,17 @@ public class Frm_CadMae extends javax.swing.JFrame {
     private void txt_emailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_emailFocusLost
         btn_salvar.requestFocus();
     }//GEN-LAST:event_txt_emailFocusLost
+
+    private void chx_nonoDigitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chx_nonoDigitoActionPerformed
+        trataNonoDigito();
+    }//GEN-LAST:event_chx_nonoDigitoActionPerformed
+
+    private void tb_maesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_maesMousePressed
+        if (tb_maes.getSelectedRowCount() == 1) {
+            maeDAO = new MaeDAO();
+            setMaeNaTela(maeDAO.findByCodigo(Integer.parseInt(tb_maes.getValueAt(tb_maes.getSelectedRow(), 0).toString())));
+        }
+    }//GEN-LAST:event_tb_maesMousePressed
 
     /**
      * @param args the command line arguments
@@ -456,6 +478,7 @@ public class Frm_CadMae extends javax.swing.JFrame {
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_novo;
     private javax.swing.JButton btn_salvar;
+    private javax.swing.JCheckBox chx_nonoDigito;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -483,6 +506,7 @@ public class Frm_CadMae extends javax.swing.JFrame {
         txt_email.setEnabled(b);
         txt_telefone.setEnabled(b);
         txt_filtro.setEnabled(!b);
+        chx_nonoDigito.setEnabled(b);
     }
 
     private void setEnabledButtons(boolean b) {
@@ -532,6 +556,7 @@ public class Frm_CadMae extends javax.swing.JFrame {
         txt_email.setText(null);
         txt_telefone.setText(null);
         txt_filtro.setText(null);
+        chx_nonoDigito.setSelected(false);
         setEnabledButtons(true);
     }
 
@@ -557,10 +582,10 @@ public class Frm_CadMae extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Mae removida com sucesso!\n");
             setEnabledButtons(true);
         } catch (Exception e) {
-            if(e.toString().contains("MySQLIntegrityConstraintViolationException")==true){
-            JOptionPane.showMessageDialog(null, "Impossivel excluír esta mãe porque a mesma tem alunos vinculados!\n");    
-            }else{
-            JOptionPane.showMessageDialog(null, "Erro ao remover a Mãe!\n" + e);
+            if (e.toString().contains("MySQLIntegrityConstraintViolationException") == true) {
+                JOptionPane.showMessageDialog(null, "Impossivel excluír esta mãe porque a mesma tem alunos vinculados!\n");
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao remover a Mãe!\n" + e);
             }
         }
     }
@@ -568,5 +593,51 @@ public class Frm_CadMae extends javax.swing.JFrame {
     private void setFieldsCase() {
         txt_nome.setDocument(new UpperDocument(255));
         txt_email.setDocument(new LowerDocument(255));
+    }
+
+    private void trataNonoDigito() {
+        if (chx_nonoDigito.isSelected()) {
+            try {
+                txt_telefone.setValue(null);
+                MaskFormatter cpf = new MaskFormatter("(##) #####-####");
+                txt_telefone.setFormatterFactory(
+                        new DefaultFormatterFactory(cpf));
+                txt_telefone.requestFocus();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao inserir o nono digito!\n" + e);
+            }
+        } else {
+            try {
+                txt_telefone.setValue(null);
+                MaskFormatter cpf = new MaskFormatter("(##) ####-####");
+                txt_telefone.setFormatterFactory(
+                        new DefaultFormatterFactory(cpf));
+                txt_telefone.requestFocus();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao inserir o nono digito!\n" + e);
+            }
+        }
+    }
+
+    private void setMaeNaTela(Mae mae) {
+        txt_codigo.setText(mae.getCodmae().toString());
+        txt_nome.setText(mae.getNome());
+        if (mae.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").length() < 11) {
+            chx_nonoDigito.setSelected(false);
+            trataNonoDigito();
+            if (mae.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").length() == 8) {
+                txt_telefone.setText("34" + mae.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
+            } else {
+                txt_telefone.setText("34" + mae.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
+            }
+        } else {
+            chx_nonoDigito.setSelected(true);
+            trataNonoDigito();
+            txt_telefone.setText(mae.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
+        }
+        txt_cpf.setText(mae.getCpf().replace(".", "").replace("/", "").replace("-", ""));
+        if (!mae.getEmail().isEmpty()) {
+            txt_email.setText(mae.getEmail());
+        }
     }
 }

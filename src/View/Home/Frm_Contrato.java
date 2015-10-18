@@ -201,14 +201,14 @@ public class Frm_Contrato extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_remover, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_removerTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_inserir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_inserirTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -297,7 +297,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
                     .addGroup(pnl_fundoLayout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(barra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(barra, javax.swing.GroupLayout.DEFAULT_SIZE, 1063, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_gerar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(8, 8, 8)))
@@ -375,7 +375,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
                 tb_responsaveis.getValueAt(tb_responsaveis.getSelectedRow(), 1).toString(),
                 tb_responsaveis.getValueAt(tb_responsaveis.getSelectedRow(), 2).toString(),
                 tb_responsaveis.getValueAt(tb_responsaveis.getSelectedRow(), 3).toString()};
-            addResponsavel(tb_responsaveis.getValueAt(0, 0).toString());
+            addResponsavel(tb_responsaveis.getValueAt(tb_responsaveis.getSelectedRow(), 0).toString());
             TableConfig.getModel(tb_responsaveis2).addRow(linha);
 //            TableConfig.getModel(tb_responsaveis).removeRow(tb_responsaveis.getSelectedRow());
         } else {
@@ -390,7 +390,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
                 tb_responsaveis2.getValueAt(tb_responsaveis2.getSelectedRow(), 1).toString(),
                 tb_responsaveis2.getValueAt(tb_responsaveis2.getSelectedRow(), 2).toString(),
                 tb_responsaveis2.getValueAt(tb_responsaveis2.getSelectedRow(), 3).toString()};
-            removeResponsavel(tb_responsaveis2.getValueAt(0, 0).toString());
+            removeResponsavel(tb_responsaveis2.getValueAt(tb_responsaveis2.getSelectedRow(), 0).toString());
 //            TableConfig.getModel(tb_responsaveis).addRow(linha);
             TableConfig.getModel(tb_responsaveis2).removeRow(tb_responsaveis2.getSelectedRow());
         } else {
@@ -487,8 +487,6 @@ public class Frm_Contrato extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JLabel lb_logo;
-    private javax.swing.JLabel lb_logo1;
     private javax.swing.JLabel lb_logo2;
     private javax.swing.JPanel pnl_fundo;
     private javax.swing.JRadioButton rbt_parcial;
@@ -532,23 +530,19 @@ public class Frm_Contrato extends javax.swing.JFrame {
 
     private void gerarRelatorioByList(Responsavel responsavel, String destino) {
         GeraRelatorios geraRelatorios = new GeraRelatorios();
+        String diretorio=null;
         if (rbt_parcial.getSelectedObjects() != null) {
-            geraRelatorios.imprimirRelatorioEmCodigo("SELECT\n"
-                    + "a.`NOME` nomeAluno,s.`NOME` serie,s.`PRECO` vlrAPrazo,r.`CODRESPONSAVEL` codigo,r.`NOME` nomeResponsavel,r.`CPF` cpf\n"
-                    + "from aluno a\n"
-                    + "inner join responsavel r on a.CODRESPONSAVEL=r.CODRESPONSAVEL\n"
-                    + "inner join serie s on s.CODSERIE=a.CODSERIE\n"
-                    + "where r.`CODRESPONSAVEL` = " + responsavel.getCodresponsavel(), "src/Relatorios/Rel_ContratoParcial.jasper",
-                    getParametros(responsavel), destino);
+            diretorio="src/Relatorios/Rel_ContratoParcial.jasper";
         } else {
-            geraRelatorios.imprimirRelatorioEmCodigo("SELECT\n"
-                    + "a.`NOME` nomeAluno,s.`NOME` serie,s.`PRECO` vlrAPrazo,r.`CODRESPONSAVEL` codigo,r.`NOME` nomeResponsavel,r.`CPF` cpf\n"
-                    + "from aluno a\n"
-                    + "inner join responsavel r on a.CODRESPONSAVEL=r.CODRESPONSAVEL\n"
-                    + "inner join serie s on s.CODSERIE=a.CODSERIE\n"
-                    + "where r.`CODRESPONSAVEL` = " + responsavel.getCodresponsavel(), "src/Relatorios/Rel_ContratoTotal.jasper",
-                    getParametros(responsavel), destino);
+            diretorio="src/Relatorios/Rel_ContratoTotal.jasper";
         }
+        geraRelatorios.imprimirRelatorioEmCodigo("SELECT\n"
+                + "a.`NOME` nomeAluno,s.`NOME` serie,s.`PRECO` vlrAPrazo,r.`CODRESPONSAVEL` codigo,r.`NOME` nomeResponsavel,r.`CPF` cpf\n"
+                + "from aluno a\n"
+                + "inner join responsavel r on a.CODRESPONSAVEL=r.CODRESPONSAVEL\n"
+                + "inner join serie s on s.CODSERIE=a.CODSERIE\n"
+                + "where r.`CODRESPONSAVEL` = " + responsavel.getCodresponsavel(), diretorio,
+                getParametros(responsavel), destino);
     }
 
     private Map getParametros(Responsavel responsavel) {
@@ -590,8 +584,12 @@ public class Frm_Contrato extends javax.swing.JFrame {
         if (result == JFileChooser.CANCEL_OPTION) {
         } else {
             String caminho = fileChooser.getSelectedFile().getPath();
+            if(caminho.endsWith(".png")||caminho.endsWith(".jpg")||caminho.endsWith(".bmp")){
             props.altera("logo", caminho);
             carregaLogo(caminho);
+            }else{
+                JOptionPane.showMessageDialog(null, "Formato inválido tente uma imagem com a extensão PNG, JPG ou BMP!");
+            }
         }
     }
 

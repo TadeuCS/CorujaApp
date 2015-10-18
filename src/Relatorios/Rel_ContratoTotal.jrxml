@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Rel_ContratoTotal" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="e1992d99-3ba6-4f98-8de3-7221bd7b2369">
 	<property name="ireport.zoom" value="1.7715610000000022"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="281"/>
+	<property name="ireport.y" value="137"/>
 	<parameter name="vlrAPrazo" class="java.lang.Double"/>
 	<parameter name="logo" class="java.lang.String"/>
 	<queryString>
@@ -72,14 +72,14 @@ Tel.: (34) 3814-9393 – Email: corujabooks.books@yahoo.com.br
 				<reportElement x="0" y="119" width="554" height="20" forecolor="#999999" backcolor="#CCCCCC" uuid="d2c2d903-8cf4-4eaa-ab2d-8b8588cc2b2d"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="117" y="124" width="41" height="20" uuid="36feffdd-da3b-4e11-a6a9-d3d45791cc81"/>
+				<reportElement x="117" y="119" width="41" height="20" uuid="36feffdd-da3b-4e11-a6a9-d3d45791cc81"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[NOME:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="408" y="120" width="28" height="20" uuid="d4f1e09a-355b-421f-83c3-15e3ae7cfa61"/>
+				<reportElement x="408" y="119" width="28" height="20" uuid="d4f1e09a-355b-421f-83c3-15e3ae7cfa61"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
@@ -101,22 +101,22 @@ CLÁUSULA PRIMEIRA: O objeto do presente instrumento é a venda de material did�
 				<text><![CDATA[CONTRATO DE COMPRA E VENDA DE MATERIAL DIDÁTICO]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="52" y="123" width="65" height="20" uuid="49b660e7-1113-4d07-b3a0-a8c34a5a3f0c"/>
+				<reportElement x="52" y="119" width="65" height="20" uuid="49b660e7-1113-4d07-b3a0-a8c34a5a3f0c"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="158" y="122" width="250" height="20" uuid="d52c21d2-15d1-4e4a-8f0f-723818ed5d0e"/>
+				<reportElement x="158" y="119" width="250" height="20" uuid="d52c21d2-15d1-4e4a-8f0f-723818ed5d0e"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nomeResponsavel}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="445" y="120" width="107" height="20" uuid="5976bbd1-3303-4a66-aabd-011c5866f167"/>
+				<reportElement x="445" y="119" width="107" height="20" uuid="5976bbd1-3303-4a66-aabd-011c5866f167"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="123" width="53" height="20" uuid="23a3221a-2c4c-425d-a311-7a4330f7d7bb"/>
+				<reportElement x="0" y="119" width="53" height="20" uuid="23a3221a-2c4c-425d-a311-7a4330f7d7bb"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
@@ -209,7 +209,7 @@ CLÁUSULA PRIMEIRA: O objeto do presente instrumento é a venda de material did�
 			<textField isBlankWhenNull="true">
 				<reportElement x="1" y="0" width="128" height="15" uuid="d41f6429-d82f-4034-a9f7-14737c4022f1"/>
 				<textElement verticalAlignment="Middle">
-					<font size="7" isBold="true"/>
+					<font fontName="Arial" size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nomeAluno}]]></textFieldExpression>
 			</textField>

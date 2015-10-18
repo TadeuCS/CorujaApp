@@ -131,7 +131,6 @@ public class Frm_RelAlunosByResponsavel extends javax.swing.JFrame {
         try {
             Map parametros = new HashMap();
             geraRelatorios = new GeraRelatorios();
-            System.out.println(responsaveis.get(cbx_responsavel.getSelectedIndex()).getCodresponsavel());
             parametros.put("codresponsavel", responsaveis.get(cbx_responsavel.getSelectedIndex()).getCodresponsavel());
             if (geraRelatorios.imprimirRelatorioSQLNoRelatorio(parametros, "Rel_AlunosByResponsavel.jasper", "Relatório de Alunos Por Responsável") == false) {
                 if (geraRelatorios.imprimirRelatorioSQLNoRelatorio(parametros, "src/Relatorios/Rel_AlunosByResponsavel.jasper", "Relatório de Alunos Por Responsável") == true) {

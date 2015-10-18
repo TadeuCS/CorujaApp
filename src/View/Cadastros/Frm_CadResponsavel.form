@@ -440,7 +440,7 @@
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="txt_celular" min="-2" pref="96" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="cbx_nonoDigito" max="32767" attributes="0"/>
+                                          <Component id="chx_nonoDigito" max="32767" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -495,7 +495,7 @@
                               <Component id="txt_email" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txt_celular" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbx_nonoDigito" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="chx_nonoDigito" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -644,12 +644,12 @@
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_cidadeFocusLost"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="cbx_nonoDigito">
+                <Component class="javax.swing.JCheckBox" name="chx_nonoDigito">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="9 digito"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbx_nonoDigitoActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chx_nonoDigitoActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

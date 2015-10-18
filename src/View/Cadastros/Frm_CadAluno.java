@@ -91,7 +91,9 @@ public class Frm_CadAluno extends javax.swing.JFrame {
         btn_cadPai = new javax.swing.JButton();
         btn_cadMae = new javax.swing.JButton();
         btn_cadResponsavel = new javax.swing.JButton();
-        cbx_nonoDigito = new javax.swing.JCheckBox();
+        chx_nonoDigito = new javax.swing.JCheckBox();
+        lb_idade = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         btn_novo = new javax.swing.JButton();
         btn_salvar = new javax.swing.JButton();
         btn_cancelar = new javax.swing.JButton();
@@ -115,7 +117,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
 
         jLabel10.setText("Email:");
 
-        jLabel11.setText("Celular");
+        jLabel11.setText("Telefone *:");
 
         try {
             txt_telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
@@ -143,7 +145,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
 
         txt_codigo.setEnabled(false);
 
-        jLabel13.setText("Data Nascimento *:");
+        jLabel13.setText("Data Nascimento:");
 
         jLabel14.setText("Pai:");
 
@@ -173,7 +175,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             }
         });
 
-        jLabel17.setText("Série *:");
+        jLabel17.setText("Série:");
 
         jLabel6.setText("Bairro *:");
 
@@ -215,12 +217,19 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             }
         });
 
-        cbx_nonoDigito.setText("9 digitos");
-        cbx_nonoDigito.addActionListener(new java.awt.event.ActionListener() {
+        chx_nonoDigito.setText("9 digitos");
+        chx_nonoDigito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbx_nonoDigitoActionPerformed(evt);
+                chx_nonoDigitoActionPerformed(evt);
             }
         });
+
+        lb_idade.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
+        lb_idade.setForeground(new java.awt.Color(0, 51, 102));
+        lb_idade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_idade.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel19.setText("Idade:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -264,8 +273,12 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(txt_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbx_nonoDigito)
+                        .addComponent(chx_nonoDigito)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lb_idade, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_dataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -332,13 +345,18 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                         .addComponent(cbx_responsavel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btn_cadResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(txt_dataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13)
-                    .addComponent(cbx_nonoDigito))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11)
+                            .addComponent(txt_dataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13)
+                            .addComponent(chx_nonoDigito)
+                            .addComponent(jLabel19))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lb_idade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         btn_novo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Util/Img/adicionar.png"))); // NOI18N
@@ -598,8 +616,8 @@ public class Frm_CadAluno extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_dataNascimentoKeyPressed
 
-    private void cbx_nonoDigitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_nonoDigitoActionPerformed
-        if (cbx_nonoDigito.isSelected()) {
+    private void chx_nonoDigitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chx_nonoDigitoActionPerformed
+        if (chx_nonoDigito.isSelected()) {
             try {
                 txt_telefone.setValue(null);
                 MaskFormatter cpf = new MaskFormatter("(##) #####-####");
@@ -620,7 +638,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Erro ao inserir o nono digito!\n" + e);
             }
         }
-    }//GEN-LAST:event_cbx_nonoDigitoActionPerformed
+    }//GEN-LAST:event_chx_nonoDigitoActionPerformed
 
     private void txt_filtroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filtroKeyReleased
         TableConfig.filtrar(tb_alunos, txt_filtro);
@@ -678,10 +696,10 @@ public class Frm_CadAluno extends javax.swing.JFrame {
     private javax.swing.JButton btn_novo;
     private javax.swing.JButton btn_salvar;
     private javax.swing.JComboBox cbx_mae;
-    private javax.swing.JCheckBox cbx_nonoDigito;
     private javax.swing.JComboBox cbx_pai;
     private javax.swing.JComboBox cbx_responsavel;
     private javax.swing.JComboBox cbx_serie;
+    private javax.swing.JCheckBox chx_nonoDigito;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -691,6 +709,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -698,6 +717,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lb_idade;
     private javax.swing.JPanel pnl_cadastroAluno;
     private javax.swing.JPanel pnl_fundo;
     private javax.swing.JPanel pnl_pesquisaAluno;
@@ -715,7 +735,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setEnabledFields(boolean tipo) {
-        cbx_nonoDigito.setEnabled(tipo);
+        chx_nonoDigito.setEnabled(tipo);
         txt_nome.setEnabled(tipo);
         cbx_serie.setEnabled(tipo);
         cbx_pai.setEnabled(tipo);
@@ -896,7 +916,6 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             alunoDAO = new AlunoDAO();
             TableConfig.limpaTabela(tb_alunos);
             for (Aluno aluno : alunoDAO.listar()) {
-                System.out.println(alunoDAO.listar().size());
                 String pai;
                 String mae;
                 if (aluno.getCodpai() == null) {
@@ -946,13 +965,52 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                 txt_email.setText(aluno.getEmail());
             }
             cbx_responsavel.setSelectedItem(aluno.getCodresponsavel().getNome());
-            txt_telefone.setText(aluno.getFone());
+            if (aluno.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").length() < 11) {
+            chx_nonoDigito.setSelected(false);
+            trataNonoDigito();
+            if (aluno.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").length() == 8) {
+                txt_telefone.setText("34" + aluno.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
+            } else {
+                txt_telefone.setText("34" + aluno.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
+            }
+        } else {
+            chx_nonoDigito.setSelected(true);
+            trataNonoDigito();
+            txt_telefone.setText(aluno.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
+        }
+            if(aluno.getDtNascimento()!=null){
             txt_dataNascimento.setText(Data.getDataByDate(aluno.getDtNascimento(), "dd/MM/yyyy"));
+            lb_idade.setText(Data.getIdade(aluno.getDtNascimento()));
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar o Aluno na tela!\n" + e);
         }
     }
 
+         private void trataNonoDigito() {
+        if (chx_nonoDigito.isSelected()) {
+            try {
+                txt_telefone.setValue(null);
+                MaskFormatter cpf = new MaskFormatter("(##) #####-####");
+                txt_telefone.setFormatterFactory(
+                        new DefaultFormatterFactory(cpf));
+                txt_telefone.requestFocus();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao inserir o nono digito!\n" + e);
+            }
+        } else {
+            try {
+                txt_telefone.setValue(null);
+                MaskFormatter cpf = new MaskFormatter("(##) ####-####");
+                txt_telefone.setFormatterFactory(
+                        new DefaultFormatterFactory(cpf));
+                txt_telefone.requestFocus();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao inserir o nono digito!\n" + e);
+            }
+        }
+    }
+         
     private void removeAluno(int codigo) {
         try {
             alunoDAO = new AlunoDAO();

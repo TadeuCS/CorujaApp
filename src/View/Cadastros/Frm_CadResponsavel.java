@@ -90,7 +90,7 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
         txt_bairro = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txt_cidade = new javax.swing.JTextField();
-        cbx_nonoDigito = new javax.swing.JCheckBox();
+        chx_nonoDigito = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Responsável Financeiro");
@@ -359,10 +359,10 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
             }
         });
 
-        cbx_nonoDigito.setText("9 digito");
-        cbx_nonoDigito.addActionListener(new java.awt.event.ActionListener() {
+        chx_nonoDigito.setText("9 digito");
+        chx_nonoDigito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbx_nonoDigitoActionPerformed(evt);
+                chx_nonoDigitoActionPerformed(evt);
             }
         });
 
@@ -394,7 +394,7 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txt_celular, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cbx_nonoDigito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(chx_nonoDigito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -439,7 +439,7 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
                     .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(txt_celular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbx_nonoDigito))
+                    .addComponent(chx_nonoDigito))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -560,8 +560,8 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
         btn_salvar.requestFocus();
     }//GEN-LAST:event_txt_cidadeFocusLost
 
-    private void cbx_nonoDigitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_nonoDigitoActionPerformed
-        if (cbx_nonoDigito.isSelected()) {
+    private void chx_nonoDigitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chx_nonoDigitoActionPerformed
+        if (chx_nonoDigito.isSelected()) {
             try {
                 txt_celular.setValue(null);
                 MaskFormatter cpf = new MaskFormatter("(##) #####-####");
@@ -582,7 +582,7 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Erro ao inserir o nono digito!\n" + e);
             }
         }
-    }//GEN-LAST:event_cbx_nonoDigitoActionPerformed
+    }//GEN-LAST:event_chx_nonoDigitoActionPerformed
 
     private void btn_importarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_importarActionPerformed
         setEnabledButtons(false);
@@ -657,7 +657,7 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
     private javax.swing.JButton btn_importar;
     private javax.swing.JButton btn_novo;
     private javax.swing.JButton btn_salvar;
-    private javax.swing.JCheckBox cbx_nonoDigito;
+    private javax.swing.JCheckBox chx_nonoDigito;
     private javax.swing.ButtonGroup grupoPais;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -711,6 +711,7 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
         txt_endereco.setEnabled(b);
         txt_bairro.setEnabled(b);
         txt_cidade.setEnabled(b);
+        chx_nonoDigito.setEnabled(b);
     }
 
     private void setEnabledButtons(boolean b) {
@@ -773,6 +774,7 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
         txt_endereco.setText(null);
         txt_bairro.setText(null);
         txt_cidade.setText(null);
+        chx_nonoDigito.setSelected(false);
         setEnabledButtons(true);
     }
 
@@ -850,8 +852,20 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
             txt_codigo.setText(resp.getCodresponsavel().toString());
             txt_nome.setText(resp.getNome());
             txt_telefone.setText(resp.getFone());
-            txt_celular.setText(resp.getCelular());
-            txt_cpf.setText(resp.getCpf());
+            if (resp.getCelular().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").length() < 11) {
+                chx_nonoDigito.setSelected(false);
+                trataNonoDigito();
+                if (resp.getCelular().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").length() == 8) {
+                    txt_celular.setText("34" + resp.getCelular().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
+                } else {
+                    txt_celular.setText("34" + resp.getCelular().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
+                }
+            } else {
+                chx_nonoDigito.setSelected(true);
+                trataNonoDigito();
+                txt_celular.setText(resp.getCelular().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
+            }
+            txt_cpf.setText(resp.getCpf().replace(".", "").replace("/", "").replace("-", ""));
             if (resp.getEmail() != null) {
                 txt_email.setText(resp.getEmail());
             }
@@ -867,6 +881,30 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
         }
     }
 
+    private void trataNonoDigito() {
+        if (chx_nonoDigito.isSelected()) {
+            try {
+                txt_telefone.setValue(null);
+                MaskFormatter cpf = new MaskFormatter("(##) #####-####");
+                txt_telefone.setFormatterFactory(
+                        new DefaultFormatterFactory(cpf));
+                txt_telefone.requestFocus();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao inserir o nono digito!\n" + e);
+            }
+        } else {
+            try {
+                txt_telefone.setValue(null);
+                MaskFormatter cpf = new MaskFormatter("(##) ####-####");
+                txt_telefone.setFormatterFactory(
+                        new DefaultFormatterFactory(cpf));
+                txt_telefone.requestFocus();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao inserir o nono digito!\n" + e);
+            }
+        }
+    }
+
     private void setFieldsCase() {
         txt_nome.setDocument(new UpperDocument(255));
         txt_email.setDocument(new LowerDocument(255));
@@ -876,11 +914,11 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
         txt_cidade.setDocument(new UpperDocument(255));
     }
 
-    private void setDadosNaTelaByPai(Pai pai) {
-        txt_nome.setText(pai.getNome());
-        txt_telefone.setText(pai.getFone());
-        txt_cpf.setText(pai.getCpf());
-        txt_email.setText(pai.getEmail());
+    private void setDadosNaTelaByPai(Pai resp) {
+        txt_nome.setText(resp.getNome());
+        txt_telefone.setText(resp.getFone());
+        txt_cpf.setText(resp.getCpf());
+        txt_email.setText(resp.getEmail());
         txt_celular.requestFocus();
     }
 

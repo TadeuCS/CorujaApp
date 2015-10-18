@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Rel_AlunosByResponsavel" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b9ae204e-5d82-4c94-98f6-932a413e1880">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.9487171000000014"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
@@ -71,7 +71,7 @@ where a.codresponsavel=$P{codresponsavel}]]>
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="25" splitType="Stretch">
+		<band height="26" splitType="Stretch">
 			<staticText>
 				<reportElement style="Column header" x="1" y="0" width="61" height="25" forecolor="#736343" uuid="8972f619-dcb2-459a-9269-60fb3784164b"/>
 				<textElement verticalAlignment="Middle">
@@ -86,21 +86,21 @@ where a.codresponsavel=$P{codresponsavel}]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement style="Column header" x="62" y="0" width="270" height="25" forecolor="#736343" uuid="d574351f-231b-4b9e-a692-ecab1ee3e085"/>
+				<reportElement style="Column header" x="62" y="0" width="257" height="25" forecolor="#736343" uuid="d574351f-231b-4b9e-a692-ecab1ee3e085"/>
 				<textElement verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
 				<text><![CDATA[   NOME]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="459" y="0" width="96" height="25" forecolor="#736343" uuid="cd019c9e-2366-4fa7-86f2-5d76dc07bbb1"/>
+				<reportElement style="Column header" x="446" y="0" width="109" height="25" forecolor="#736343" uuid="cd019c9e-2366-4fa7-86f2-5d76dc07bbb1"/>
 				<textElement verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
 				<text><![CDATA[TELEFONE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="332" y="0" width="127" height="25" forecolor="#736343" uuid="19a6a15e-8328-4e36-9fd1-d96c447e42d7"/>
+				<reportElement style="Column header" x="319" y="0" width="127" height="25" forecolor="#736343" uuid="19a6a15e-8328-4e36-9fd1-d96c447e42d7"/>
 				<textElement verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
@@ -109,27 +109,27 @@ where a.codresponsavel=$P{codresponsavel}]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="15" splitType="Stretch">
+		<band height="17" splitType="Stretch">
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="15" uuid="abdc5cde-dd32-4a83-b303-156897ea7dd9"/>
+				<textField>
+					<reportElement x="319" y="0" width="127" height="15" uuid="3874758c-f3f1-49ba-ade2-339869af1d53"/>
+					<textElement>
+						<font fontName="Arial" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{serie}]]></textFieldExpression>
+				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" x="0" y="0" width="62" height="15" uuid="16acb0ea-19e9-41ec-acb9-3adb0de47063"/>
 					<textFieldExpression><![CDATA[$F{codaluno}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="72" y="0" width="260" height="15" uuid="8825886a-ae42-4237-b548-3b40415b4ee8"/>
+					<reportElement style="Detail" x="64" y="0" width="255" height="15" uuid="8825886a-ae42-4237-b548-3b40415b4ee8"/>
 					<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="459" y="0" width="96" height="15" uuid="a9bf464d-f92d-41d5-97ce-4af95e358e3b"/>
+					<reportElement style="Detail" x="446" y="0" width="109" height="15" uuid="a9bf464d-f92d-41d5-97ce-4af95e358e3b"/>
 					<textFieldExpression><![CDATA[$F{fone}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="332" y="0" width="127" height="15" uuid="3874758c-f3f1-49ba-ade2-339869af1d53"/>
-					<textElement>
-						<font fontName="Arial" size="12"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{serie}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
