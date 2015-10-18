@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<JobInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pranas="http://www.pranas.net/2012/XMLSchema" pranas:Version="1" JobID="7c2023dc-b3b6-42a1-9bc0-f85d2b9dbe8a" AllNonSystemDb="false" TempFolder="" LogFolder="" DbTimeout="10000" UseWebLog="false">
+  <MySqlServer SqlServerType="MySQLTcpIpServer">
+    <SQLExportOptions SQLHeaderComment="" SQLIncludeComments="true" SqlUseTransaction="false" SqlDisableFk="false" SQLCompatibility="NONE" SqlDropDatabase="false" SqlStructure="true" SqlDropTable="false" SqlIfNotExists="true" SqlAutoIncrement="true" SqlBackQuotes="true" SqlProcedureFunction="false" SqlDates="false" SqlData="true" SqlColumns="true" SqlExtended="true" SqlMaxQuerySize="50000" MaxAllowedPacket="1024" SqlDelayed="false" SqlIgnore="false" SqlHexForBlob="true" SqlType="INSERT" NoCreateDatabaseStatement="false" LockTables="true" Compression="Gzipped" CharSet="utf_8" />
+    <PhpMyAdminServerOptions Server="" User="" Password="" />
+    <TcpIpServerOptions Server="localhost" Port="3306" User="root" Password="SBFCode:DERd5Y53poDkxK+x7sOwLQ==">
+      <SshOptions UseSshTunnel="false" SshServer="" SshPort="22" LocalMappedPort="3306" SshUser="" SshPassword="" />
+    </TcpIpServerOptions>
+  </MySqlServer>
+  <Zip Password="" CompressLevel="Normal" EncryptMethod="Compatible" EncryptStrength="256" Method="MZip" Engine="EInternal" Priority="Normal" CommandLineOptions="" ZipToTemp="false" />
+  <Run BackupInterval="1440" Enable="true" UseService="true" DateTime="2015-10-18T01:35:00" SchedulerAccount="">
+    <RunOnDaysOfWeek />
+  </Run>
+  <Email ZeroConfig="false">
+    <SuccessMail To="tcssistemas2012@gmail.com" From="tcssistemas2012@gmail.com" User="tcssistemas2012@gmail.com" Password="SBFCode:n4/DXd6RBwxfX13jtKgDnA==" SmtpServer="smtp.gmail.com" Port="587" SSL="true" />
+    <FailureMail To="tcssistemas2012@gmail.com" From="tcssistemas2012@gmail.com" User="tcssistemas2012@gmail.com" Password="SBFCode:n4/DXd6RBwxfX13jtKgDnA==" SmtpServer="smtp.gmail.com" Port="587" SSL="true" />
+    <Enable>true</Enable>
+  </Email>
+  <FoldersBackupInfo>
+    <IncludeFileMasks />
+    <ExcludeFileMasks />
+  </FoldersBackupInfo>
+  <BackupToSubFolders>false</BackupToSubFolders>
+  <OutputFormat>DateTime</OutputFormat>
+  <Folders />
+  <Destinations>
+    <Destination pranas:Type="Dropbox" AccessToken="bell07oqg49rmcr4" AccessSecret="SBFCode:eTk/7iPDx/XZwOCqrj02Mw==" Path="CorujaApp" Id="93e9563b-5dbf-43fc-8238-d3eb82e795cb">
+      <Auth2Token AccessToken="SBFCode:8L/NYh1AIcgzlBim3++HIqTGg9zi6kqWIAniSFUVR3RrJwiOUMYQ8r+PlYszTD5An20vkpQs8G7vQrOlDw22ErsRG480eeWR29CIFn6o24U=" TokenType="bearer" />
+      <KeepInfo KeepMonths="2" KeepDays="0" />
+    </Destination>
+  </Destinations>
+  <Databases>
+    <Database>corujadb</Database>
+  </Databases>
+</JobInfo>
