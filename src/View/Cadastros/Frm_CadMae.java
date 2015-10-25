@@ -628,7 +628,9 @@ public class Frm_CadMae extends javax.swing.JFrame {
             if (mae.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").length() == 8) {
                 txt_telefone.setText("34" + mae.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
             } else {
-                txt_telefone.setText("34" + mae.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
+                if(mae.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").length() == 10){
+                txt_telefone.setText(mae.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
+                }
             }
         } else {
             chx_nonoDigito.setSelected(true);

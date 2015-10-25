@@ -94,6 +94,8 @@ public class Frm_CadAluno extends javax.swing.JFrame {
         chx_nonoDigito = new javax.swing.JCheckBox();
         lb_idade = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        txt_dataDesistencia = new javax.swing.JFormattedTextField();
         btn_novo = new javax.swing.JButton();
         btn_salvar = new javax.swing.JButton();
         btn_cancelar = new javax.swing.JButton();
@@ -231,6 +233,25 @@ public class Frm_CadAluno extends javax.swing.JFrame {
 
         jLabel19.setText("Idade:");
 
+        jLabel20.setText("Data desistência:");
+
+        try {
+            txt_dataDesistencia.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txt_dataDesistencia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_dataDesistencia.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_dataDesistenciaFocusLost(evt);
+            }
+        });
+        txt_dataDesistencia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_dataDesistenciaKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -274,7 +295,11 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                         .addComponent(txt_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(chx_nonoDigito)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_dataDesistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(402, 402, 402)
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lb_idade, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -283,7 +308,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_dataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(cbx_serie, 0, 143, Short.MAX_VALUE)
+                        .addComponent(cbx_serie, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_cadSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -353,7 +378,9 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                             .addComponent(txt_dataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13)
                             .addComponent(chx_nonoDigito)
-                            .addComponent(jLabel19))
+                            .addComponent(jLabel19)
+                            .addComponent(txt_dataDesistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel20))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(lb_idade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -650,6 +677,14 @@ public class Frm_CadAluno extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tb_alunosMousePressed
 
+    private void txt_dataDesistenciaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_dataDesistenciaFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_dataDesistenciaFocusLost
+
+    private void txt_dataDesistenciaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_dataDesistenciaKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_dataDesistenciaKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -711,6 +746,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
@@ -725,6 +761,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
     private javax.swing.JTextField txt_bairro;
     private javax.swing.JTextField txt_cidade;
     private javax.swing.JTextField txt_codigo;
+    private javax.swing.JFormattedTextField txt_dataDesistencia;
     private javax.swing.JFormattedTextField txt_dataNascimento;
     private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_endereco;
@@ -747,6 +784,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
         txt_email.setEnabled(tipo);
         txt_telefone.setEnabled(tipo);
         txt_dataNascimento.setEnabled(tipo);
+        txt_dataDesistencia.setEnabled(tipo);
         cbx_responsavel.setEnabled(tipo);
     }
 
@@ -774,6 +812,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
         txt_email.setText(null);
         txt_telefone.setText(null);
         txt_dataNascimento.setText(null);
+        txt_dataDesistencia.setText(null);
         txt_filtro.setText(null);
         cbx_pai.setSelectedIndex(0);
         cbx_mae.setSelectedIndex(0);
@@ -851,12 +890,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                                     JOptionPane.showMessageDialog(null, "Responsável inválido!");
                                     cbx_responsavel.requestFocus();
                                 } else {
-//                                    if (Data.getDataByTexto(txt_dataNascimento.getText(), "dd/MM/yyyy") == null) {
-//                                        JOptionPane.showMessageDialog(null, "Data de Nascimento inválida!");
-//                                        txt_dataNascimento.requestFocus();
-//                                    } else {
                                     salvar();
-//                                    }
                                 }
                             }
                         }
@@ -876,8 +910,8 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                 aluno.setCodaluno(Integer.parseInt(txt_codigo.getText()));
             }
             aluno.setNome(txt_nome.getText().trim());
-            if(cbx_serie.getSelectedIndex()!=0){
-            aluno.setCodserie(serieDAO.buscar(cbx_serie.getSelectedItem().toString()));
+            if (cbx_serie.getSelectedIndex() != 0) {
+                aluno.setCodserie(serieDAO.buscar(cbx_serie.getSelectedItem().toString()));
             }
             if (cbx_pai.getSelectedIndex() != 0) {
                 aluno.setCodpai(pais.get(cbx_pai.getSelectedIndex() - 1));
@@ -900,6 +934,11 @@ public class Frm_CadAluno extends javax.swing.JFrame {
                 aluno.setDtNascimento(null);
             } else {
                 aluno.setDtNascimento(Data.getDataByTexto(txt_dataNascimento.getText(), "dd/MM/yyyy"));
+            }
+            if (txt_dataDesistencia.getText().replace("/", "").trim().isEmpty()) {
+                aluno.setDtDesistencia(null);
+            } else {
+                aluno.setDtDesistencia(Data.getDataByTexto(txt_dataDesistencia.getText(), "dd/MM/yyyy"));
             }
             alunoDAO.salvar(aluno);
             JOptionPane.showMessageDialog(null, "Aluno Salvo com sucesso!");
@@ -942,9 +981,9 @@ public class Frm_CadAluno extends javax.swing.JFrame {
         try {
             txt_codigo.setText(aluno.getCodaluno().toString());
             txt_nome.setText(aluno.getNome());
-            if(aluno.getCodserie()!=null){
-            cbx_serie.setSelectedItem(aluno.getCodserie().getNome());
-            }else{
+            if (aluno.getCodserie() != null) {
+                cbx_serie.setSelectedItem(aluno.getCodserie().getNome());
+            } else {
                 cbx_serie.setSelectedIndex(0);
             }
             if (aluno.getCodmae() == null) {
@@ -966,28 +1005,33 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             }
             cbx_responsavel.setSelectedItem(aluno.getCodresponsavel().getNome());
             if (aluno.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").length() < 11) {
-            chx_nonoDigito.setSelected(false);
-            trataNonoDigito();
-            if (aluno.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").length() == 8) {
-                txt_telefone.setText("34" + aluno.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
+                chx_nonoDigito.setSelected(false);
+                trataNonoDigito();
+                if (aluno.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").length() == 8) {
+                    txt_telefone.setText("34" + aluno.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
+                } else {
+                    if (aluno.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").length() == 10) {
+                        txt_telefone.setText(aluno.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
+                    }
+                }
             } else {
-                txt_telefone.setText("34" + aluno.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
+                chx_nonoDigito.setSelected(true);
+                trataNonoDigito();
+                txt_telefone.setText(aluno.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
             }
-        } else {
-            chx_nonoDigito.setSelected(true);
-            trataNonoDigito();
-            txt_telefone.setText(aluno.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
-        }
-            if(aluno.getDtNascimento()!=null){
-            txt_dataNascimento.setText(Data.getDataByDate(aluno.getDtNascimento(), "dd/MM/yyyy"));
-            lb_idade.setText(Data.getIdade(aluno.getDtNascimento()));
+            if (aluno.getDtNascimento() != null) {
+                txt_dataNascimento.setText(Data.getDataByDate(aluno.getDtNascimento(), "dd/MM/yyyy"));
+                lb_idade.setText(Data.getIdade(aluno.getDtNascimento()));
+            }
+            if (aluno.getDtDesistencia()!= null) {
+                txt_dataDesistencia.setText(Data.getDataByDate(aluno.getDtDesistencia(), "dd/MM/yyyy"));
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar o Aluno na tela!\n" + e);
         }
     }
 
-         private void trataNonoDigito() {
+    private void trataNonoDigito() {
         if (chx_nonoDigito.isSelected()) {
             try {
                 txt_telefone.setValue(null);
@@ -1010,7 +1054,7 @@ public class Frm_CadAluno extends javax.swing.JFrame {
             }
         }
     }
-         
+
     private void removeAluno(int codigo) {
         try {
             alunoDAO = new AlunoDAO();

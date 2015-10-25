@@ -858,7 +858,9 @@ public class Frm_CadResponsavel extends javax.swing.JFrame {
                 if (resp.getCelular().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").length() == 8) {
                     txt_celular.setText("34" + resp.getCelular().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
                 } else {
-                    txt_celular.setText("34" + resp.getCelular().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
+                    if (resp.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").length() == 10) {
+                        txt_telefone.setText(resp.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
+                    }
                 }
             } else {
                 chx_nonoDigito.setSelected(true);

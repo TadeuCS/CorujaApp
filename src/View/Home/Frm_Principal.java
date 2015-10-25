@@ -1,5 +1,6 @@
 package View.Home;
 
+import Util.Classes.GeraRelatorios;
 import View.Cadastros.Frm_CadAluno;
 import View.Cadastros.Frm_CadLivro;
 import View.Cadastros.Frm_CadMae;
@@ -8,7 +9,10 @@ import View.Cadastros.Frm_CadResponsavel;
 import View.Cadastros.Frm_CadSerie;
 import View.Relatorios.Frm_RelAlunosByResponsavel;
 import View.Relatorios.Frm_RelAlunosBySerie;
+import View.Relatorios.Frm_RelAlunosDesistentes;
 import java.awt.Event;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -54,6 +58,7 @@ public class Frm_Principal extends javax.swing.JFrame {
         menu_relatorios = new javax.swing.JMenu();
         item_RelAlunosBySerie = new javax.swing.JMenuItem();
         item_RelAlunosByResponsavel = new javax.swing.JMenuItem();
+        item_RelAlunosByResponsavel1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CorujaApp 1.0");
@@ -350,6 +355,14 @@ public class Frm_Principal extends javax.swing.JFrame {
         });
         menu_relatorios.add(item_RelAlunosByResponsavel);
 
+        item_RelAlunosByResponsavel1.setText("Alunos Desistentes");
+        item_RelAlunosByResponsavel1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                item_RelAlunosByResponsavel1ActionPerformed(evt);
+            }
+        });
+        menu_relatorios.add(item_RelAlunosByResponsavel1);
+
         Menu_barra.add(menu_relatorios);
 
         setJMenuBar(Menu_barra);
@@ -433,6 +446,10 @@ public class Frm_Principal extends javax.swing.JFrame {
         Frm_CadMae f = new Frm_CadMae();
     }//GEN-LAST:event_atalhoAbrirAtendimento3MousePressed
 
+    private void item_RelAlunosByResponsavel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_RelAlunosByResponsavel1ActionPerformed
+        Frm_RelAlunosDesistentes f=new Frm_RelAlunosDesistentes();
+    }//GEN-LAST:event_item_RelAlunosByResponsavel1ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -487,6 +504,7 @@ public class Frm_Principal extends javax.swing.JFrame {
     private javax.swing.JLabel atalhoAbrirAtendimento3;
     private javax.swing.JLabel atalhoCadastroCliente;
     private javax.swing.JMenuItem item_RelAlunosByResponsavel;
+    private javax.swing.JMenuItem item_RelAlunosByResponsavel1;
     private javax.swing.JMenuItem item_RelAlunosBySerie;
     private javax.swing.JMenuItem item_cadAluno;
     private javax.swing.JMenuItem item_cadLivro;

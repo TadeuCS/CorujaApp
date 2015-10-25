@@ -66,6 +66,10 @@ public class Aluno implements Serializable {
     @Column(name = "DT_NASCIMENTO")
     @Temporal(TemporalType.DATE)
     private Date dtNascimento;
+    @Basic(optional = true)
+    @Column(name = "DT_DESISTENCIA")
+    @Temporal(TemporalType.DATE)
+    private Date dtDesistencia;
     @Basic(optional = false)
     @Column(name = "FONE")
     private String fone;
@@ -100,6 +104,14 @@ public class Aluno implements Serializable {
         this.uf = uf;
         this.dtNascimento = dtNascimento;
         this.fone = fone;
+    }
+
+    public Date getDtDesistencia() {
+        return dtDesistencia;
+    }
+
+    public void setDtDesistencia(Date dtDesistencia) {
+        this.dtDesistencia = dtDesistencia;
     }
 
     public Mae getCodmae() {
