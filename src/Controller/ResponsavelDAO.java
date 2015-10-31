@@ -42,7 +42,7 @@ public class ResponsavelDAO extends Conexao {
         return (Responsavel) query.getSingleResult();
     }
 
-    public BigDecimal retornaTotalAPrazoByCodigo(int codigo) {
+    public double retornaTotalAPrazoByCodigo(int codigo) {
         em.getTransaction().begin();
         query = em.createNativeQuery("select\n"
                 + "sum(s.`PRECO`) vlrTotalAPrazo\n"
@@ -50,7 +50,7 @@ public class ResponsavelDAO extends Conexao {
                 + "inner join responsavel r on a.CODRESPONSAVEL=r.CODRESPONSAVEL\n"
                 + "inner join serie s on s.CODSERIE=a.CODSERIE");
         em.getTransaction().commit();
-        return (BigDecimal) query.getSingleResult();
+        return (double) query.getSingleResult();
     }
 
     public Responsavel buscarByCPF(String cpf) {

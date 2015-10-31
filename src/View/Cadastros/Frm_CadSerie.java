@@ -457,7 +457,8 @@ public class Frm_CadSerie extends javax.swing.JFrame {
                 serie.setCodserie(Integer.parseInt(txt_codigo.getText()));
             }
             serie.setNome(txt_descricao.getText());
-            serie.setPreco(BigDecimal.valueOf(Double.parseDouble(txt_preco.getText().replace(".", "").replace(",", "."))));
+            serie.setPreco(Double.parseDouble(txt_preco.getText().replace(".", "").replace(",", ".")));
+            System.out.println(serie.getPreco());
             serieDAO.salvar(serie);
             JOptionPane.showMessageDialog(null, "Série salva com sucesso!\n");
             limparCampos();

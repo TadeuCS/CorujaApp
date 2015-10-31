@@ -12,7 +12,6 @@ import Util.Classes.ImagemConfig;
 import Util.Classes.PropertiesManager;
 import Util.Classes.TableConfig;
 import java.io.File;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -536,13 +535,19 @@ public class Frm_Contrato extends javax.swing.JFrame {
         } else {
             diretorio="src/Relatorios/Rel_ContratoTotal.jasper";
         }
+        try{
         geraRelatorios.imprimirRelatorioEmCodigo("SELECT\n"
                 + "a.`NOME` nomeAluno,s.`NOME` serie,s.`PRECO` vlrAPrazo,r.`CODRESPONSAVEL` codigo,r.`NOME` nomeResponsavel,r.`CPF` cpf\n"
                 + "from aluno a\n"
                 + "inner join responsavel r on a.CODRESPONSAVEL=r.CODRESPONSAVEL\n"
                 + "inner join serie s on s.CODSERIE=a.CODSERIE\n"
-                + "where r.`CODRESPONSAVEL` = " + responsavel.getCodresponsavel(), diretorio,
+                + "where r.`CODRESPONSAVEL` = " + responsavel.getCodresponsavel()+" and a.CODSERIE IS NOT NULL", diretorio,
                 getParametros(responsavel), destino);
+        }catch(Exception e){
+            if(e.toString().contains("O arquivo já está sendo usado")==true){
+                JOptionPane.showMessageDialog(null, "O arquivo está aberto, feche-o e tente novamente!");
+            }
+        }
     }
 
     private Map getParametros(Responsavel responsavel) {
@@ -550,7 +555,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
         props = new PropertiesManager();
         try {
             responsavelDAO = new ResponsavelDAO();
-            BigDecimal valorAprazo = responsavelDAO.retornaTotalAPrazoByCodigo(responsavel.getCodresponsavel());
+            Double valorAprazo = responsavelDAO.retornaTotalAPrazoByCodigo(responsavel.getCodresponsavel());
             parameters.put("vlrAPrazo", valorAprazo);
             parameters.put("logo", props.ler("logo"));
         } catch (Exception e) {

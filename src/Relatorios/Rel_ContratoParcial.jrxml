@@ -79,65 +79,65 @@ Tel.: (34) 3814-9393 – Email: corujabooks.books@yahoo.com.br
 				<textFieldExpression><![CDATA[$F{nomeAluno}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="130" y="183" width="71" height="20" uuid="0925bf96-ff1b-4145-a395-17bfec00cee0"/>
+				<reportElement x="130" y="182" width="72" height="20" uuid="0925bf96-ff1b-4145-a395-17bfec00cee0"/>
 				<textElement verticalAlignment="Middle">
 					<font size="6" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{serie}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
-				<reportElement x="245" y="183" width="44" height="20" uuid="22b7b636-aabf-464e-beb0-55ceaea2edb4"/>
+				<reportElement x="246" y="182" width="44" height="20" uuid="22b7b636-aabf-464e-beb0-55ceaea2edb4"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="Arial" size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vlrAPrazo}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
-				<reportElement x="201" y="183" width="44" height="20" uuid="108842ae-6c24-4495-83b3-5469617f4a98"/>
+				<reportElement x="202" y="182" width="44" height="20" uuid="108842ae-6c24-4495-83b3-5469617f4a98"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="Arial" size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vlrAPrazo}-($F{vlrAPrazo}*5/100)]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
-				<reportElement x="289" y="183" width="44" height="20" uuid="7db94d80-979a-408e-8c3e-a944346d2244"/>
+				<reportElement x="290" y="182" width="44" height="20" uuid="7db94d80-979a-408e-8c3e-a944346d2244"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="Arial" size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vlrAPrazo}/2]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
-				<reportElement x="333" y="183" width="44" height="20" uuid="cd2a7568-1ca9-4d11-97c4-b6ece500a621"/>
+				<reportElement x="334" y="182" width="44" height="20" uuid="cd2a7568-1ca9-4d11-97c4-b6ece500a621"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="Arial" size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vlrAPrazo}/3]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
-				<reportElement x="377" y="183" width="44" height="20" uuid="f32c4950-1b1b-4e7a-bc00-e2d6ddcfac77"/>
+				<reportElement x="378" y="182" width="44" height="20" uuid="f32c4950-1b1b-4e7a-bc00-e2d6ddcfac77"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="Arial" size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vlrAPrazo}/4]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
-				<reportElement x="421" y="183" width="44" height="20" uuid="8ef5320a-f08b-41e6-bd87-62b8f08bc80f"/>
+				<reportElement x="422" y="182" width="44" height="20" uuid="8ef5320a-f08b-41e6-bd87-62b8f08bc80f"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="Arial" size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vlrAPrazo}/5]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
-				<reportElement x="465" y="183" width="44" height="20" uuid="b06cab2c-89c7-48e9-a600-32bc395e66ec"/>
+				<reportElement x="466" y="182" width="44" height="20" uuid="b06cab2c-89c7-48e9-a600-32bc395e66ec"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="Arial" size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vlrAPrazo}/6]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
-				<reportElement x="509" y="183" width="44" height="20" uuid="12c0eac7-6a14-464c-94ce-e86baf8dea28"/>
+				<reportElement x="510" y="182" width="44" height="20" uuid="12c0eac7-6a14-464c-94ce-e86baf8dea28"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="Arial" size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vlrAPrazo}/7]]></textFieldExpression>
 			</textField>
@@ -286,56 +286,56 @@ CLÁUSULA PRIMEIRA: O objeto do presente instrumento é a venda de material did�
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
 				<reportElement x="333" y="203" width="44" height="20" uuid="0bb9a74b-54cf-42bd-817e-e3ed512d1186"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="Arial" size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vlrAPrazo}/3]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
 				<reportElement x="245" y="203" width="44" height="20" uuid="e3a39f05-90c4-42f3-9b25-f11da86bb06a"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="Arial" size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vlrAPrazo}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
 				<reportElement x="509" y="203" width="44" height="20" uuid="9e183e1f-6500-45a1-a808-62200d30077d"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="Arial" size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vlrAPrazo}/7]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
 				<reportElement x="201" y="203" width="44" height="20" uuid="3c9ed595-7ccd-44b8-b286-f8531b190241"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="Arial" size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vlrAPrazo}-($F{vlrAPrazo}*5/100)]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
 				<reportElement x="465" y="203" width="44" height="20" uuid="36912484-f578-4866-8f87-9f5399ae462c"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="Arial" size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vlrAPrazo}/6]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
 				<reportElement x="421" y="203" width="44" height="20" uuid="a97af4f0-6ec7-43ca-90d8-a190ab70380d"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="Arial" size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vlrAPrazo}/5]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
 				<reportElement x="377" y="203" width="44" height="20" uuid="7016c268-9ff5-4b49-9640-ac54208bc32a"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="Arial" size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vlrAPrazo}/4]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
 				<reportElement x="289" y="203" width="44" height="20" uuid="6643fa83-85ea-48c4-9c77-eedeac110887"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Arial" size="8" isBold="true"/>
+					<font fontName="Arial" size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vlrAPrazo}/2]]></textFieldExpression>
 			</textField>

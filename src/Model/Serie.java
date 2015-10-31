@@ -47,7 +47,7 @@ public class Serie implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @Column(name = "PRECO")
-    private BigDecimal preco;
+    private double preco;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codserie")
     private List<Aluno> alunoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codserie")
@@ -60,7 +60,7 @@ public class Serie implements Serializable {
         this.codserie = codserie;
     }
 
-    public Serie(Integer codserie, String nome, BigDecimal preco) {
+    public Serie(Integer codserie, String nome, double preco) {
         this.codserie = codserie;
         this.nome = nome;
         this.preco = preco;
@@ -82,11 +82,11 @@ public class Serie implements Serializable {
         this.nome = nome;
     }
 
-    public BigDecimal getPreco() {
+    public double getPreco() {
         return preco;
     }
 
-    public void setPreco(BigDecimal preco) {
+    public void setPreco(double preco) {
         this.preco = preco;
     }
 
