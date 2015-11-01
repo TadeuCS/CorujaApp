@@ -318,7 +318,8 @@ public class Frm_Login extends javax.swing.JFrame {
     private void valida() {
         if ((!txt_usuario.getText().trim().isEmpty() && txt_usuario.getText().toUpperCase().equals("ADMIN") == true)
                 && (!txt_senha.getText().isEmpty() && Criptografia.criptografar(txt_senha.getText()).equals("80177534a0c99a7e3645b52f2027a48b") == true)) {
-            Frm_Conexao f = new Frm_Conexao();
+//            Frm_Conexao f = new Frm_Conexao();
+            Frm_Backup f= new Frm_Backup();
         } else {
             JOptionPane.showMessageDialog(null, "Você não tem permissão de alterar as configurações de conexão!");
         }

@@ -1,6 +1,8 @@
 package View.Home;
 
 import Util.Classes.GeraRelatorios;
+import Util.Classes.MySQLBackup;
+import Util.Classes.PropertiesManager;
 import View.Cadastros.Frm_CadAluno;
 import View.Cadastros.Frm_CadLivro;
 import View.Cadastros.Frm_CadMae;
@@ -59,6 +61,8 @@ public class Frm_Principal extends javax.swing.JFrame {
         item_RelAlunosBySerie = new javax.swing.JMenuItem();
         item_RelAlunosByResponsavel = new javax.swing.JMenuItem();
         item_RelAlunosByResponsavel1 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        item_backup = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CorujaApp 1.0");
@@ -365,6 +369,18 @@ public class Frm_Principal extends javax.swing.JFrame {
 
         Menu_barra.add(menu_relatorios);
 
+        jMenu1.setText("Utilitários");
+
+        item_backup.setText("Fazer Backup");
+        item_backup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                item_backupActionPerformed(evt);
+            }
+        });
+        jMenu1.add(item_backup);
+
+        Menu_barra.add(jMenu1);
+
         setJMenuBar(Menu_barra);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -450,6 +466,15 @@ public class Frm_Principal extends javax.swing.JFrame {
         Frm_RelAlunosDesistentes f=new Frm_RelAlunosDesistentes();
     }//GEN-LAST:event_item_RelAlunosByResponsavel1ActionPerformed
 
+    private void item_backupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_backupActionPerformed
+        PropertiesManager props=new PropertiesManager();
+        MySQLBackup mySQLBackup = new MySQLBackup(
+                                    props.ler("usuario"),
+                                    props.ler("senha"),
+                                    props.ler("banco"),
+                                    props.ler("dump"));
+    }//GEN-LAST:event_item_backupActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -506,6 +531,7 @@ public class Frm_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem item_RelAlunosByResponsavel;
     private javax.swing.JMenuItem item_RelAlunosByResponsavel1;
     private javax.swing.JMenuItem item_RelAlunosBySerie;
+    private javax.swing.JMenuItem item_backup;
     private javax.swing.JMenuItem item_cadAluno;
     private javax.swing.JMenuItem item_cadLivro;
     private javax.swing.JMenuItem item_cadMae;
@@ -517,6 +543,7 @@ public class Frm_Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu menu_cadastros;
     private javax.swing.JMenu menu_relatorios;
     private javax.swing.JPanel pnl_atalhos;

@@ -24,7 +24,6 @@ public class Conexao {
 //        prop = new PropertiesManager();
 //        start();
 //    }
-//
 //    private Map getParametros() {
 //        Map map = new HashMap();
 //        map.put("javax.persistence.jdbc.url", "jdbc:mysql://" + prop.ler("ip") + ":3306/" + prop.ler("banco") + "?zeroDateTimeBehavior=convertToNull");
