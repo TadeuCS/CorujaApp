@@ -9,7 +9,6 @@ import Controller.SerieDAO;
 import Model.Serie;
 import Util.Classes.TableConfig;
 import Util.Classes.UpperDocument;
-import java.math.BigDecimal;
 import java.text.NumberFormat;
 import javax.swing.JOptionPane;
 

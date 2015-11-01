@@ -45,10 +45,10 @@ public class ResponsavelDAO extends Conexao {
     public double retornaTotalAPrazoByCodigo(int codigo) {
         em.getTransaction().begin();
         query = em.createNativeQuery("select\n"
-                + "sum(s.`PRECO`) vlrTotalAPrazo\n"
+                + "sum(s.`PRECO`)\n"
                 + "from aluno a\n"
                 + "inner join responsavel r on a.CODRESPONSAVEL=r.CODRESPONSAVEL\n"
-                + "inner join serie s on s.CODSERIE=a.CODSERIE");
+                + "inner join serie s on s.CODSERIE=a.CODSERIE where a.codresponsavel="+codigo+";");
         em.getTransaction().commit();
         return (double) query.getSingleResult();
     }
