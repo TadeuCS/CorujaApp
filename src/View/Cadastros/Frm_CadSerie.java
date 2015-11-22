@@ -403,7 +403,7 @@ public class Frm_CadSerie extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Frm_CadSerie().setVisible(true);
+//                new Frm_CadSerie().setVisible(true);
             }
         });
     }
@@ -457,7 +457,6 @@ public class Frm_CadSerie extends javax.swing.JFrame {
             }
             serie.setNome(txt_descricao.getText());
             serie.setPreco(Double.parseDouble(txt_preco.getText().replace(".", "").replace(",", ".")));
-            System.out.println(serie.getPreco());
             serieDAO.salvar(serie);
             JOptionPane.showMessageDialog(null, "Série salva com sucesso!\n");
             limparCampos();

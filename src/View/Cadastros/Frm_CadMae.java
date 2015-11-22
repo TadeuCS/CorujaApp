@@ -374,16 +374,11 @@ public class Frm_CadMae extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Nome Inválido!");
             txt_nome.requestFocus();
         } else {
-            if (ValidarCGCCPF.validaCPF(txt_cpf.getText()) == false) {
-                JOptionPane.showMessageDialog(null, "CPF Inválido!");
-                txt_cpf.requestFocus();
+            if (txt_telefone.getText().replace("(", "").replace(")", "").replace("-", "").trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Telefone Inválido!");
+                txt_telefone.requestFocus();
             } else {
-                if (txt_telefone.getText().replace("(", "").replace(")", "").replace("-", "").trim().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Telefone Inválido!");
-                    txt_telefone.requestFocus();
-                } else {
-                    salvar();
-                }
+                salvar();
             }
         }
     }//GEN-LAST:event_btn_salvarActionPerformed
@@ -527,7 +522,11 @@ public class Frm_CadMae extends javax.swing.JFrame {
                 mae.setCodmae(Integer.parseInt(txt_codigo.getText()));
             }
             mae.setNome(txt_nome.getText().trim());
-            mae.setCpf(txt_cpf.getText());
+            if (!txt_cpf.getText().replace(".", "").replace("-", "").trim().isEmpty()) {
+                mae.setCpf(txt_cpf.getText());
+            }else{
+                mae.setCpf("");
+            }
             if (!txt_email.getText().isEmpty()) {
                 mae.setEmail(txt_email.getText().trim());
             } else {
@@ -628,8 +627,8 @@ public class Frm_CadMae extends javax.swing.JFrame {
             if (mae.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").length() == 8) {
                 txt_telefone.setText("34" + mae.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
             } else {
-                if(mae.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").length() == 10){
-                txt_telefone.setText(mae.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
+                if (mae.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").length() == 10) {
+                    txt_telefone.setText(mae.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
                 }
             }
         } else {

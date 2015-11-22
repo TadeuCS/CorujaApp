@@ -29,6 +29,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
     PropertiesManager props;
     ResponsavelDAO responsavelDAO;
     List<Responsavel> responsaveis = new ArrayList<>();
+    List<Responsavel> responsaveisSelecionados = new ArrayList<>();
     Map parameters;
 
     public Frm_Contrato() {
@@ -345,18 +346,24 @@ public class Frm_Contrato extends javax.swing.JFrame {
     private void btn_inserirTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inserirTodosActionPerformed
         if (txt_filtro.getText().isEmpty()) {
             try {
-                int i = 0;
-                while (i < tb_responsaveis.getRowCount()) {
-                    String[] linha = new String[]{
-                        tb_responsaveis.getValueAt(i, 0).toString(),
-                        tb_responsaveis.getValueAt(i, 1).toString(),
-                        tb_responsaveis.getValueAt(i, 2).toString(),
-                        tb_responsaveis.getValueAt(i, 3).toString()};
-                    addResponsavel(tb_responsaveis.getValueAt(i, 0).toString());
-                    TableConfig.getModel(tb_responsaveis2).addRow(linha);
-//                TableConfig.getModel(tb_responsaveis).removeRow(0);
-                    i++;
-                }
+                Thread acao;
+                acao = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        int i = 0;
+                        while (i < tb_responsaveis.getRowCount()) {
+                            String[] linha = new String[]{
+                                tb_responsaveis.getValueAt(i, 0).toString(),
+                                tb_responsaveis.getValueAt(i, 1).toString(),
+                                tb_responsaveis.getValueAt(i, 2).toString(),
+                                tb_responsaveis.getValueAt(i, 3).toString()};
+                            TableConfig.getModel(tb_responsaveis2).addRow(linha);
+                            i++;
+                        }
+                        responsaveisSelecionados.addAll(responsaveis);
+                    }
+                });
+                acao.start();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Erro ao inserir responsaveis na lista!\n" + e);
             }
@@ -376,7 +383,6 @@ public class Frm_Contrato extends javax.swing.JFrame {
                 tb_responsaveis.getValueAt(tb_responsaveis.getSelectedRow(), 3).toString()};
             addResponsavel(tb_responsaveis.getValueAt(tb_responsaveis.getSelectedRow(), 0).toString());
             TableConfig.getModel(tb_responsaveis2).addRow(linha);
-//            TableConfig.getModel(tb_responsaveis).removeRow(tb_responsaveis.getSelectedRow());
         } else {
             JOptionPane.showMessageDialog(null, "Selecione apelas 1 linha!");
         }
@@ -402,10 +408,10 @@ public class Frm_Contrato extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione um Tipo de contrato!");
             rbt_total.requestFocus();
         } else {
-            if (responsaveis.isEmpty()) {
+            if (responsaveisSelecionados.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Insira pelo menos um Responsável na lista da direita para gerar o contrato!");
             } else {
-                barra.setMaximum(responsaveis.size());
+                barra.setMaximum(responsaveisSelecionados.size());
                 barra.setValue(0);
                 Thread acao;
                 acao = new Thread(new Runnable() {
@@ -413,7 +419,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
                     public void run() {
                         String diretorio = getDiretorioDestino();
                         if (diretorio != null) {
-                            for (Responsavel responsavel : responsaveis) {
+                            for (Responsavel responsavel : responsaveisSelecionados) {
                                 gerarRelatorioByList(responsavel, diretorio + responsavel.getCodresponsavel() + ".pdf");
                                 barra.setValue(barra.getValue() + 1);
                             }
@@ -500,7 +506,8 @@ public class Frm_Contrato extends javax.swing.JFrame {
         try {
             TableConfig.limpaTabela(tb_responsaveis);
             responsavelDAO = new ResponsavelDAO();
-            for (Responsavel resp : responsavelDAO.listar()) {
+            responsaveis=responsavelDAO.listarTodosComSerie();
+            for (Responsavel resp : responsaveis) {
                 String[] linha = new String[]{resp.getCodresponsavel().toString(), resp.getNome(), resp.getCpf(), resp.getFone()};
                 TableConfig.getModel(tb_responsaveis).addRow(linha);
             }
@@ -512,7 +519,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
     private void addResponsavel(String codResponsavel) {
         try {
             responsavelDAO = new ResponsavelDAO();
-            responsaveis.add(responsavelDAO.buscarByCodigo(Integer.parseInt(codResponsavel)));
+            responsaveisSelecionados.add(responsavelDAO.buscarByCodigo(Integer.parseInt(codResponsavel)));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao adicionar o Responsavel!\n" + e);
         }
@@ -521,7 +528,7 @@ public class Frm_Contrato extends javax.swing.JFrame {
     private void removeResponsavel(String codResponsavel) {
         try {
             responsavelDAO = new ResponsavelDAO();
-            responsaveis.remove(responsavelDAO.buscarByCodigo(Integer.parseInt(codResponsavel)));
+            responsaveisSelecionados.remove(responsavelDAO.buscarByCodigo(Integer.parseInt(codResponsavel)));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao remover o Responsavel!\n" + e);
         }
@@ -529,22 +536,22 @@ public class Frm_Contrato extends javax.swing.JFrame {
 
     private void gerarRelatorioByList(Responsavel responsavel, String destino) {
         GeraRelatorios geraRelatorios = new GeraRelatorios();
-        String diretorio=null;
+        String diretorio = null;
         if (rbt_parcial.getSelectedObjects() != null) {
-            diretorio="src/Relatorios/Rel_ContratoParcial.jasper";
+            diretorio = "src/Relatorios/Rel_ContratoParcial.jasper";
         } else {
-            diretorio="src/Relatorios/Rel_ContratoTotal.jasper";
+            diretorio = "src/Relatorios/Rel_ContratoTotal.jasper";
         }
-        try{
-        geraRelatorios.imprimirRelatorioEmCodigo("SELECT\n"
-                + "a.`NOME` nomeAluno,s.`NOME` serie,s.`PRECO` vlrAPrazo,r.`CODRESPONSAVEL` codigo,r.`NOME` nomeResponsavel,r.`CPF` cpf\n"
-                + "from aluno a\n"
-                + "inner join responsavel r on a.CODRESPONSAVEL=r.CODRESPONSAVEL\n"
-                + "inner join serie s on s.CODSERIE=a.CODSERIE\n"
-                + "where r.`CODRESPONSAVEL` = " + responsavel.getCodresponsavel()+" and a.CODSERIE IS NOT NULL", diretorio,
-                getParametros(responsavel), destino);
-        }catch(Exception e){
-            if(e.toString().contains("O arquivo já está sendo usado")==true){
+        try {
+            geraRelatorios.imprimirRelatorioEmCodigo("SELECT\n"
+                    + "a.`NOME` nomeAluno,s.`NOME` serie,s.`PRECO` vlrAPrazo,r.`CODRESPONSAVEL` codigo,r.`NOME` nomeResponsavel,r.`CPF` cpf\n"
+                    + "from aluno a\n"
+                    + "inner join responsavel r on a.CODRESPONSAVEL=r.CODRESPONSAVEL\n"
+                    + "inner join serie s on s.CODSERIE=a.CODSERIE\n"
+                    + "where r.`CODRESPONSAVEL` = " + responsavel.getCodresponsavel() + " and a.CODSERIE IS NOT NULL", diretorio,
+                    getParametros(responsavel), destino);
+        } catch (Exception e) {
+            if (e.toString().contains("O arquivo já está sendo usado") == true) {
                 JOptionPane.showMessageDialog(null, "O arquivo está aberto, feche-o e tente novamente!");
             }
         }
@@ -589,10 +596,10 @@ public class Frm_Contrato extends javax.swing.JFrame {
         if (result == JFileChooser.CANCEL_OPTION) {
         } else {
             String caminho = fileChooser.getSelectedFile().getPath();
-            if(caminho.endsWith(".png")||caminho.endsWith(".jpg")||caminho.endsWith(".bmp")){
-            props.altera("logo", caminho);
-            carregaLogo(caminho);
-            }else{
+            if (caminho.endsWith(".png") || caminho.endsWith(".jpg") || caminho.endsWith(".bmp")) {
+                props.altera("logo", caminho);
+                carregaLogo(caminho);
+            } else {
                 JOptionPane.showMessageDialog(null, "Formato inválido tente uma imagem com a extensão PNG, JPG ou BMP!");
             }
         }
@@ -611,15 +618,9 @@ public class Frm_Contrato extends javax.swing.JFrame {
     private void limpaListaDeResponsaveisSelecionados() {
         if (txt_filtro2.getText().isEmpty()) {
             while (tb_responsaveis2.getRowCount() > 0) {
-                String[] linha = new String[]{
-                    tb_responsaveis2.getValueAt(0, 0).toString(),
-                    tb_responsaveis2.getValueAt(0, 1).toString(),
-                    tb_responsaveis2.getValueAt(0, 2).toString(),
-                    tb_responsaveis2.getValueAt(0, 3).toString()};
-                removeResponsavel(tb_responsaveis2.getValueAt(0, 0).toString());
-//            TableConfig.getModel(tb_responsaveis).addRow(linha);
                 TableConfig.getModel(tb_responsaveis2).removeRow(0);
             }
+            responsaveisSelecionados=new ArrayList<>();
         }
     }
 }

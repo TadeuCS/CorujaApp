@@ -34,6 +34,12 @@ public class ResponsavelDAO extends Conexao {
         em.getTransaction().commit();
         return query.getResultList();
     }
+    public List<Responsavel> listarTodosComSerie() {
+        em.getTransaction().begin();
+        query = em.createQuery("SELECT r FROM Responsavel r INNER JOIN r.alunoList AS a on a.codserie is not null GROUP BY r.codresponsavel");
+        em.getTransaction().commit();
+        return query.getResultList();
+    }
 
     public Responsavel buscarByCodigo(int codigo) {
         em.getTransaction().begin();

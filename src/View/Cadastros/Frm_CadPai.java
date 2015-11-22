@@ -374,16 +374,11 @@ public class Frm_CadPai extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Nome Inválido!");
             txt_nome.requestFocus();
         } else {
-            if (ValidarCGCCPF.validaCPF(txt_cpf.getText()) == false) {
-                JOptionPane.showMessageDialog(null, "CPF Inválido!");
-                txt_cpf.requestFocus();
+            if (txt_telefone.getText().replace("(", "").replace(")", "").replace("-", "").trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Telefone Inválido!");
+                txt_telefone.requestFocus();
             } else {
-                if (txt_telefone.getText().replace("(", "").replace(")", "").replace("-", "").trim().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Telefone Inválido!");
-                    txt_telefone.requestFocus();
-                } else {
-                        salvar();
-                }
+                salvar();
             }
         }
     }//GEN-LAST:event_btn_salvarActionPerformed
@@ -429,7 +424,7 @@ public class Frm_CadPai extends javax.swing.JFrame {
                 txt_telefone.setValue(null);
                 MaskFormatter cpf = new MaskFormatter("(##) #####-####");
                 txt_telefone.setFormatterFactory(
-                    new DefaultFormatterFactory(cpf));
+                        new DefaultFormatterFactory(cpf));
                 txt_telefone.requestFocus();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Erro ao inserir o nono digito!\n" + e);
@@ -439,7 +434,7 @@ public class Frm_CadPai extends javax.swing.JFrame {
                 txt_telefone.setValue(null);
                 MaskFormatter cpf = new MaskFormatter("(##) ####-####");
                 txt_telefone.setFormatterFactory(
-                    new DefaultFormatterFactory(cpf));
+                        new DefaultFormatterFactory(cpf));
                 txt_telefone.requestFocus();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Erro ao inserir o nono digito!\n" + e);
@@ -448,7 +443,7 @@ public class Frm_CadPai extends javax.swing.JFrame {
     }//GEN-LAST:event_chx_nonoDigitoActionPerformed
 
     private void tb_paisMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_paisMousePressed
-         if (tb_pais.getSelectedRowCount() == 1) {
+        if (tb_pais.getSelectedRowCount() == 1) {
             paiDAO = new PaiDAO();
             setPaiNaTela(paiDAO.findByCodigo(Integer.parseInt(tb_pais.getValueAt(tb_pais.getSelectedRow(), 0).toString())));
         }
@@ -546,7 +541,11 @@ public class Frm_CadPai extends javax.swing.JFrame {
                 pai.setCodpai(Integer.parseInt(txt_codigo.getText()));
             }
             pai.setNome(txt_nome.getText().trim());
-            pai.setCpf(txt_cpf.getText());
+            if (!txt_cpf.getText().replace(".", "").replace("-", "").trim().isEmpty()) {
+                pai.setCpf(txt_cpf.getText());
+            }else{
+                pai.setCpf("");
+            }
             if (!txt_email.getText().isEmpty()) {
                 pai.setEmail(txt_email.getText().trim());
             } else {
@@ -601,10 +600,10 @@ public class Frm_CadPai extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Pessoa removida com sucesso!\n");
             setEnabledButtons(true);
         } catch (Exception e) {
-            if(e.toString().contains("MySQLIntegrityConstraintViolationException")==true){
-            JOptionPane.showMessageDialog(null, "Impossivel excluír este pai porque o mesmo tem alunos vinculados!\n");    
-            }else{
-            JOptionPane.showMessageDialog(null, "Erro ao remover o Pai!\n" + e);
+            if (e.toString().contains("MySQLIntegrityConstraintViolationException") == true) {
+                JOptionPane.showMessageDialog(null, "Impossivel excluír este pai porque o mesmo tem alunos vinculados!\n");
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao remover o Pai!\n" + e);
             }
         }
     }
@@ -613,8 +612,8 @@ public class Frm_CadPai extends javax.swing.JFrame {
         txt_nome.setDocument(new UpperDocument(255));
         txt_email.setDocument(new LowerDocument(255));
     }
-    
-     private void trataNonoDigito() {
+
+    private void trataNonoDigito() {
         if (chx_nonoDigito.isSelected()) {
             try {
                 txt_telefone.setValue(null);
@@ -637,7 +636,7 @@ public class Frm_CadPai extends javax.swing.JFrame {
             }
         }
     }
-     
+
     private void setPaiNaTela(Pai pai) {
         txt_codigo.setText(pai.getCodpai().toString());
         txt_nome.setText(pai.getNome());
@@ -647,8 +646,8 @@ public class Frm_CadPai extends javax.swing.JFrame {
             if (pai.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").length() == 8) {
                 txt_telefone.setText("34" + pai.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
             } else {
-                if(pai.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").length() == 10){
-                txt_telefone.setText(pai.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
+                if (pai.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", "").length() == 10) {
+                    txt_telefone.setText(pai.getFone().replace("(", "").replace(")", "").replace("-", "").replace(" ", ""));
                 }
             }
         } else {

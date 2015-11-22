@@ -9,6 +9,7 @@ import Util.Classes.MySQLBackup;
 import Util.Classes.PropertiesManager;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -21,7 +22,9 @@ public class Frm_Backup extends javax.swing.JFrame {
 
     PropertiesManager props;
     MySQLBackup mySQLBackup;
-
+    Statement st;
+    Connection con;
+    ResultSet rs;
     public Frm_Backup() {
         initComponents();
         setVisible(true);
@@ -170,6 +173,11 @@ public class Frm_Backup extends javax.swing.JFrame {
 
         btn_restore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Util/Img/restore.png"))); // NOI18N
         btn_restore.setText("Restore");
+        btn_restore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_restoreActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -224,11 +232,23 @@ public class Frm_Backup extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_gravarActionPerformed
 
     private void btn_testarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_testarActionPerformed
-        getConexao(txt_servidor.getText(),
+        if(getConexao(txt_servidor.getText(),
                 txt_banco.getText(),
                 txt_usuario.getText(),
-                txt_senha.getText());
+                txt_senha.getText())!=null){
+            JOptionPane.showMessageDialog(null, "Conexão bem sucedida!");
+        }else{
+            JOptionPane.showMessageDialog(null, "Erro ao conectar no banco de dados!\n");
+        }
     }//GEN-LAST:event_btn_testarActionPerformed
+
+    private void btn_restoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_restoreActionPerformed
+        try {
+            st=getConexao(txt_servidor.getText(), txt_banco.getText(), txt_usuario.getText(), txt_senha.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao restaurar o banco de dados!\n"+e);
+        }
+    }//GEN-LAST:event_btn_restoreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,20 +323,6 @@ public class Frm_Backup extends javax.swing.JFrame {
         }
         return diretorio;
     }
-//    private void carregabancos() {
-//        try {
-//            Statement st;
-//            Connection con;
-//            Class.forName("org.firebirdsql.jdbc.FBDriver");
-//            con = DriverManager.getConnection(
-//                    "jdbc:firebirdsql://" + ip + ":3050/" + diretorio,
-//                    usuario,
-//                    senha);
-//            st = con.createStatement();
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Erro ao listar os bancos de dados!\n"+e);
-//        }
-//    }
 
     private void validaCampos() {
         if (txt_usuario.getText().isEmpty()) {
@@ -351,18 +357,17 @@ public class Frm_Backup extends javax.swing.JFrame {
         }
     }
 
-    public void getConexao(String servidor, String diretorio, String usuario, String senha) {
+    public Statement getConexao(String servidor, String diretorio, String usuario, String senha) {
         try {
-            Connection con;
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection(
                     "jdbc:mysql://" + servidor + ":3306/" + diretorio + "?zeroDateTimeBehavior=convertToNull",
                     usuario,
                     senha);
-            Statement st = con.createStatement();
-            JOptionPane.showMessageDialog(null, "Conexão bem sucedida!");
+            st = con.createStatement();
+            return st;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao conectar no banco de dados!\n" + e);
+            return null;
         }
     }
 }

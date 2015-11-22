@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Rel_ContratoParcial" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e1992d99-3ba6-4f98-8de3-7221bd7b2369">
 	<property name="ireport.zoom" value="1.7715610000000022"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="480"/>
+	<property name="ireport.y" value="564"/>
 	<parameter name="logo" class="java.lang.String"/>
 	<parameter name="vlrAPrazo" class="java.lang.Double"/>
 	<queryString>
@@ -340,28 +340,29 @@ CLÁUSULA PRIMEIRA: O objeto do presente instrumento é a venda de material did�
 				<textFieldExpression><![CDATA[$F{vlrAPrazo}/2]]></textFieldExpression>
 			</textField>
 		</band>
-		<band height="443">
+		<band height="462">
 			<staticText>
-				<reportElement x="0" y="98" width="551" height="260" uuid="66cbb752-71f0-466e-90df-c3f1e05bd769"/>
+				<reportElement x="0" y="98" width="555" height="286" uuid="66cbb752-71f0-466e-90df-c3f1e05bd769"/>
 				<textElement textAlignment="Justified">
-					<font fontName="Arial" size="10" isBold="false"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Parágrafo Segundo: Havendo atraso no pagamento de qualquer das parcelas descritas acima, o(a) COMPRADOR pagará o valor em atraso acrescido de multa contratual de 2% (dois por cento), mais juros de mora de 1% (um por cento) ao mês.
+				<text><![CDATA[ParágrafoSegundo: Havendo atraso no pagamento de qualquer das parcelas descritas acima, o(a) COMPRADOR pagará o valor em atraso acrescido de multa contratual de 2% (dois por cento), mais juros de mora de 1% (um por cento) ao mês.
 CLÁUSULA TERCEIRA: O (A) COMPRADOR (A) declara ter ciência de que os materiais didáticos são protegidos pela Lei 9.610/98 (Lei de Direitos Autorais), assim não podem ser reproduzidos, ficando sujeitos à sanções legais, em caso de violação da Lei.
 CLÁUSULA QUARTA: O material será entregue ao(s) aluno(s) descrito(s) acima, em sala de aula, de acordo com o cronograma estabelecido junto a Instituição de Ensino, que segue abaixo:
-*1º Livro Didático Integrado será entregue no 1º dia de Aula para o Aluno com contrato firmado em NOV e DEZ/2015. Os demais alunos receberão o livro entre 15 (quinze) a 20(vinte) dias após o Contrato Firmado.
-*2º Livro Didático Integrado, para os que optarem pelo parcelamento, a entrega ficará vinculada com a quitação de todas as parcelas com vencimento até 10/04/2016.
-*3º Livro Didático Integrado, para os que optarem pelo parcelamento, a entrega ficará vinculada com a quitação de todas as parcelas com vencimento até 10/06/2016.
-*4º Livro Didático Integrado, para os que optaram pelo parcelamento, a entrega ficará vinculada com quitação de todas as parcelas.
-Parágrafo Primeiro: Os livros didáticos serão entregues aos alunos em sala de aula, somente depois de confirmados os pagamentos dos boletos emitidos a(os) Responsável (eis) Financeiro(s) pelo material didático.
-Parágrafo Segundo: A inadimplência das parcelas ocasionará retenção do material ainda não entregue até sua regularização financeira.
+*1º LivroDidático Integrado será entregue no 1º dia de Aula para o Aluno com contrato firmado em NOV e DEZ/2015. Os demais alunos receberão o livro entre 15 (quinze) a 20(vinte) dias após o Contrato Firmado.
+*2º LivroDidático Integrado, para os que optarem pelo parcelamento, a entrega ficará vinculada com a quitação de todas as parcelas com vencimento até 10/04/2016.
+*3º LivroDidático Integrado, para os que optarem pelo parcelamento, a entrega ficará vinculada com a quitação de todas as parcelas com vencimento até 10/06/2016.
+*4º LivroDidático Integrado, para os que optaram pelo parcelamento, a entrega ficará vinculada com quitação de todas as parcelas.
+ParágrafoPrimeiro: Os livros didáticos serão entregues aos alunos em sala de aula, somente depois de confirmados os pagamentos dos boletos emitidos a(os) Responsável (eis) Financeiro(s) pelo material didático.
+ParágrafoSegundo: A inadimplência das parcelas ocasionará retenção do material ainda não entregue até sua regularização financeira.
 CLÁUSULA QUINTA: No caso de cancelamento do presente contrato, pelo COMPRADOR, este terá direito a restituição dos valores já pagos ou cancelamento dos boletos referentes aos materiais ainda não entregues.
 Parágrafo Único: Será retida uma taxa administrativa no valor de 10% do valor total contratado, a fim de cobrir as despesas administrativas já efetuadas.
-CLÁUSULA SEXTA: O presente contrato passa a vigorar entre as partes a partir da assinatura do mesmo, as quais elegem o foro da cidade de Patos de Minas – MG, para dirimirem quaisquer dúvidas provenientes da execução e cumprimento do mesmo.
-E, por estarem justas e convencionadas as partes assinam o presente CONTRATO DE COMPRA E VENDA em duas vias.]]></text>
+Parágrafo Segundo: A inadimplência das parcelas ocasionará retenção do material ainda não entregue até sua regularização financeira.
+CLÁUSULA SEXTA: O presente contrato passa a vigorar entre as partes a partir da assinatura do mesmo, as quais elegem o foro da cidade de Patos de Minas - MG, para dirimirem quaisquer dúvidas provenientes da execução e cumprimento do mesmo.
+E, por estarem justas e convencionadas as partes assinam o presente CONTRATO DE COMPRA E VENDA em 3 (três) vias.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="32" y="394" width="523" height="40" uuid="77a1e490-66c0-4f6a-9ef7-61527c39055b"/>
+				<reportElement x="29" y="412" width="523" height="40" uuid="77a1e490-66c0-4f6a-9ef7-61527c39055b"/>
 				<textElement verticalAlignment="Bottom"/>
 				<text><![CDATA[____________________________________		_________________________________
         Adriana Martins da Costa Moreira                                                               Comprador
@@ -369,7 +370,7 @@ E, por estarem justas e convencionadas as partes assinam o presente CONTRATO DE 
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="360" width="555" height="15" uuid="43e912dc-f566-4ea9-aa92-2fb6375322f0"/>
+				<reportElement x="-1" y="384" width="555" height="15" uuid="43e912dc-f566-4ea9-aa92-2fb6375322f0"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Patos de Minas, MG,______________ de ___________________ de 2015.]]></text>
 			</staticText>
@@ -378,42 +379,42 @@ E, por estarem justas e convencionadas as partes assinam o presente CONTRATO DE 
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[[  ] 2ª OP. - 2 x Parcelas - Boleto ou Cartão de Crédioto - Venc. 10/01 e 10/02/2016;]]></text>
+				<text><![CDATA[[  ] 2ª OP. - 2 x Parcelas - Boleto ou Cartão de Crédito - Venc. 10/01 e 10/02/2016;]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="46" width="555" height="12" uuid="1c306371-5366-4312-81f2-390c680c89fd"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[[  ] 4ª OP. - 4 x Parcelas - Boleto ou Cartão de Crédioto - Venc. 10/01 e 10/02 e 10/03 e 10/04/2016;]]></text>
+				<text><![CDATA[[  ] 4ª OP. - 4 x Parcelas - Boleto ou Cartão de Crédito - Venc. 10/01 e 10/02 e 10/03 e 10/04/2016;]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="82" width="555" height="12" uuid="b8beaac8-bd00-4ca9-a911-ee2838ba1ba5"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[[  ] 7ª OP. - 7 x Parcelas - Boleto ou Cartão de Crédioto - Venc. 10/01 e 10/02 e 10/03 e 10/04 e 10/05 e 10/06 e 10/07/2016;]]></text>
+				<text><![CDATA[[  ] 7ª OP. - 7 x Parcelas - Boleto ou Cartão de Crédito - Venc. 10/01 e 10/02 e 10/03 e 10/04 e 10/05 e 10/06 e 10/07/2016;]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="34" width="555" height="12" uuid="d1b274b4-7a3c-4349-a9b6-08f7586c5c6d"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[[  ] 3ª OP. - 3 x Parcelas - Boleto ou Cartão de Crédioto - Venc. 10/01 e 10/02 e 10/03/2016;]]></text>
+				<text><![CDATA[[  ] 3ª OP. - 3 x Parcelas - Boleto ou Cartão de Crédito - Venc. 10/01 e 10/02 e 10/03/2016;]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="58" width="555" height="12" uuid="3eff2ea5-a8ea-4e92-a204-65b94fd4ed9c"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[[  ] 5ª OP. - 5 x Parcelas - Boleto ou Cartão de Crédioto - Venc. 10/01 e 10/02 e 10/03 e 10/04 e 10/05/2016;]]></text>
+				<text><![CDATA[[  ] 5ª OP. - 5 x Parcelas - Boleto ou Cartão de Crédito - Venc. 10/01 e 10/02 e 10/03 e 10/04 e 10/05/2016;]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="70" width="555" height="12" uuid="516c5a28-3dce-4462-a0a2-5f4f87681c3c"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[[  ] 6ª OP. - 6 x Parcelas - Boleto ou Cartão de Crédioto - Venc. 10/01 e 10/02 e 10/03 e 10/04 e 10/05 e 10/06/2016;]]></text>
+				<text><![CDATA[[  ] 6ª OP. - 6 x Parcelas - Boleto ou Cartão de Crédito - Venc. 10/01 e 10/02 e 10/03 e 10/04 e 10/05 e 10/06/2016;]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="10" width="555" height="12" uuid="25016e02-4ff1-4d29-a24d-45943e8693fd"/>
@@ -432,9 +433,9 @@ E, por estarem justas e convencionadas as partes assinam o presente CONTRATO DE 
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="28" splitType="Stretch">
+		<band height="25" splitType="Stretch">
 			<staticText>
-				<reportElement x="3" y="0" width="548" height="28" uuid="2272509d-d4d3-41a4-a6bd-bd7da805b4c1"/>
+				<reportElement x="4" y="2" width="548" height="22" uuid="2272509d-d4d3-41a4-a6bd-bd7da805b4c1"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<text><![CDATA[Página 1 de 1]]></text>
 			</staticText>
