@@ -6,7 +6,6 @@
 package Model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -30,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "serie")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Serie.findAll", query = "SELECT s FROM Serie s"),
+    @NamedQuery(name = "Serie.findAll", query = "SELECT s FROM Serie s order by s.nome"),
     @NamedQuery(name = "Serie.findByCodserie", query = "SELECT s FROM Serie s WHERE s.codserie = :codserie"),
     @NamedQuery(name = "Serie.findByNome", query = "SELECT s FROM Serie s WHERE s.nome = :nome"),
     @NamedQuery(name = "Serie.findByPreco", query = "SELECT s FROM Serie s WHERE s.preco = :preco")})

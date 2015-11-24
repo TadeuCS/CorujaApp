@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Rel_AlunosBySerie" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="87a89c01-ebfc-4a84-94b9-b38db88e8b8a">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.9487171000000014"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
@@ -21,7 +21,7 @@
      a.`fone`,
      s.`nome` AS serie
 FROM
-     `aluno` a INNER JOIN `serie` s ON a.`codserie` = s.`codserie`
+     `aluno` a inner JOIN `serie` s ON a.`codserie` = s.`codserie`
 WHERE
      s.nome LIKE $P{SERIE}]]>
 	</queryString>
@@ -41,7 +41,7 @@ WHERE
 	<title>
 		<band height="109" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="0" y="0" width="555" height="41" uuid="8edb77e5-b36b-48c3-bcc1-fc267092346c"/>
+				<reportElement style="Title" x="0" y="0" width="555" height="41" forecolor="#7390CA" uuid="8edb77e5-b36b-48c3-bcc1-fc267092346c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="35" pdfFontName="Times-Roman"/>
 				</textElement>
@@ -75,7 +75,7 @@ WHERE
 	<columnHeader>
 		<band height="25" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="1" y="1" width="554" height="23" backcolor="#A6D9C3" uuid="ae165b58-9d1e-4737-ab86-ab3da2f56f5d"/>
+				<reportElement mode="Opaque" x="1" y="1" width="554" height="23" backcolor="#7390CA" uuid="ae165b58-9d1e-4737-ab86-ab3da2f56f5d"/>
 			</frame>
 			<staticText>
 				<reportElement style="Column header" x="0" y="0" width="54" height="24" forecolor="#736343" uuid="7a10ad87-0b13-4c36-9860-f2a3f4e98555"/>
@@ -138,7 +138,7 @@ WHERE
 	<pageFooter>
 		<band height="25" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="1" y="1" width="554" height="24" backcolor="#A6D9C3" uuid="c3f7c5f7-b7eb-4fe2-9277-1068754aac89"/>
+				<reportElement mode="Opaque" x="1" y="1" width="554" height="24" backcolor="#7390CA" uuid="c3f7c5f7-b7eb-4fe2-9277-1068754aac89"/>
 				<textField>
 					<reportElement style="Column header" x="435" y="0" width="80" height="20" forecolor="#736343" uuid="9b6c5cfb-4778-4822-8a5d-a0af93ad174f"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">

@@ -8,6 +8,7 @@ package View.Relatorios;
 import Controller.SerieDAO;
 import Util.Classes.Data;
 import Util.Classes.GeraRelatorios;
+import java.awt.Event;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -20,10 +21,11 @@ public class Frm_RelAlunosDesistentes extends javax.swing.JFrame {
 
     GeraRelatorios geraRelatorios;
     SerieDAO serieDAO;
-
+    Data data;
     public Frm_RelAlunosDesistentes() {
         initComponents();
         setVisible(true);
+        lb_loading.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -38,6 +40,7 @@ public class Frm_RelAlunosDesistentes extends javax.swing.JFrame {
         txt_final = new javax.swing.JFormattedTextField();
         btn_gerar = new javax.swing.JButton();
         btn_fechar = new javax.swing.JButton();
+        lb_loading = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gerar Relatório de Alunos por Série");
@@ -53,6 +56,11 @@ public class Frm_RelAlunosDesistentes extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txt_inicial.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_inicial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_inicialKeyPressed(evt);
+            }
+        });
 
         jLabel2.setText("Data Inícial *:");
 
@@ -62,6 +70,11 @@ public class Frm_RelAlunosDesistentes extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txt_final.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_final.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_finalKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -72,7 +85,7 @@ public class Frm_RelAlunosDesistentes extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txt_inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txt_final, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -82,12 +95,13 @@ public class Frm_RelAlunosDesistentes extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txt_inicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
-                        .addComponent(txt_final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txt_final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(txt_inicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -107,6 +121,9 @@ public class Frm_RelAlunosDesistentes extends javax.swing.JFrame {
             }
         });
 
+        lb_loading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_loading.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Util/Img/loading.gif"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -118,7 +135,9 @@ public class Frm_RelAlunosDesistentes extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btn_fechar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_gerar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lb_loading, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(btn_gerar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -126,11 +145,14 @@ public class Frm_RelAlunosDesistentes extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_gerar)
-                    .addComponent(btn_fechar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_fechar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lb_loading)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(btn_gerar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -149,24 +171,48 @@ public class Frm_RelAlunosDesistentes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_gerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gerarActionPerformed
-        try {
-            Map parametros = new HashMap();
-            geraRelatorios = new GeraRelatorios();
-            serieDAO = new SerieDAO();
-            parametros.put("dt_inicial", Data.getDataByTexto(txt_inicial.getText(), "dd/MM/yyyy"));
-            parametros.put("dt_final", Data.getDataByTexto(txt_final.getText(), "dd/MM/yyyy"));
-            if (geraRelatorios.imprimirRelatorioSQLNoRelatorio(parametros, "Rel_AlunosDesistentes.jasper", "Relatório de Alunos Desistentes") == false) {
-                if (geraRelatorios.imprimirRelatorioSQLNoRelatorio(parametros, "src/Relatorios/Rel_AlunosDesistentes.jasper", "Relatório de Alunos Desistentes") == true) {
+        Thread acao;
+        acao = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                lb_loading.setVisible(true);
+                try {
+                    Map parametros = new HashMap();
+                    geraRelatorios = new GeraRelatorios();
+                    serieDAO = new SerieDAO();
+                    parametros.put("dt_inicial", Data.getDataByTexto(txt_inicial.getText(), "dd/MM/yyyy"));
+                    parametros.put("dt_final", Data.getDataByTexto(txt_final.getText(), "dd/MM/yyyy"));
+                    if (geraRelatorios.imprimirRelatorioSQLNoRelatorio(parametros, "Rel_AlunosDesistentes.jasper", "Relatório de Alunos Desistentes") == false) {
+                        if (geraRelatorios.imprimirRelatorioSQLNoRelatorio(parametros, "src/Relatorios/Rel_AlunosDesistentes.jasper", "Relatório de Alunos Desistentes") == true) {
+                        }
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Erro ao Gerar relatório!\n" + e);
                 }
+                lb_loading.setVisible(false);
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao Gerar relatório!\n" + e);
         }
+        );
+        acao.start();
     }//GEN-LAST:event_btn_gerarActionPerformed
 
     private void btn_fecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_fecharActionPerformed
         dispose();
     }//GEN-LAST:event_btn_fecharActionPerformed
+
+    private void txt_inicialKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_inicialKeyPressed
+        if (evt.getKeyCode() == Event.ENTER) {
+            data = new Data();
+            txt_inicial.setText(data.completaData(txt_inicial.getText(), "dd/MM/yyyy"));
+        }
+    }//GEN-LAST:event_txt_inicialKeyPressed
+
+    private void txt_finalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_finalKeyPressed
+         if (evt.getKeyCode() == Event.ENTER) {
+            data = new Data();
+            txt_final.setText(data.completaData(txt_final.getText(), "dd/MM/yyyy"));
+        }
+    }//GEN-LAST:event_txt_finalKeyPressed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -208,6 +254,7 @@ public class Frm_RelAlunosDesistentes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lb_loading;
     private javax.swing.JFormattedTextField txt_final;
     private javax.swing.JFormattedTextField txt_inicial;
     // End of variables declaration//GEN-END:variables

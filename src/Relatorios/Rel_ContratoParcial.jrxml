@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Rel_ContratoParcial" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e1992d99-3ba6-4f98-8de3-7221bd7b2369">
 	<property name="ireport.zoom" value="1.7715610000000022"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="564"/>
+	<property name="ireport.y" value="655"/>
 	<parameter name="logo" class="java.lang.String"/>
 	<parameter name="vlrAPrazo" class="java.lang.Double"/>
 	<queryString>
@@ -357,7 +357,6 @@ ParágrafoPrimeiro: Os livros didáticos serão entregues aos alunos em sala de 
 ParágrafoSegundo: A inadimplência das parcelas ocasionará retenção do material ainda não entregue até sua regularização financeira.
 CLÁUSULA QUINTA: No caso de cancelamento do presente contrato, pelo COMPRADOR, este terá direito a restituição dos valores já pagos ou cancelamento dos boletos referentes aos materiais ainda não entregues.
 Parágrafo Único: Será retida uma taxa administrativa no valor de 10% do valor total contratado, a fim de cobrir as despesas administrativas já efetuadas.
-Parágrafo Segundo: A inadimplência das parcelas ocasionará retenção do material ainda não entregue até sua regularização financeira.
 CLÁUSULA SEXTA: O presente contrato passa a vigorar entre as partes a partir da assinatura do mesmo, as quais elegem o foro da cidade de Patos de Minas - MG, para dirimirem quaisquer dúvidas provenientes da execução e cumprimento do mesmo.
 E, por estarem justas e convencionadas as partes assinam o presente CONTRATO DE COMPRA E VENDA em 3 (três) vias.]]></text>
 			</staticText>

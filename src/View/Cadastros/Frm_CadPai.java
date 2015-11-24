@@ -595,9 +595,9 @@ public class Frm_CadPai extends javax.swing.JFrame {
     private void removePessoa(String codigo) {
         try {
             paiDAO = new PaiDAO();
-            paiDAO.remover(paiDAO.findByCodigo(Integer.parseInt(tb_pais.getValueAt(tb_pais.getSelectedRow(), 2).toString())));
+            paiDAO.remover(paiDAO.findByCodigo(Integer.parseInt(codigo)));
             TableConfig.getModel(tb_pais).removeRow(tb_pais.getSelectedRow());
-            JOptionPane.showMessageDialog(null, "Pessoa removida com sucesso!\n");
+            JOptionPane.showMessageDialog(null, "PAI removido com sucesso!\n");
             setEnabledButtons(true);
         } catch (Exception e) {
             if (e.toString().contains("MySQLIntegrityConstraintViolationException") == true) {

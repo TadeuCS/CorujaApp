@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "responsavel")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Responsavel.findAll", query = "SELECT r FROM Responsavel r"),
+    @NamedQuery(name = "Responsavel.findAll", query = "SELECT r FROM Responsavel r ORDER BY r.nome"),
     @NamedQuery(name = "Responsavel.findByCodresponsavel", query = "SELECT r FROM Responsavel r WHERE r.codresponsavel = :codresponsavel"),
     @NamedQuery(name = "Responsavel.findByNome", query = "SELECT r FROM Responsavel r WHERE r.nome = :nome"),
     @NamedQuery(name = "Responsavel.findByCpf", query = "SELECT r FROM Responsavel r WHERE r.cpf = :cpf"),

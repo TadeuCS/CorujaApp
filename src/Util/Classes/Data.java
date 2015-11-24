@@ -13,7 +13,28 @@ public class Data {
     private int dia;
     private int mes;
     private int ano;
-    SimpleDateFormat format;
+    static SimpleDateFormat format;
+
+     public static int getDiferencaEntreDatas(String dataInicial, String dataFinal) {
+        int qtdeDias = 0;
+        try {
+            GregorianCalendar ini = new GregorianCalendar();
+            GregorianCalendar fim = new GregorianCalendar();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            ini.setTime(sdf.parse(dataInicial));
+            fim.setTime(sdf.parse(dataFinal));
+            long dt1 = ini.getTimeInMillis();
+            long dt2 = fim.getTimeInMillis();
+            qtdeDias = (int) (((dt2 - dt1) / 86400000));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao calcular os dias entre duas datas!");
+        }
+        return qtdeDias;
+    }
+
+    public static String getDataByStringSemBarras(String data) {
+        return data.substring(0, 2) + "/" + data.substring(2, 4) + "/" + data.substring(4, 8);
+    }
 
     public static String getIdade(Date dataNascimento) {
         GregorianCalendar hj = new GregorianCalendar();
@@ -112,21 +133,6 @@ public class Data {
         }
     }
 
-    public Date getMenorData(Date data) {
-        try {
-            format = new SimpleDateFormat("dd/MM/yyyy");
-            Date agora = new Date();
-            if (agora.before(data)) {
-                return agora;
-            } else {
-                return data;
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao comparar as datas!\n" + e.getMessage());
-            return null;
-        }
-    }
-
     public static String addDayOfDate(Date data, int dias) {
         Calendar c = Calendar.getInstance();
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -139,7 +145,7 @@ public class Data {
         return format.format(c.getTime());
     }
 
-    public static String addMes(Date data, int mes,String formato) {
+    public static String addMes(Date data, int mes, String formato) {
         Calendar c = Calendar.getInstance();
         SimpleDateFormat format = new SimpleDateFormat(formato);
         try {
@@ -151,4 +157,21 @@ public class Data {
         return format.format(c.getTime());
     }
 
+    public static boolean comparaDatas(Date dataSistema, Date dataValidade) {
+        boolean retorno = false;
+        //se retorno igual a true, a data de validade está posterior a data do sistema
+        format = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            dataValidade = new Date(format.parse(format.format(dataValidade)).getTime());
+            dataSistema = new Date(format.parse(format.format(dataSistema)).getTime());
+            if ((dataValidade.after(dataSistema)) || (dataValidade.getTime() == dataSistema.getTime())) {
+                retorno = true;
+            } else {
+                retorno = false;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao comparar as datas!\n" + e);
+        }
+        return retorno;
+    }
 }

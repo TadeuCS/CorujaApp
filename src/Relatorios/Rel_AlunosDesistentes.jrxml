@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Rel_AlunosDesistentes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="87a89c01-ebfc-4a84-94b9-b38db88e8b8a">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Rel_AlunosDesistentes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="87a89c01-ebfc-4a84-94b9-b38db88e8b8a">
 	<property name="ireport.zoom" value="1.7715610000000013"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -20,32 +20,31 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT
-     a.`codaluno`,
-     a.`nome`,
-     s.`nome` AS serie,
-     a.`DT_DESISTENCIA` AS dt_desistencia
-FROM
-     `aluno` a INNER JOIN `serie` s ON a.`codserie` = s.`codserie`
-where dt_desistencia between $P{dt_inicial} and $P{dt_final}]]>
+		<![CDATA[select a.CODALUNO,a.NOME,s.NOME SERIE,a.DT_DESISTENCIA from aluno a
+left join serie s on a.CODSERIE=s.codserie
+where a.DT_DESISTENCIA is not null and a.DT_DESISTENCIA between $P{dt_inicial} and $P{dt_final}
+order by a.NOME]]>
 	</queryString>
-	<field name="codaluno" class="java.lang.Integer">
+	<field name="CODALUNO" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="nome" class="java.lang.String">
+	<field name="NOME" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="serie" class="java.lang.String"/>
-	<field name="dt_desistencia" class="java.sql.Date">
+	<field name="SERIE" class="java.lang.String"/>
+	<field name="DT_DESISTENCIA" class="java.sql.Date">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<variable name="CODALUNO_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{CODALUNO}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
 		<band height="109" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="0" y="0" width="555" height="41" uuid="8edb77e5-b36b-48c3-bcc1-fc267092346c"/>
+				<reportElement style="Title" x="0" y="0" width="555" height="41" forecolor="#7390CA" uuid="8edb77e5-b36b-48c3-bcc1-fc267092346c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="35" pdfFontName="Times-Roman"/>
 				</textElement>
@@ -89,7 +88,7 @@ where dt_desistencia between $P{dt_inicial} and $P{dt_final}]]>
 	<columnHeader>
 		<band height="25" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="1" y="1" width="554" height="23" backcolor="#A6D9C3" uuid="ae165b58-9d1e-4737-ab86-ab3da2f56f5d"/>
+				<reportElement mode="Opaque" x="1" y="1" width="554" height="23" backcolor="#7390CA" uuid="ae165b58-9d1e-4737-ab86-ab3da2f56f5d"/>
 				<staticText>
 					<reportElement x="299" y="0" width="155" height="23" forecolor="#736343" uuid="eaab2669-b072-4fdf-b7b7-259f02fd849d"/>
 					<textElement verticalAlignment="Middle">
@@ -133,19 +132,19 @@ where dt_desistencia between $P{dt_inicial} and $P{dt_final}]]>
 				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="15" uuid="cab3ada7-ef36-4d3d-a7e3-3a622f149ee3"/>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" x="0" y="0" width="54" height="15" uuid="1063ec42-5399-4609-b455-7cad0e292e70"/>
-					<textFieldExpression><![CDATA[$F{codaluno}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{CODALUNO}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" x="54" y="0" width="242" height="15" uuid="09770221-6bfc-4e42-8d29-685df15ee1ff"/>
-					<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{NOME}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="296" y="0" width="160" height="15" uuid="9de81b21-e477-41cf-91f3-a233c56b0441"/>
-					<textFieldExpression><![CDATA[$F{serie}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{SERIE}]]></textFieldExpression>
 				</textField>
 				<textField pattern="dd/MM/yyyy">
 					<reportElement x="455" y="0" width="100" height="15" uuid="3656035e-deff-4c28-81fe-79f1e3c4020b"/>
-					<textFieldExpression><![CDATA[$F{dt_desistencia}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{DT_DESISTENCIA}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
@@ -158,18 +157,32 @@ where dt_desistencia between $P{dt_inicial} and $P{dt_final}]]>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
+			<textField>
+				<reportElement x="76" y="11" width="47" height="20" forecolor="#736343" uuid="350aea76-a725-49a2-bf17-dd8525961763"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial Black"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{CODALUNO_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="0" y="11" width="73" height="19" forecolor="#736343" uuid="b42b04a6-b824-41e8-9ad2-9f481152ee01"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Quantidade:]]></text>
+			</staticText>
 		</band>
 	</columnFooter>
 	<pageFooter>
 		<band height="25" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="1" y="1" width="554" height="24" backcolor="#A6D9C3" uuid="c3f7c5f7-b7eb-4fe2-9277-1068754aac89"/>
+				<reportElement mode="Opaque" x="1" y="1" width="554" height="24" backcolor="#7390CA" uuid="c3f7c5f7-b7eb-4fe2-9277-1068754aac89"/>
 				<textField>
 					<reportElement style="Column header" x="435" y="0" width="80" height="20" forecolor="#736343" uuid="9b6c5cfb-4778-4822-8a5d-a0af93ad174f"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 				</textField>
 				<textField pattern="EEEEE dd MMMMM yyyy">
 					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="ceb7b9d6-29f8-4655-b304-e6591d81e460"/>
@@ -180,7 +193,7 @@ where dt_desistencia between $P{dt_inicial} and $P{dt_final}]]>
 				</textField>
 			</frame>
 			<textField evaluationTime="Report">
-				<reportElement style="Column header" x="515" y="0" width="40" height="20" forecolor="#736343" uuid="a42e48e5-b10c-4eef-8b84-be27188b5240"/>
+				<reportElement style="Column header" x="515" y="1" width="40" height="20" forecolor="#736343" uuid="a42e48e5-b10c-4eef-8b84-be27188b5240"/>
 				<textElement verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>

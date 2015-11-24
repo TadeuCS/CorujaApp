@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "livro")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Livro.findAll", query = "SELECT l FROM Livro l"),
+    @NamedQuery(name = "Livro.findAll", query = "SELECT l FROM Livro l ORDER BY l.descricao"),
     @NamedQuery(name = "Livro.findByCodlivro", query = "SELECT l FROM Livro l WHERE l.codlivro = :codlivro"),
     @NamedQuery(name = "Livro.findByDescricao", query = "SELECT l FROM Livro l WHERE l.descricao = :descricao")})
 public class Livro implements Serializable {
