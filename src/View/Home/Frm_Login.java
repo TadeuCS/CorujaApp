@@ -225,6 +225,10 @@ public class Frm_Login extends javax.swing.JFrame {
     private void txt_senhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_senhaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btn_entrar.doClick();
+        }else{
+            if (evt.getKeyCode() == KeyEvent.VK_UP) {
+                txt_usuario.requestFocus();
+            }
         }
     }//GEN-LAST:event_txt_senhaKeyPressed
 
